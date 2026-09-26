@@ -2,7 +2,7 @@
 
 在线课程：<https://guohongbin-git.github.io/chemistry-learning-site/>。在线版支持阅读、练习、模拟和浏览器本机记录；AI 导师需要运行本机服务。
 
-完整源代码保存在私有仓库 `guohongbin-git/chemistry-learning-lab`；公开的 `guohongbin-git/chemistry-learning-site` 仅保存网页发布文件。运行 `node scripts/build-pages.cjs` 生成 `_site/`，发布该目录至网页仓库的 `main` 分支即可更新 Pages。
+完整源代码保存在公开仓库 `guohongbin-git/chemistry-learning-lab`；公开的 `guohongbin-git/chemistry-learning-site` 仅保存网页发布文件。运行 `node scripts/build-pages.cjs` 生成 `_site/`，发布该目录至网页仓库的 `main` 分支即可更新 Pages。
 
 当前可运行课程位于 [`outputs/chemistry-agentic-v0.1/`](outputs/chemistry-agentic-v0.1/)。目录名保留早期原型版本号。先进入该目录，再运行 `./start.command`，打开 [第一章新版短课](http://127.0.0.1:8765/product-v1/)；原有第一、二章课程仍在 [课程首页](http://127.0.0.1:8765/)。需要本机安装 Node.js。
 
