@@ -1,0 +1,172 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#111d3c">
+  <title>Chemistry Lab · 谁真正发生反应？</title>
+  <style>
+    :root{--ink:#182443;--muted:#65738c;--blue:#315be8;--green:#157c5b;--red:#b64747;--line:#e0e7f1;--bg:#f5f7fb}
+    *{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.6 -apple-system,BlinkMacSystemFont,"PingFang SC","Microsoft YaHei",sans-serif}
+    button,a{font:inherit}button{cursor:pointer}button:disabled{opacity:.45;cursor:not-allowed}button:focus-visible,a:focus-visible{outline:3px solid #ffb84f;outline-offset:3px}
+    .shell{max-width:1120px;min-height:100vh;margin:auto;display:grid;grid-template-columns:244px minmax(0,1fr)}
+    aside{background:#111d3c;color:#d6e1fa;padding:27px 21px}aside .brand{display:flex;align-items:center;gap:10px;color:#fff;font-weight:800;font-size:19px;margin-bottom:52px}
+    .brand-mark{display:grid;place-items:center;width:37px;height:37px;border-radius:11px;background:#4165ec;font-size:21px}aside small{color:#8fa5d1;letter-spacing:.1em;font-size:11px}
+    .side-list{list-style:none;margin:16px 0 30px;padding:0;display:grid;gap:5px}.side-list li{padding:9px 11px;border-radius:9px;color:#adbedf;font-size:14px}.side-list li.active{background:#26385e;color:#fff}.side-list li.done{color:#8ddfbd}
+    .side-note{border:1px solid #34476d;border-radius:13px;padding:15px;background:#1a2b4d;font-size:13px}.side-note p{color:#aebfdf;margin:5px 0 0}
+    main{min-width:0;padding:28px clamp(19px,4vw,54px) 55px}.topline{display:flex;justify-content:space-between;gap:12px;color:var(--muted);font-size:13px;margin-bottom:32px}.topline strong{color:var(--ink)}
+    h1,h2,h3,p{margin-top:0}h1{font-size:clamp(31px,4vw,46px);line-height:1.2;letter-spacing:-.035em;margin:8px 0 16px}h2{font-size:23px;line-height:1.35;letter-spacing:-.025em;margin-bottom:12px}h3{font-size:16px;margin-bottom:9px}
+    .eyebrow{color:var(--blue);font-size:12px;font-weight:800;letter-spacing:.12em}.lead{font-size:17px;color:var(--muted);max-width:650px}.muted{color:var(--muted)}
+    .hero{position:relative;overflow:hidden;min-height:278px;padding:38px;border-radius:23px;color:#fff;background:linear-gradient(125deg,#1a2d69,#1b315e 62%,#294a76);box-shadow:0 16px 34px #15285820}.hero:after{content:"BaSO₄";position:absolute;right:-12px;bottom:-28px;color:#ffffff19;font-size:97px;font-weight:800;transform:rotate(-15deg)}.hero .eyebrow{color:#aac8ff}.hero h1,.hero p,.hero .button{position:relative;z-index:1}.hero p{color:#d0ddf7;max-width:560px}
+    .button{display:inline-flex;justify-content:center;align-items:center;gap:7px;min-height:46px;padding:9px 19px;border:1px solid transparent;border-radius:10px;background:var(--blue);color:#fff;text-decoration:none;font-weight:700}.button:hover:not(:disabled){background:#244cd0}.button.light{background:#fff;color:#294994}.button.secondary{background:#fff;color:var(--ink);border-color:#d4deee}.button.secondary:hover:not(:disabled){background:#f3f6ff}
+    .grid{display:grid;grid-template-columns:1.3fr 1fr;gap:17px;margin-top:18px}.card{background:#fff;border:1px solid var(--line);border-radius:17px;padding:24px;box-shadow:0 8px 25px #13244508}.card p:last-child{margin-bottom:0}
+    .chips{display:flex;flex-wrap:wrap;gap:9px;margin:17px 0}.chip{padding:8px 12px;border-radius:30px;background:#eaf0ff;color:#3556af;font-weight:700;font-size:13px}.chip.green{background:#e9f7ef;color:#1c7554}
+    .steps{display:flex;flex-wrap:wrap;gap:6px;margin:20px 0 25px}.step{font-size:12px;padding:6px 10px;border-radius:8px;color:#8490a5;font-weight:700}.step.active{background:#eaf0ff;color:#2f50b4}.step.done{background:#e6f5ee;color:#137353}
+    .stage{display:none}.stage.active{display:block;animation:fade .22s ease-out}@keyframes fade{from{opacity:.45;transform:translateY(5px)}to{opacity:1;transform:none}}
+    .equation{padding:17px 18px;border:1px solid #cbd8ef;background:#f2f6ff;border-radius:11px;color:#203b79;font-size:clamp(16px,2.3vw,23px);font-weight:800;line-height:1.65;word-break:break-word}
+    .question{font-weight:800;font-size:20px;line-height:1.4;margin:19px 0 16px}.options{display:grid;gap:10px;margin:17px 0}.option{width:100%;padding:14px 16px;text-align:left;border:1px solid #dbe3f0;border-radius:11px;background:#fff;color:var(--ink)}.option:hover:not(:disabled){border-color:#91a9f5;background:#f7f9ff}.option.selected{border-color:var(--blue);background:#edf2ff;box-shadow:inset 0 0 0 1px var(--blue)}.option.correct{border-color:#5ab38c;background:#edf9f2}.option.wrong{border-color:#d88c8c;background:#fff1f1}
+    .feedback{margin:16px 0;padding:14px 16px;background:#f0f4ff;border-left:4px solid #5a7fed;border-radius:8px;color:#294574}.feedback.good{background:#edf8f1;border-color:#46a778;color:#176646}.feedback.warn{background:#fff5ee;border-color:#e09b68;color:#764620}
+    .actions{display:flex;gap:10px;flex-wrap:wrap;margin-top:24px}.select-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px;margin:20px 0}.select-grid .option{text-align:center;font-weight:700;min-height:67px}.hint{padding:13px 15px;background:#f6f8fc;border-radius:10px;border:1px solid var(--line);font-size:14px;color:#5d6e89}
+    .reaction-scene{display:grid;grid-template-columns:1fr 40px 1fr;align-items:center;gap:8px;background:#14284f;color:#e1edff;border-radius:14px;padding:23px 20px;text-align:center}.beaker{min-height:140px;border:2px solid #9dbef5;border-top:0;border-radius:0 0 20px 20px;display:grid;place-items:center;padding:13px;background:linear-gradient(transparent 27%,#83baff28 27%);font-weight:700}.beaker.result{background:linear-gradient(transparent 27%,#83baff28 27%,#83baff28 75%,#f7f1dc 75%)}.reaction-scene .arrow{font-size:30px;color:#a6c4fd}
+    .check-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:17px}.check-grid div{padding:15px;background:#f6f8fc;border:1px solid var(--line);border-radius:10px}.check-grid b{display:block;color:#4563ad}
+    .score{font-size:51px;font-weight:800;color:var(--green);line-height:1;margin:12px 0}.bar{height:10px;background:#eaf0f4;border-radius:99px;overflow:hidden}.bar span{display:block;width:0;height:100%;background:linear-gradient(90deg,#7184ed,#3bb49b);transition:width .3s}
+    footer{font-size:12px;color:#8b98a9;margin-top:35px}
+    @media(max-width:800px){.shell{display:block}aside{padding:13px 19px}.brand{margin-bottom:0!important}aside small,.side-list,.side-note{display:none}main{padding:22px 17px 45px}.topline{margin-bottom:24px}.grid{grid-template-columns:1fr}.hero{padding:28px;min-height:0}}
+    @media(max-width:530px){.card{padding:19px}.hero:after{font-size:60px}.select-grid{grid-template-columns:1fr}.button{width:100%}.reaction-scene{padding:16px 9px}.beaker{font-size:12px}}
+    @media(prefers-reduced-motion:reduce){*,*:before,*:after{animation-duration:.01ms!important;transition-duration:.01ms!important}}
+  </style>
+</head>
+<body>
+  <div class="shell">
+    <aside aria-label="课程进度">
+      <div class="brand"><span class="brand-mark" aria-hidden="true">⚗</span>Chemistry Lab</div>
+      <small>第一章 · 物质及其变化</small>
+      <ol class="side-list" id="side-list"><li class="active">今日任务</li><li>观察现象</li><li>写化学方程式</li><li>拆成离子</li><li>删除旁观离子</li><li>检查与迁移</li></ol>
+      <div class="side-note"><strong>本节要解决</strong><p>混合两种溶液后，究竟是谁真正发生了反应？</p></div>
+    </aside>
+    <main>
+      <div class="topline"><span><strong>化学学习引擎</strong> / 第 2 个学习任务</span><span>约 10 分钟</span></div>
+      <section id="dashboard" class="stage active" aria-labelledby="dashboard-title">
+        <div class="hero"><span class="eyebrow">TODAY'S EXPERIMENT · 离子反应</span><h1 id="dashboard-title">谁真正发生反应？</h1><p>把两种无色溶液混合，找出生成沉淀的离子，再亲手把化学方程式编译成离子方程式。</p><button class="button light" id="start">开始实验 →</button></div>
+        <div class="grid"><div class="card"><span class="eyebrow">今日目标</span><h2>写 → 拆 → 删 → 查</h2><p class="muted">你将从 BaCl₂ 和 Na₂SO₄ 的反应中，找出旁观离子，写出真正参与反应的离子方程式。</p><div class="chips"><span class="chip">观察沉淀</span><span class="chip">选择拆分</span><span class="chip green">检查守恒</span></div></div><div class="card"><span class="eyebrow">上一课回顾</span><h2>自由移动的离子</h2><p class="muted">NaCl 溶于水后形成自由移动的 Na⁺ 和 Cl⁻。两种电解质溶液混合时，哪些离子会留下，哪些会结合？</p><a class="button secondary" href="Chemistry_Learning_Engine_CH1_v0.2.html">回看上一课</a></div></div>
+      </section>
+
+      <div id="lesson" hidden>
+        <span class="eyebrow">LESSON 02 · IONIC_COMPILER_001</span><h1>离子方程式编译器</h1><p class="lead">每一步都自己判断。答错后可以根据提示修正。</p>
+        <div class="steps" id="steps" aria-label="学习步骤"><span class="step">01 观察</span><span class="step">02 写</span><span class="step">03 拆</span><span class="step">04 删</span><span class="step">05 查</span><span class="step">06 迁移</span><span class="step">07 完成</span></div>
+
+        <section id="observe" class="stage card" aria-labelledby="observe-title">
+          <span class="eyebrow">01 / 先预测</span><h2 id="observe-title">两种无色溶液混合</h2>
+          <div class="reaction-scene" role="img" aria-label="BaCl2溶液和Na2SO4溶液混合，生成白色BaSO4沉淀"><div class="beaker">BaCl₂(aq)<br>＋<br>Na₂SO₄(aq)</div><span class="arrow" aria-hidden="true">→</span><div class="beaker result">无色溶液<br>＋<br>白色沉淀 ↓</div></div>
+          <p class="question">你认为哪一种物质形成了白色沉淀？</p><div class="options" id="observe-options"><button class="option" data-choice="barium">BaSO₄</button><button class="option" data-choice="sodium">NaCl</button><button class="option" data-choice="none">没有新物质生成</button></div><div class="feedback" id="observe-feedback" role="status" hidden></div><div class="actions"><button class="button" id="to-write" disabled>写出反应 →</button></div>
+        </section>
+
+        <section id="write" class="stage card" aria-labelledby="write-title">
+          <span class="eyebrow">02 / 写</span><h2 id="write-title">先写配平的化学方程式</h2><p class="muted">BaSO₄ 是难溶的白色沉淀，NaCl 留在水溶液中。</p><p class="question">哪一个方程式正确？</p>
+          <div class="options" id="write-options"><button class="option" data-answer="0">BaCl₂ + Na₂SO₄ → BaSO₄↓ + NaCl</button><button class="option" data-answer="1">BaCl₂ + Na₂SO₄ → BaSO₄↓ + 2NaCl</button><button class="option" data-answer="2">BaCl₂ + Na₂SO₄ → BaCl₂↓ + Na₂SO₄</button></div>
+          <div class="feedback" id="write-feedback" role="status" hidden></div><div class="actions"><button class="button" id="to-split" disabled>拆成离子 →</button></div>
+        </section>
+
+        <section id="split" class="stage card" aria-labelledby="split-title">
+          <span class="eyebrow">03 / 拆</span><h2 id="split-title">选择应写成离子形式的物质</h2><div class="equation">BaCl₂(aq) + Na₂SO₄(aq) → BaSO₄(s) + 2NaCl(aq)</div>
+          <p class="muted" style="margin-top:17px">点击应拆分的物质，可以选择多个。难溶的沉淀保留化学式。</p>
+          <div class="select-grid" id="split-options"><button class="option" data-item="bacl2" aria-pressed="false">BaCl₂(aq)</button><button class="option" data-item="na2so4" aria-pressed="false">Na₂SO₄(aq)</button><button class="option" data-item="baso4" aria-pressed="false">BaSO₄(s)</button><button class="option" data-item="nacl" aria-pressed="false">2NaCl(aq)</button></div>
+          <div class="hint">提示：本例中的可溶性强电解质写成离子形式；沉淀仍写化学式。</div><div class="feedback" id="split-feedback" role="status" hidden></div><div class="actions"><button class="button secondary" id="check-split">检查拆分</button><button class="button" id="to-cancel" disabled>找旁观离子 →</button></div>
+        </section>
+
+        <section id="cancel" class="stage card" aria-labelledby="cancel-title">
+          <span class="eyebrow">04 / 删</span><h2 id="cancel-title">哪些离子在两边都没有变化？</h2><p class="muted">完整离子式：</p><div class="equation">Ba²⁺ + 2Cl⁻ + 2Na⁺ + SO₄²⁻ → BaSO₄(s) + 2Na⁺ + 2Cl⁻</div>
+          <p class="question">点击需要从两边同时删去的旁观离子。</p><div class="select-grid" id="cancel-options"><button class="option" data-item="ba" aria-pressed="false">Ba²⁺</button><button class="option" data-item="cl" aria-pressed="false">Cl⁻</button><button class="option" data-item="na" aria-pressed="false">Na⁺</button><button class="option" data-item="so4" aria-pressed="false">SO₄²⁻</button></div>
+          <div class="feedback" id="cancel-feedback" role="status" hidden></div><div class="actions"><button class="button secondary" id="check-cancel">检查删除</button><button class="button" id="to-check" disabled>检查守恒 →</button></div>
+        </section>
+
+        <section id="check" class="stage card" aria-labelledby="check-title">
+          <span class="eyebrow">05 / 查</span><h2 id="check-title">离子方程式能通过检查吗？</h2><div class="equation">Ba²⁺(aq) + SO₄²⁻(aq) → BaSO₄(s) ↓</div>
+          <div class="check-grid"><div><b>原子数</b>左：Ba 1、S 1、O 4<br>右：Ba 1、S 1、O 4</div><div><b>总电荷</b>左：(+2) + (−2) = 0<br>右：0</div></div>
+          <p class="question">这个离子方程式的检查结果是？</p><div class="options" id="check-options"><button class="option" data-answer="0">原子数和总电荷都守恒</button><button class="option" data-answer="1">只有原子数守恒</button><button class="option" data-answer="2">只有总电荷守恒</button></div><div class="feedback" id="check-feedback" role="status" hidden></div><div class="actions"><button class="button" id="to-transfer" disabled>换一道反应 →</button></div>
+        </section>
+
+        <section id="transfer" class="stage card" aria-labelledby="transfer-title">
+          <span class="eyebrow">06 / 迁移</span><h2 id="transfer-title">换一种白色沉淀</h2><div class="equation">AgNO₃(aq) + NaCl(aq) → AgCl(s) ↓ + NaNO₃(aq)</div>
+          <p class="question">对应的净离子方程式是什么？</p><div class="options" id="transfer-options"><button class="option" data-answer="0">Ag⁺ + Cl⁻ → AgCl(s)</button><button class="option" data-answer="1">Ag⁺ + NO₃⁻ → AgNO₃(s)</button><button class="option" data-answer="2">Ag⁺ + NO₃⁻ + Na⁺ + Cl⁻ → AgCl(s) + NaNO₃(aq)</button></div><div class="feedback" id="transfer-feedback" role="status" hidden></div><div class="actions"><button class="button" id="to-result" disabled>查看学习结果 →</button></div>
+        </section>
+
+        <section id="result" class="stage card" aria-labelledby="result-title"><span class="eyebrow">07 / 完成</span><h2 id="result-title">你找到了真正反应的离子</h2><div class="score" id="score">—</div><p class="muted">首次判断正确步数 / 5</p><div class="bar"><span id="score-bar"></span></div><p id="result-summary" style="margin-top:19px"></p><div class="feedback good"><strong>带走的步骤：</strong>写出配平化学方程式 → 拆开可溶性强电解质 → 删去旁观离子 → 检查原子和电荷守恒。</div><div class="actions"><button class="button secondary" id="restart">再练一次</button><a class="button" href="Chemistry_Learning_Engine_CH1_v0.2.html">返回上一课</a></div></section>
+      </div>
+      <footer>第一章第 2 课原型 v0.1 · 参考资源包“离子反应概念与离子方程式”课件 · 记录仅保存在此浏览器</footer>
+    </main>
+  </div>
+  <script>
+    "use strict";
+    const $ = id => document.getElementById(id);
+    const stages = ["observe","write","split","cancel","check","transfer","result"];
+    const state = { stage:"dashboard", selectedSplit:new Set(), selectedCancel:new Set(), graded:{}, completed:{}, best:0 };
+    const STORAGE_KEY = "chemistry-lab-ch1-ionic-equation-v0.1";
+    try { const stored = JSON.parse(localStorage.getItem(STORAGE_KEY) || "null"); if (stored && Number.isInteger(stored.best)) state.best = Math.max(0,Math.min(5,stored.best)); } catch (_) {}
+    function show(stage) {
+      state.stage = stage;
+      $("dashboard").classList.toggle("active",stage === "dashboard");
+      $("lesson").hidden = stage === "dashboard";
+      stages.forEach(id => $(id).classList.toggle("active",id === stage));
+      const current = stages.indexOf(stage);
+      [...$("steps").children].forEach((node,index) => node.className = "step" + (index === current ? " active" : index < current ? " done" : ""));
+      [...$("side-list").children].forEach((node,index) => node.className = index === 0 ? (stage === "dashboard" ? "active" : "done") : index === 1 && stage === "observe" || index === 2 && stage === "write" || index === 3 && stage === "split" || index === 4 && stage === "cancel" || index === 5 && ["check","transfer","result"].includes(stage) ? "active" : "");
+      window.scrollTo({top:0,behavior:matchMedia("(prefers-reduced-motion: reduce)").matches ? "instant" : "smooth"});
+    }
+    function note(id,message,good) { const box=$(id+"-feedback"); box.textContent=message; box.className="feedback "+(good ? "good" : "warn"); box.hidden=false; }
+    function scoreFirst(id,correct) { if (!(id in state.graded)) state.graded[id]=!!correct; }
+    function reset() {
+      state.selectedSplit.clear(); state.selectedCancel.clear(); state.graded={}; state.completed={};
+      for (const id of ["observe","write","check","transfer"]) { [...$(id+"-options").children].forEach(b => { b.disabled=false; b.className="option"; }); $(id+"-feedback").hidden=true; }
+      for (const id of ["split","cancel"]) { [...$(id+"-options").children].forEach(b => { b.className="option"; b.setAttribute("aria-pressed","false"); }); $(id+"-feedback").hidden=true; }
+      for (const id of ["to-write","to-split","to-cancel","to-check","to-transfer","to-result"]) $(id).disabled=true;
+      show("observe");
+    }
+    $("start").addEventListener("click",reset); $("restart").addEventListener("click",reset);
+    $("observe-options").addEventListener("click",event => {
+      const b=event.target.closest("button[data-choice]"); if (!b || state.completed.observe) return;
+      [...$("observe-options").children].forEach(x => x.classList.toggle("selected",x===b));
+      note("observe",b.dataset.choice === "barium" ? "你的预测正确。Ba²⁺ 与 SO₄²⁻ 结合形成难溶的 BaSO₄。" : "先记下这个预测：白色沉淀是难溶的 BaSO₄，稍后会用方程式验证。",b.dataset.choice === "barium");
+      state.completed.observe=true; $("to-write").disabled=false;
+    });
+    function choiceStage(id,correctIndex,explainWrong,nextButton) {
+      $(id+"-options").addEventListener("click",event => {
+        const b=event.target.closest("button[data-answer]"); if (!b || state.completed[id]) return;
+        const choice=Number(b.dataset.answer), correct=choice===correctIndex;
+        scoreFirst(id,correct);
+        [...$(id+"-options").children].forEach((x,index) => { x.classList.toggle("selected",x===b); x.classList.toggle("correct",correct && x===b); x.classList.toggle("wrong",!correct && x===b); });
+        note(id,correct ? ({write:"正确。系数 2 保证两边 Na、Cl 的原子数相等。",check:"正确。原子数与电荷总数都守恒。",transfer:"正确。Na⁺ 和 NO₃⁻ 没有参加沉淀生成。"})[id] : explainWrong[choice],correct);
+        if (correct) { state.completed[id]=true; [...$(id+"-options").children].forEach(x=>x.disabled=true); $(nextButton).disabled=false; }
+      });
+    }
+    choiceStage("write",1,{0:"右侧 NaCl 需要系数 2，才能与左侧 2 个 Na 和 2 个 Cl 对应。",2:"BaCl₂ 不会成为新沉淀；Ba²⁺ 与 SO₄²⁻ 结合形成 BaSO₄。"},"to-split");
+    choiceStage("check",0,{1:"左侧电荷 +2 与 −2 相加为 0，右侧中性沉淀的电荷也是 0。",2:"Ba、S、O 的原子数在两侧也完全相同。"},"to-transfer");
+    choiceStage("transfer",0,{1:"AgNO₃ 在水中可溶；难溶的白色沉淀是 AgCl。",2:"这仍是完整离子反应的思路；Na⁺ 与 NO₃⁻ 是旁观离子，应从两侧删去。"},"to-result");
+    function toggleSelection(id,set) { $(id+"-options").addEventListener("click",event => { const b=event.target.closest("button[data-item]"); if (!b || state.completed[id]) return; const value=b.dataset.item; if (set.has(value)) set.delete(value); else set.add(value); b.classList.toggle("selected",set.has(value)); b.setAttribute("aria-pressed",String(set.has(value))); }); }
+    toggleSelection("split",state.selectedSplit); toggleSelection("cancel",state.selectedCancel);
+    function sameSet(a,expected) { return a.size===expected.length && expected.every(x=>a.has(x)); }
+    $("check-split").addEventListener("click",() => {
+      if (state.completed.split) return;
+      const correct=sameSet(state.selectedSplit,["bacl2","na2so4","nacl"]); scoreFirst("split",correct);
+      if (correct) { state.completed.split=true; note("split","正确。BaCl₂、Na₂SO₄ 和 NaCl 都是本例的可溶性强电解质；BaSO₄ 是沉淀，应保留化学式。","good"); $("to-cancel").disabled=false; }
+      else note("split",state.selectedSplit.has("baso4") ? "BaSO₄ 是难溶沉淀，不能拆成游离离子。取消它，再检查其他三种物质。" : "检查两侧的物质：本例中所有标注 (aq) 的可溶性强电解质都应拆开。",false);
+    });
+    $("check-cancel").addEventListener("click",() => {
+      if (state.completed.cancel) return;
+      const correct=sameSet(state.selectedCancel,["cl","na"]); scoreFirst("cancel",correct);
+      if (correct) { state.completed.cancel=true; note("cancel","正确。Na⁺ 和 Cl⁻ 在两侧都保持不变；留下 Ba²⁺ 与 SO₄²⁻ 形成沉淀。",true); $("to-check").disabled=false; }
+      else note("cancel",state.selectedCancel.has("ba") || state.selectedCancel.has("so4") ? "Ba²⁺ 和 SO₄²⁻ 结合成沉淀，实际参与了反应，不能删去。" : "找出在方程式两侧都出现、数量和电荷都不变的离子。",false);
+    });
+    const transitions=[["to-write","write"],["to-split","split"],["to-cancel","cancel"],["to-check","check"],["to-transfer","transfer"]];
+    transitions.forEach(([button,page]) => $(button).addEventListener("click",() => show(page)));
+    $("to-result").addEventListener("click",() => {
+      const earned=Object.values(state.graded).filter(Boolean).length;
+      state.best=Math.max(state.best,earned);
+      try { localStorage.setItem(STORAGE_KEY,JSON.stringify({best:state.best,completedAt:new Date().toISOString()})); } catch (_) {}
+      $("score").textContent=earned+" / 5"; $("score-bar").style.width=(earned*20)+"%";
+      $("result-summary").textContent=earned===5 ? "五个关键步骤都在首次判断中完成。你已经能把方法迁移到另一种沉淀反应。" : "你完成了整条推理链。首次判断正确 "+earned+" 步；建议再练一次，留意拆分与旁观离子的选择。";
+      show("result");
+    });
+  </script>
+</body>
+</html>

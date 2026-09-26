@@ -1,0 +1,133 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>学情调研补漏 · 物质分类与离子反应</title>
+  <style>
+    :root{font-family:system-ui,-apple-system,"PingFang SC","Microsoft YaHei",sans-serif;color:#1c2b49;background:#f5f8ff}
+    *{box-sizing:border-box}body{margin:0}main{max-width:1020px;margin:auto;padding:24px 20px 80px}
+    a{color:#2256b8}h1{font-size:clamp(30px,5vw,48px);line-height:1.2;margin:12px 0}h2{font-size:29px;margin:0 0 10px}h3{font-size:21px;margin:10px 0}
+    p,li{line-height:1.75}.lead{font-size:18px;color:#52627e}.eyebrow{color:#235ab7;font-weight:700;letter-spacing:.08em}
+    .hero,.card,.question{background:#fff;border:1px solid #dce5fa;border-radius:20px;padding:24px;margin:18px 0;box-shadow:0 4px 18px #1d39600a}
+    .hero{background:#e8f0ff}.note{border-left:5px solid #477be3;padding:10px 18px;background:#eef5ff;border-radius:8px}.warn{border-color:#f3cf80;background:#fff9ea}
+    .map{max-width:100%;height:auto;border:1px solid #dce5fa;border-radius:12px}.small{color:#63718b;font-size:14px}.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:16px}
+    .grid .card{margin:0}button{font:inherit;cursor:pointer;border-radius:12px;border:1px solid #adc0e9;background:#fff;padding:12px 16px;color:#1c2b49;text-align:left}
+    button:hover,button:focus-visible{border-color:#3568d1;outline:2px solid #b4caff}.options{display:grid;gap:10px;margin:14px 0}
+    .options button{width:100%}.options button[disabled]{cursor:default}.options button.correct{background:#e8f9ef;border-color:#37a569}.options button.wrong{background:#fff0ed;border-color:#df7667}
+    .feedback{border-radius:12px;padding:16px;background:#ecf7f1;margin-top:14px}.feedback[hidden]{display:none}
+    .tag{font-size:13px;color:#235ab7;font-weight:700}.rule{font-weight:700}.ref{color:#60708b;font-size:14px}
+    table{width:100%;border-collapse:collapse;background:white}th,td{border:1px solid #dce5fa;padding:10px;text-align:left;vertical-align:top}th{background:#e8f0ff}
+    details{border-top:1px solid #dce5fa;padding:14px 0}summary{cursor:pointer;font-weight:700}
+    .motion-stage{min-height:230px;display:grid;align-content:center;gap:18px;padding:24px;border-radius:18px;background:#142b55;color:#fff;overflow:hidden}
+    .motion-title{font-size:clamp(22px,4vw,32px);font-weight:800}.motion-line{display:flex;align-items:center;justify-content:center;gap:12px;flex-wrap:wrap;font-size:clamp(20px,3vw,29px);font-weight:700}
+    .particle{display:inline-flex;align-items:center;justify-content:center;min-width:78px;min-height:70px;padding:10px;border-radius:50%;background:#d9e8ff;color:#173463;transition:transform .45s,opacity .45s,background .45s}.particle.outcome{background:#fff0c1;color:#573c00}
+    .motion-stage.reveal .particle.outcome{transform:translateY(12px) scale(1.12)}.motion-arrow{color:#9ec2ff}.motion-controls{display:flex;flex-wrap:wrap;gap:10px;margin-top:14px}.motion-controls button[aria-current="step"]{background:#dfeafe;border-color:#3568d1;font-weight:700}
+    @media(prefers-reduced-motion:reduce){.particle{transition:none}}
+  </style>
+</head>
+<body><main>
+  <p><a href="./index.html">← 返回课程目录</a></p>
+  <header class="hero"><span class="eyebrow">本次学情调研 · 可选补漏</span><h1>先补判断依据，再做新题</h1><p class="lead">根据你提供的 2026 年 9 月校内试卷第 1–31 题，补第一章最容易断开的推理链。下面的练习是课程原创迁移题，试卷不是高考真题。</p><p class="small">学习方法：先读“必须记住”，自己判断；点选后才看解析，再口头回答“换个条件”。这条路径不改变原有教材顺序，也不要求使用 AI 导师。</p></header>
+
+  <section class="card" aria-labelledby="map-title"><span class="eyebrow">先看教材原图</span><h2 id="map-title">分类树是所有题的起点</h2><a href="./assets/classification-tree.png" target="_blank" rel="noopener"><img class="map" src="./assets/classification-tree.png" alt="原课件的物质分类树：物质先分混合物与纯净物，纯净物再分单质与化合物"></a><p class="small">沿原课件树状图读：先问样品里有几种物质，再给单一物质分类。冰水混合物只有 H₂O，仍是纯净物；稀硫酸含水和 H₂SO₄，是混合物。</p></section>
+
+  <section class="card" aria-labelledby="coverage-title"><span class="eyebrow">对照结果</span><h2 id="coverage-title">原课程已经会的，与这次需要补的</h2><div class="grid"><div><h3>已有基础</h3><p>纯净物/混合物、氧化物、NaCl 状态与导电、常见沉淀、离子方程式“写拆删查”、基本化合价和氧化还原。</p></div><div><h3>这次补强</h3><p>酸式盐与酸根名称、难溶碱和弱碱、复分解制盐四类路径、一个反应同时生成沉淀和水时的配平、FeSO₄ 陌生情境中的“实验现象—粒子—方程式”。</p></div></div><p class="note">试卷的第 29–31 题把几个小概念连成一道题。会选 A、B、C、D，并不等于能独立写出分类依据、反应物和守恒式。</p></section>
+
+  <section class="card" aria-labelledby="motion-heading"><span class="eyebrow">六步微动画 · 可选</span><h2 id="motion-heading">让分类和反应在脑中“动起来”</h2><p>按步骤看粒子怎样变，再用一句话讲出判断依据。点击任一步可重看；动画不自动翻页。</p><div class="motion-stage" id="motion-stage" role="img" aria-label="第 1 步：一杯稀硫酸中有硫酸与水，因此整杯是混合物"><div class="motion-title" id="motion-title">① 先看整杯样品</div><div class="motion-line" id="motion-line"><span class="particle">H₂SO₄</span><span class="motion-arrow">＋</span><span class="particle">H₂O</span><span class="motion-arrow">→</span><span class="particle outcome">混合物</span></div><div id="motion-caption">记忆：分类先数物质，不数元素，也不数相态。</div></div><div class="motion-controls" aria-label="动画步骤"><button type="button" data-motion="0" aria-current="step">① 数物质</button><button type="button" data-motion="1">② 找酸根</button><button type="button" data-motion="2">③ 找沉淀</button><button type="button" data-motion="3">④ 离子共存</button><button type="button" data-motion="4">⑤ 两个氮</button><button type="button" data-motion="5">⑥ 酸性氢</button></div><p class="small">这是课程自制示意动画，粒子相对位置不代表真实微观尺度。</p></section>
+
+  <section class="card" aria-labelledby="history-heading"><span class="eyebrow">历史帮助理解名称</span><h2 id="history-heading">“硝”“硫”“盐”怎样进入酸的名字？</h2><div class="grid"><div><h3>硝石 → 硝酸体系</h3><p>硝石常指硝酸钾 KNO₃，是古人认识并使用的天然盐。今天用同一个名称家族记：HNO₃ 是硝酸，NO₃⁻ 是硝酸根，KNO₃ 是硝酸钾。早期确有从硝酸盐制硝酸的做法，但这段历史不能代替现代命名规则。</p></div><div><h3>硫酸与“矾油”</h3><p>硫酸曾称“矾油”，历史上可从绿矾等硫酸盐相关材料制得。今天看粒子：H₂SO₄ 对应硫酸，SO₄²⁻ 对应硫酸根；FeSO₄ 是硫酸亚铁，不因为含“硫酸”二字就变成酸。</p></div><div><h3>盐酸与食盐</h3><p>历史制酸中，食盐 NaCl 与硫酸反应可以产生氯化氢；氯化氢进入水才得到盐酸。现代分类时必须分开 HCl(g) 这一纯物质与盐酸这一水溶液。</p></div></div><p class="small">历史只提供理解线索，不能把“先有某名称，所以一定按某顺序命名”当成已证实的词源结论。资料：<a href="https://www.acs.org/molecule-of-the-week/archive/p/potassium-nitrate.html" target="_blank" rel="noopener">美国化学会：硝酸钾与硝石</a>、<a href="https://pubs.acs.org/doi/10.1021/ja02124a037" target="_blank" rel="noopener">1891 年硝酸盐制硝酸研究</a>、<a href="https://www.acs.org/molecule-of-the-week/archive/s/sulfuric-acid.html" target="_blank" rel="noopener">美国化学会：硫酸历史</a>、<a href="https://pubs.acs.org/subscribe/archive/tcaw/10/i09/html/09chemch.html" target="_blank" rel="noopener">美国化学会：食盐制氯化氢的历史</a>。</p></section>
+
+  <section class="card" aria-labelledby="mnemonic-heading"><span class="eyebrow">考前记法 · 用完要核对</span><h2 id="mnemonic-heading">把口诀当检索线索，再看例外与条件</h2><table><thead><tr><th>要记什么</th><th>一句记法</th><th>本卷怎么用</th></tr></thead><tbody><tr><td>酸、碱、盐初判</td><td>“酸看电离的 H⁺，碱看电离的 OH⁻，金属或铵根配酸根常为盐。”（课程归纳）</td><td>NaHSO₄ 虽有 H，仍是酸式盐；Na₂CO₃ 俗称纯碱，仍是盐。先确认是纯物质，还是溶液样品。</td></tr><tr><td>盐的溶解性</td><td>“钾钠铵硝皆可溶；硫酸盐不溶钡和铅；碳磷酸盐多不溶。”（苏州教科院口诀节选）</td><td>KNO₃ 易溶；BaSO₄ 难溶。口诀里的“多”表示还有条件和例外，具体题目要查溶解性表。</td></tr><tr><td>离子式</td><td>“写、拆、删、查”（课程已有记法）</td><td>难溶的 Fe(OH)₂ 不拆；Ba(OH)₂ 与 H₂SO₄ 同时得沉淀和水，不能只留一个产物。</td></tr></tbody></table><p class="small">口诀来源与核对：<a href="https://szteacher.suzhou.edu.cn/News.aspx?ID=98836&amp;NTID=65" target="_blank" rel="noopener">苏州市教育科学研究院《化学知识点背诵口诀》</a>。只取与第一章直接相关的片段，不把口诀当成完整溶解度表。</p></section>
+
+  <section class="card"><span class="eyebrow">先练 · 名称与样品 · 对应试卷 1、9、29(1)</span><h2>纯酸、酸溶液和氨水是不是同一类样品？</h2><p><strong>必须记住：</strong>H₂SO₄、HNO₃、HCl、NH₃ 这类化学式表示相应物质；稀硫酸、硝酸溶液、盐酸、氨水都含水，是混合物。单说“硫酸”“硝酸”要结合题目语境；“浓”指浓度高，不等于没有水。</p><p><strong>氨水的边界：</strong>NH₃(g) 是一种纯物质；氨水是 NH₃ 与水形成的体系，并有少量 NH₄⁺、OH⁻。NH₃·H₂O 是中学常用的水合写法，不能用来表示整瓶氨水只有一种物质。</p><div id="group-samples"></div></section>
+
+  <section class="card"><span class="eyebrow">第 1 组 · 对应试卷 1–9、29(1)</span><h2>分类、命名与溶解性</h2><p><strong>必须记住：</strong>先分混合物与纯净物；酸在水中电离产生的阳离子都是 H⁺，碱产生的阴离子都是 OH⁻，盐由金属离子或 NH₄⁺ 与酸根构成。酸式盐仍是盐，如 NaHSO₄、NaHCO₃。</p><p><strong>名称链：</strong>HNO₃ 是硝酸，NO₃⁻ 是硝酸根；HNO₂ 是亚硝酸，NO₂⁻ 是亚硝酸根。NaNO₂ 中 N 为 +3，NaNO₃ 中 N 为 +5。化学式中的“硝”不是凭 N 的个数直接命名。</p><p><strong>溶解性：</strong>硝酸盐通常可溶；常见难溶氢氧化物包括 Fe(OH)₂、Fe(OH)₃、Cu(OH)₂。写离子方程式时，难溶固体不拆。</p><div id="group-class"></div></section>
+
+  <section class="card"><span class="eyebrow">第 2 组 · 对应试卷 10–17、29(2)–(7)、30</span><h2>从“会反应”走到“会写方程式”</h2><p><strong>必须记住：</strong>判断复分解反应能否进行，先看产物有没有沉淀、气体或水等。写离子式按“先写配平的化学式 → 拆可溶强电解质 → 删相同旁观离子 → 查原子和电荷”。</p><p><strong>容易漏的两个条件：</strong>Mg(OH)₂ 是难溶固体，遇酸时不能写成“OH⁻”；Ba(OH)₂ 与 H₂SO₄ 同时生成 BaSO₄ 沉淀和水，不能只留下一个 H⁺ 与 OH⁻。</p><details><summary>展开：第 29 题这类串联题，如何由类别推方程式？</summary><table><thead><tr><th>组合</th><th>先找变化</th><th>示范</th></tr></thead><tbody><tr><td>一水合氨 + 盐酸</td><td>弱碱与酸生成铵盐和水；弱碱在净离子式中不拆</td><td>NH₃·H₂O + HCl → NH₄Cl + H₂O</td></tr><tr><td>硫酸氢钠 + 氢氧化钠</td><td>酸式盐仍是盐，但溶液中的酸性氢能被 OH⁻ 中和</td><td>NaHSO₄ + NaOH → Na₂SO₄ + H₂O</td></tr><tr><td>氢氧化钡 + 碳酸钾</td><td>Ba²⁺ 与 CO₃²⁻ 生成难溶盐</td><td>Ba(OH)₂ + K₂CO₃ → BaCO₃↓ + 2KOH</td></tr><tr><td>二氧化硫 + 氧化钙或碱</td><td>SO₂ 是酸性氧化物，分别与碱性氧化物、碱反应</td><td>SO₂ + CaO → CaSO₃；SO₂ + Ba(OH)₂ → BaSO₃↓ + H₂O</td></tr></tbody></table><p class="small">先读题目给出的物质，再判断是否在题设条件下能反应；示范中的弱碱、一水合氨和亚硫酸盐也要与名称对应起来。</p></details><details><summary>展开：用四类复分解反应制 Na₂SO₄，为什么不能只背产物？</summary><table><thead><tr><th>类别</th><th>可行示例</th><th>让反应进行的产物</th></tr></thead><tbody><tr><td>酸 + 碱</td><td>H₂SO₄ + 2NaOH → Na₂SO₄ + 2H₂O</td><td>水</td></tr><tr><td>酸 + 盐</td><td>H₂SO₄ + Na₂CO₃ → Na₂SO₄ + CO₂↑ + H₂O</td><td>气体和水</td></tr><tr><td>碱 + 盐</td><td>2NaOH + CuSO₄ → Na₂SO₄ + Cu(OH)₂↓</td><td>沉淀</td></tr><tr><td>盐 + 盐</td><td>Na₂CO₃ + MgSO₄ → Na₂SO₄ + MgCO₃↓</td><td>沉淀</td></tr></tbody></table><p class="small">这里强调方程式的学习示例；实际制备还需考虑纯度、过滤等操作。盐 + 盐的示例取可溶盐水溶液。</p></details><div id="group-equation"></div></section>
+
+  <section class="card"><span class="eyebrow">第 3 组 · 对应试卷 31</span><h2>遇到陌生 FeSO₄，先找粒子与证据</h2><p><strong>必须记住：</strong>FeSO₄ 溶液里先列 Fe²⁺、SO₄²⁻；每加入一种试剂，问有无更稳定的产物或金属置换，再写净离子式。Zn 置换 Fe、NaOH 生成 Fe(OH)₂、BaCl₂ 生成 BaSO₄；HCl 混入 FeSO₄ 后若没有明显现象，单凭“没看见”不能证明所有可能反应都不存在。</p><p><strong>留意时间：</strong>新生成的 Fe(OH)₂ 通常为白色，暴露空气后可能被氧化并逐渐变色；观察到后续颜色，不要把它直接写成第一步产物。</p><div id="group-iron"></div></section>
+
+  <section class="card"><span class="eyebrow">第 4 组 · 对应试卷 18、21、28</span><h2>离子能否共存，先找会结合的两位</h2><p><strong>必须记住：</strong>看沉淀、气体、弱电解质；题目若说“无色透明”，还要排除明显有色离子。不能只看四个离子各自是否能溶。</p><p><strong>本卷串联：</strong>H⁺ 与 CO₃²⁻ 会生成 CO₂ 与水；Cu²⁺、Mg²⁺、Fe³⁺ 与足量 OH⁻ 可形成难溶氢氧化物；Ca²⁺ 与 CO₃²⁻ 形成 CaCO₃。K⁺、Ba²⁺、Cl⁻、OH⁻ 在通常稀水溶液条件下可大量共存。</p><div id="group-coexist"></div></section>
+
+  <section class="card"><span class="eyebrow">第 5 组 · 对应试卷 19、20、22–25</span><h2>类别通性要问“都能吗”，一步转化要问“条件呢”</h2><p><strong>必须记住：</strong>同类物质性质有共同点，但“某个碱能发生”不等于“所有碱都能发生”。制盐可从酸、碱、盐之间的可行反应找产物；金属与酸的置换还受金属活动性和酸的性质限制。</p><p><strong>特殊题：</strong>H₃PO₄ 的三个 H 可逐步参与中和；H₃PO₂ 虽有三个 H，却只有一个可电离的酸性氢，所以常说是一元酸。酸的元数不能只数化学式中的 H。<a href="https://chem.libretexts.org/Bookshelves/Inorganic_Chemistry/Inorganic_Chemistry_%28Saito%29/04%3A_Chemistry_of_Nonmetallic_Elements/4.03%3A_Oxygen_and_oxides_%28Part_1%29" target="_blank" rel="noopener">无机化学教材：H₃PO₂ 的结构与一元酸性质</a>。</p><div id="group-transfer"></div></section>
+
+  <section class="card"><span class="eyebrow">第 6 组 · 对应试卷 26–28</span><h2>化合价、电离式与混合实验一起核对</h2><p><strong>必须记住：</strong>中性化合物各元素化合价代数和为 0；多原子离子为其电荷数。一个化学式中同种元素可能处在不同粒子里，如 NH₄NO₃ 的两个 N，不能强行给同一个化合价。</p><details><summary>展开：第 26 题四个式子怎样逐个算？</summary><table><thead><tr><th>式子</th><th>计算依据</th><th>指定元素价态</th></tr></thead><tbody><tr><td>Na₂SO₃</td><td>2(+1)+x+3(−2)=0</td><td>S 为 +4</td></tr><tr><td>Fe₂(OH)₂Cl₄</td><td>2x+2(−1)+4(−1)=0</td><td>Fe 为 +3</td></tr><tr><td>NH₄NO₃</td><td>NH₄⁺：x+4(+1)=+1；NO₃⁻：y+3(−2)=−1</td><td>两个 N 分别为 −3、+5</td></tr><tr><td>MnSO₄</td><td>SO₄²⁻ 整体为 −2，中性盐中 Mn 与它平衡</td><td>Mn 为 +2</td></tr></tbody></table><p>氯还可呈多种正化合价。写氯的氧化物时先选氯的价态，再用 O 为 −2 配平，例如 Cl₂O 中 Cl 为 +1，Cl₂O₅ 中 Cl 为 +5；单质 Cl₂ 中为 0。</p></details><p><strong>四个电离式：</strong>H₂SO₄ → 2H⁺ + SO₄²⁻；KNO₃ → K⁺ + NO₃⁻；Ba(OH)₂ → Ba²⁺ + 2OH⁻；Fe₂(SO₄)₃ → 2Fe³⁺ + 3SO₄²⁻。写完逐项检查原子数和总电荷。</p><p><strong>第 28 题实验：</strong>Ca(OH)₂(aq) + K₂CO₃(aq) → CaCO₃↓ + 2KOH(aq)，白色沉淀；K₂CO₃(aq) + 2HCl(aq) → 2KCl(aq) + H₂O(l) + CO₂↑，产生气泡。先写整式，再删去没有变化的离子。</p><div id="group-formula"></div></section>
+
+  <footer class="card warn"><h2>回到原课继续学</h2><p>本页已对照这次提供的第 1–31 题。卷面笔迹不等于完整标准答案，也不能单凭照片推算成绩。做完以后回到原课程的第一节、第二节与第三节，用原有的每步三题再巩固。</p><a href="./index.html">回到课程目录 →</a></footer>
+</main>
+<script>
+"use strict";
+const motionSteps=[
+  {title:"① 先看整杯样品",parts:["H₂SO₄","＋","H₂O","→","混合物"],caption:"记忆：分类先数物质，不数元素，也不数相态。",label:"第 1 步：一杯稀硫酸中有硫酸与水，因此整杯是混合物"},
+  {title:"② 再找名称中的共同部分",parts:["HNO₃","→","NO₃⁻","→","硝酸根"],caption:"记忆：硝酸、硝酸根、硝酸盐是一家；NO₂⁻ 是亚硝酸根，别混淆。",label:"第 2 步：从硝酸 HNO₃ 识别硝酸根 NO₃⁻；亚硝酸根 NO₂⁻ 不同"},
+  {title:"③ 最后找真正变化的离子",parts:["Ba²⁺","＋","SO₄²⁻","→","BaSO₄↓"],caption:"记忆：先列离子，后看难溶产物；旁观离子不写进净离子式。",label:"第 3 步：钡离子与硫酸根形成难溶的硫酸钡沉淀"},
+  {title:"④ 检查离子能否共存",parts:["2H⁺","＋","CO₃²⁻","→","CO₂↑"],caption:"还生成 H₂O；看到碳酸根和足量酸，就要想到气体。",label:"第 4 步：两个氢离子与碳酸根不能大量共存，反应生成二氧化碳和水"},
+  {title:"⑤ 同一个式子，两个氮分开算",parts:["NH₄⁺","＋","NO₃⁻","→","N:−3/+5"],caption:"记忆：铵根中的 N 是 −3；硝酸根中的 N 是 +5。",label:"第 5 步：硝酸铵中铵根氮为负三价，硝酸根氮为正五价"},
+  {title:"⑥ 数酸性氢，不数所有 H",parts:["H₃PO₂","＋","NaOH","→","NaH₂PO₂"],caption:"只有一个 H 被 Na 替代；H₃PO₂ 是一元酸。",label:"第 6 步：次磷酸虽然写三个氢，但只有一个酸性氢，可形成次磷酸钠"}
+];
+function showMotion(index){
+  const step=motionSteps[index],stage=document.getElementById("motion-stage"),line=document.getElementById("motion-line");
+  stage.classList.remove("reveal");document.getElementById("motion-title").textContent=step.title;document.getElementById("motion-caption").textContent=step.caption;stage.setAttribute("aria-label",step.label);
+  line.replaceChildren();step.parts.forEach((part,i)=>{const span=document.createElement("span");span.className=i===1||i===3?"motion-arrow":`particle${i===4?" outcome":""}`;span.textContent=part;line.append(span)});
+  document.querySelectorAll("[data-motion]").forEach(button=>{if(Number(button.dataset.motion)===index)button.setAttribute("aria-current","step");else button.removeAttribute("aria-current")});
+  void stage.offsetWidth;stage.classList.add("reveal");
+}
+document.querySelectorAll("[data-motion]").forEach(button=>button.addEventListener("click",()=>showMotion(Number(button.dataset.motion))));
+const groups={
+  "group-samples":[
+    {point:"化学式与整瓶溶液是不同分类对象",rule:"H₂SO₄ 是硫酸化合物；稀硫酸还含水，属于混合物。",stem:"一瓶标为“10% 稀硫酸”的试剂，作为整份样品应分到哪一类？",options:["纯净物，因为能写 H₂SO₄","混合物，因为含硫酸和水","单质，因为只有硫酸根","氧化物，因为含氧"],answer:1,why:"10% 是溶液浓度，整瓶既有水又有溶质；H₂SO₄ 不能代表整瓶组成。",transfer:"把题目换成只讨论 H₂SO₄ 这一化合物本身，它应属纯净物还是混合物？（纯净物）"},
+    {point:"盐酸、氯化氢与硝酸试剂的名称边界",rule:"盐酸明确是 HCl 的水溶液；‘浓硝酸’通常仍是含水试剂。",stem:"以下哪一组把纯物质和溶液区分正确？",options:["HCl(g) 是纯净物；盐酸是混合物","盐酸是纯净物；HCl(g) 是混合物","浓硝酸一定是无水 HNO₃","HNO₃ 这个化学式表示整瓶稀硝酸"],answer:0,why:"氯化氢气体对应 HCl 化合物；盐酸包含 HCl 与水。浓硝酸的‘浓’说明溶质比例高，不说明无水。",transfer:"实验题只写‘硫酸与铁反应’时，为什么还要看浓度与反应条件？（名称本身没有交代样品和条件）"},
+    {point:"氨气、氨水和 NH₃·H₂O 的表示对象",rule:"氨水是溶液；NH₃·H₂O 是课堂常用的水合写法，不是整瓶溶液的唯一化学式。",stem:"关于氨气和氨水，哪一句正确？",options:["氨气 NH₃(g) 与氨水都是纯净物","氨水只能含 NH₃·H₂O 一种粒子","氨气 NH₃(g) 是纯净物，氨水是混合物","氨水中不存在水"],answer:2,why:"氨水含水、溶解的 NH₃，以及少量 NH₄⁺、OH⁻ 等；不能把它当作单一化合物。",transfer:"题目写 NH₃·H₂O 与盐酸反应时，是用课堂简写表达弱碱，还是在说整瓶氨水为纯净物？（前者）"}
+  ],
+  "group-class":[
+    {point:"纯净物与混合物的定义",rule:"数物质种数，不数元素种数；必须背下来。",stem:"把纯 H₂O 冰块与纯液态水放在一起，这份样品属于什么？",options:["混合物，因为有固态和液态","纯净物，因为只有 H₂O 一种物质","单质，因为只含水","盐，因为能导电"],answer:1,why:"相态有两种，但化学物质只有 H₂O。",transfer:"若换成 O₂ 和 O₃ 混合，虽只含氧元素，样品属于哪一类？（混合物）"},
+    {point:"酸、酸式盐与酸根的区别",rule:"看实际离子和整体化学式；NaHSO₄ 是酸式盐，不是酸。",stem:"关于 NaHSO₄ 和 HNO₃，哪项分类正确？",options:["NaHSO₄ 是酸，HNO₃ 是盐","两者都是酸，因为都含 H","NaHSO₄ 是酸式盐；HNO₃ 是酸","NO₃⁻ 就是硝酸分子"],answer:2,why:"NaHSO₄ 含 Na⁺ 和硫酸氢根，属于盐；HNO₃ 是硝酸。",transfer:"NaHCO₃ 叫碳酸氢钠，是酸、碱还是酸式盐？（酸式盐）"},
+    {point:"难溶碱与硝酸盐溶解性",rule:"常见硝酸盐可溶；Fe(OH)₂ 等氢氧化物难溶。",stem:"同温常见水溶液条件下，哪一种物质应作为难溶固体处理？",options:["MgSO₄","AgNO₃","Fe(OH)₂","BaCl₂"],answer:2,why:"Fe(OH)₂ 是难溶氢氧化物；这与硝酸盐常可溶的规律不同。",transfer:"Fe(OH)₃ 在净离子式中能否拆成 Fe³⁺ 和 OH⁻？（不能）"}
+  ],
+  "group-equation":[
+    {point:"电离式的系数与电荷守恒",rule:"下标变系数，原子和总电荷都要守恒。",stem:"Na₂SO₄ 在水中电离，哪一式正确？",options:["Na₂SO₄ → Na⁺ + SO₄²⁻","Na₂SO₄ → 2Na⁺ + SO₄²⁻","Na₂SO₄ → 2Na²⁺ + SO₄⁻","Na₂SO₄ → Na₂⁺ + SO₄⁻"],answer:1,why:"两个 Na⁺ 共 +2，硫酸根 −2；原子和电荷均守恒。",transfer:"CaCl₂ 的电离式应写成什么？（Ca²⁺ + 2Cl⁻）"},
+    {point:"沉淀与水同时生成时的净离子式",rule:"先配分子式，再拆删；Ba²⁺ + SO₄²⁻ + 2H⁺ + 2OH⁻ → BaSO₄↓ + 2H₂O。",stem:"Ba(OH)₂ 与 H₂SO₄ 恰好反应，哪项净离子式正确？",options:["H⁺ + OH⁻ → H₂O","Ba²⁺ + SO₄²⁻ → BaSO₄↓","Ba²⁺ + SO₄²⁻ + H⁺ + OH⁻ → BaSO₄↓ + H₂O","Ba²⁺ + SO₄²⁻ + 2H⁺ + 2OH⁻ → BaSO₄↓ + 2H₂O"],answer:3,why:"沉淀与水都要保留；Ba(OH)₂ 提供 2OH⁻，硫酸提供 2H⁺。",transfer:"把 Ba(OH)₂ 换成 NaOH 后，还有 BaSO₄ 沉淀吗？（没有）"},
+    {point:"难溶固体与复分解反应条件",rule:"Mg(OH)₂ 不拆；新反应看是否生成沉淀、气体或水。",stem:"Mg(OH)₂ 固体与稀盐酸反应，哪项净离子式正确？",options:["H⁺ + OH⁻ → H₂O","Mg(OH)₂(s) + 2H⁺ → Mg²⁺ + 2H₂O","Mg²⁺ + 2OH⁻ + 2H⁺ → Mg²⁺ + 2H₂O","Mg(OH)₂(s) + H⁺ → Mg²⁺ + H₂O"],answer:1,why:"反应物 Mg(OH)₂ 是难溶固体，要整体保留；两侧原子、电荷都守恒。",transfer:"NaCl(aq) 与 KNO₃(aq) 混合，没有沉淀、气体或水，能否据‘交换离子’写净反应？（不能）"}
+  ],
+  "group-iron":[
+    {point:"金属置换中的实际粒子",rule:"从 FeSO₄(aq) 列 Fe²⁺、SO₄²⁻；Zn 比 Fe 活泼时，Zn + Fe²⁺ → Zn²⁺ + Fe。",stem:"向 FeSO₄ 溶液加入锌片，在普通水溶液条件下的净离子式是哪一个？",options:["Fe + Zn²⁺ → Fe²⁺ + Zn","Zn + Fe²⁺ → Zn²⁺ + Fe","Zn + SO₄²⁻ → ZnSO₄","Zn²⁺ + Fe²⁺ → Zn + Fe"],answer:1,why:"Zn 失电子，Fe²⁺ 得电子；SO₄²⁻ 是旁观离子。",transfer:"若加入的是铁片而非锌片，能把同一置换式照抄吗？（不能）"},
+    {point:"新生沉淀与后续氧化",rule:"第一步 Fe²⁺ + 2OH⁻ → Fe(OH)₂↓；之后接触空气可能继续变化。",stem:"向新配 FeSO₄ 溶液加 NaOH，第一步的净离子式应选哪项？",options:["Fe²⁺ + 2OH⁻ → Fe(OH)₂↓","Fe²⁺ + 3OH⁻ → Fe(OH)₃↓","Fe²⁺ + OH⁻ → FeOH⁺","SO₄²⁻ + 2Na⁺ → Na₂SO₄↓"],answer:0,why:"Fe²⁺ 与 2OH⁻ 先生成 Fe(OH)₂；Fe(OH)₃ 属于后续氧化相关产物。",transfer:"如果放置后逐渐变褐，能否说刚加入碱时第一步就生成 Fe(OH)₃？（不能）"},
+    {point:"无明显现象与盐类反应",rule:"没有肉眼现象不是普遍的‘未反应证明’；要继续查粒子和反应条件。",stem:"向 FeSO₄ 溶液加入一种盐溶液，希望得到白色沉淀，应选哪种？",options:["NaCl 溶液","KNO₃ 溶液","BaCl₂ 溶液","FeCl₂ 溶液"],answer:2,why:"Ba²⁺ 与 SO₄²⁻ 形成 BaSO₄↓；净离子式为 Ba²⁺ + SO₄²⁻ → BaSO₄↓。",transfer:"FeSO₄ 与稀 HCl 混合没有明显现象时，判断‘无净离子反应’应依据什么？（分析离子组合，而非只凭眼睛）"}
+  ],
+  "group-coexist":[
+    {point:"酸与碳酸根不能大量共存",rule:"H⁺ 遇 CO₃²⁻，想到 CO₂ 和水。",stem:"下列离子组中，哪组不能在同一酸性水溶液里大量共存？",options:["Na⁺、Cl⁻","K⁺、NO₃⁻","H⁺、CO₃²⁻","Mg²⁺、SO₄²⁻"],answer:2,why:"H⁺ 与 CO₃²⁻ 反应生成 CO₂ 和水，碳酸根大量减少。",transfer:"把 CO₃²⁻ 换成 HCO₃⁻，遇足量酸还会放出什么气体？（CO₂）"},
+    {point:"氢氧根与金属离子形成沉淀",rule:"离子共存要两两找反应，先查难溶氢氧化物。",stem:"向含 OH⁻ 的溶液大量加入哪种离子，最可能立即出现难溶沉淀？",options:["Na⁺","K⁺","Mg²⁺","NO₃⁻"],answer:2,why:"Mg²⁺ + 2OH⁻ → Mg(OH)₂↓。",transfer:"若换成 Fe³⁺，应想到哪种沉淀？（Fe(OH)₃）"},
+    {point:"把离子组合还原为实验现象",rule:"Ca²⁺ + CO₃²⁻ → CaCO₃↓；写净离子式后再预测白色沉淀。",stem:"澄清石灰水与 K₂CO₃ 溶液混合，哪一个是净离子式？",options:["Ca²⁺ + CO₃²⁻ → CaCO₃↓","K⁺ + OH⁻ → KOH↓","Ca²⁺ + 2OH⁻ → Ca(OH)₂↓","H⁺ + OH⁻ → H₂O"],answer:0,why:"两种溶液提供 Ca²⁺ 与 CO₃²⁻，生成难溶 CaCO₃；K⁺ 和 OH⁻ 留在溶液。",transfer:"若改把 K₂CO₃ 与足量盐酸混合，主要观察到什么？（放出 CO₂ 气泡）"}
+  ],
+  "group-transfer":[
+    {point:"类别通性不能被个别反例误导",rule:"问‘碱的共同性质’时，要判断是否对所学常见碱普遍成立。",stem:"以下哪项最适合作为碱与酸反应的共同性质？",options:["所有碱都能使紫色石蕊变蓝","碱都能与氧气生成过氧化物","碱可与酸发生中和，生成盐和水","所有碱都能与铜盐生成蓝色沉淀"],answer:2,why:"中和是酸碱反应的类别规律；指示剂作用受溶解性影响，其余只适合某些碱。",transfer:"难溶的 Cu(OH)₂ 能否与盐酸反应？（可以，虽然它不能给出可测的碱性溶液）"},
+    {point:"一步转化要找完整反应物与条件",rule:"单箭头表示存在某一可行条件，不等于反应物只有箭头左侧一种。",stem:"想让 CO₂ 一步得到 CaCO₃，补加哪种物质可行？",options:["NaCl 溶液","Ca(OH)₂ 溶液","稀 HCl","纯水"],answer:1,why:"CO₂ + Ca(OH)₂ → CaCO₃↓ + H₂O。",transfer:"Fe₂O₃ 能否直接与水反应一步生成 Fe(OH)₃？（通常不能）"},
+    {point:"酸的元数看可电离的氢",rule:"H₃PO₂ 只有一个酸性氢；H₃PO₄ 有三个。不能机械数 H。",stem:"H₃PO₂ 与足量 NaOH 中和后形成 NaH₂PO₂。由此应判断它是几元酸？",options:["一元酸","二元酸","三元酸","不是酸"],answer:0,why:"只有一个 H 能被 Na⁺ 替代；式中另两个 H 不作可电离酸性氢。",transfer:"NaH₂PO₄ 与 NaH₂PO₂ 都有两个 H，能否只凭 H 的个数判断它们完全一样？（不能）"}
+  ],
+  "group-formula":[
+    {point:"中性化合物中化合价代数和为零",rule:"先定 O 为 −2、Na 为 +1，再求 Na₂SO₃ 中 S。",stem:"Na₂SO₃ 中 S 的化合价是多少？",options:["+2","+4","+6","−2"],answer:1,why:"2×(+1)+x+3×(−2)=0，得 x=+4。",transfer:"SO₄²⁻ 中 S 的化合价是多少？（+6）"},
+    {point:"同一化学式里的同种元素可有不同化合价",rule:"NH₄NO₃ 含 NH₄⁺ 与 NO₃⁻，两个 N 分开算。",stem:"NH₄NO₃ 中两个 N 的化合价如何表示？",options:["都是 +1","都是 +5","NH₄⁺ 中 −3，NO₃⁻ 中 +5","NH₄⁺ 中 +5，NO₃⁻ 中 −3"],answer:2,why:"铵根中 x+4=+1，x=−3；硝酸根中 x−6=−1，x=+5。",transfer:"把 NO₃⁻ 换成 NO₂⁻，其中 N 的化合价变成多少？（+3）"},
+    {point:"电离式要同时守恒原子和电荷",rule:"下标变系数；SO₄²⁻ 保持整体，右侧电荷之和等于左侧。",stem:"Fe₂(SO₄)₃ 在水中完全电离的式子是哪项？",options:["Fe₂(SO₄)₃ → Fe³⁺ + SO₄²⁻","Fe₂(SO₄)₃ → 2Fe²⁺ + 3SO₄²⁻","Fe₂(SO₄)₃ → 2Fe³⁺ + 3SO₄²⁻","Fe₂(SO₄)₃ → 3Fe³⁺ + 2SO₄²⁻"],answer:2,why:"2 个 Fe³⁺ 带 +6，3 个 SO₄²⁻ 带 −6；原子数和电荷均守恒。",transfer:"Ba(OH)₂ 的电离式怎样写？（Ba²⁺ + 2OH⁻）"}
+  ]
+};
+for(const [id,items] of Object.entries(groups)){
+  const host=document.getElementById(id);
+  items.forEach((item,n)=>{
+    const article=document.createElement("article");article.className="question";
+    const tag=document.createElement("div");tag.className="tag";tag.textContent=`第 ${n+1} 题 · 考点：${item.point}`;
+    const rule=document.createElement("p");rule.className="rule";rule.textContent=`必须记住：${item.rule}`;
+    const title=document.createElement("h3");title.textContent=item.stem;
+    const options=document.createElement("div");options.className="options";
+    const feedback=document.createElement("div");feedback.className="feedback";feedback.hidden=true;
+    item.options.forEach((label,i)=>{
+      const button=document.createElement("button");button.type="button";button.textContent=`${"ABCD"[i]}. ${label}`;
+      button.addEventListener("click",()=>{
+        options.querySelectorAll("button").forEach((b,j)=>{b.disabled=true;b.classList.toggle("correct",j===item.answer);b.classList.toggle("wrong",j===i&&j!==item.answer)});
+        feedback.textContent=`${i===item.answer?"判断正确。":"再想一想。"} ${item.why} 举一反三：${item.transfer}`;feedback.hidden=false;
+      });options.append(button);
+    });
+    article.append(tag,rule,title,options,feedback);host.append(article);
+  });
+}
+</script></body></html>

@@ -1,0 +1,150 @@
+{
+  "conductivity": [
+    {
+      "id": "ion_charge",
+      "title": "原子与离子",
+      "prompt": "Na⁺ 与中性的 Na 原子相比，发生了什么？",
+      "options": ["多了一个质子", "失去一个电子，带 1 个正电荷", "得到一个电子，带 1 个负电荷"],
+      "answer": 1,
+      "explanation": "Na 原子失去 1 个电子形成 Na⁺。电子带负电，失去电子后整体带正电。",
+      "bridge": "接下来判断 NaCl 能否导电时，要先认出 Na⁺、Cl⁻ 是带电粒子。",
+      "termIds": ["atom", "ion", "cation"],
+      "repair": {
+        "prompt": "Cl⁻ 为什么带负电？",
+        "options": ["氯原子得到一个电子", "氯原子失去一个电子"],
+        "answer": 0,
+        "explanation": "得到电子使粒子带负电，Cl⁻ 是阴离子。"
+      }
+    },
+    {
+      "id": "formula_subscript",
+      "title": "读懂化学式",
+      "prompt": "CaCl₂ 中右下角的“2”表示什么？",
+      "options": ["一个化学式单位中有 2 个 Ca", "一个化学式单位中有 2 个 Cl", "这是一种带 2− 电荷的分子"],
+      "answer": 1,
+      "explanation": "CaCl₂ 表示钙与氯的数目比为 1∶2；下标 2 作用于它前面的 Cl。",
+      "bridge": "以后写 CaCl₂(aq) 的离子时，别漏掉 2Cl⁻。",
+      "termIds": ["chemical_formula", "subscript", "cacl2"],
+      "repair": {
+        "prompt": "Na₂SO₄ 中，Na 的右下角是 2，表示一个化学式单位中有几个 Na？",
+        "options": ["1 个", "2 个"],
+        "answer": 1,
+        "explanation": "Na₂SO₄ 中有 2 个 Na；SO₄ 是一个整体的硫酸根。"
+      }
+    },
+    {
+      "id": "acid_base_salt",
+      "title": "酸、碱、盐的例子",
+      "prompt": "哪一组把盐酸、NaOH、NaCl 分别归类正确？",
+      "options": ["酸、碱、盐", "盐、酸、碱", "酸、盐、碱"],
+      "answer": 0,
+      "explanation": "盐酸是酸性水溶液；NaOH 是碱；NaCl 是盐。名称里有“盐”字，不代表盐酸属于盐。",
+      "bridge": "这一课会比较盐、酸、碱的水溶液，而不是只研究食盐。",
+      "termIds": ["acid", "base", "salt", "hydrochloric_acid"],
+      "repair": {
+        "prompt": "NaOH 属于下面哪一类？",
+        "options": ["碱", "盐"],
+        "answer": 0,
+        "explanation": "NaOH 是氢氧化钠，属于碱。"
+      }
+    },
+    {
+      "id": "pure_or_mixture",
+      "title": "化合物与水溶液",
+      "prompt": "“NaCl”和“食盐水”是同一类纯净物吗？",
+      "options": ["是，溶于水后还是纯 NaCl", "不是；NaCl 是化合物，食盐水是混合物", "食盐水只有水，没有 NaCl"],
+      "answer": 1,
+      "explanation": "NaCl 是化合物；食盐水含水和溶解的 NaCl，是混合物。溶液与溶质要分清。",
+      "bridge": "类似地，HCl 是化合物，盐酸是 HCl 溶于水形成的混合物。",
+      "termIds": ["compound", "mixture", "aqueous_solution"],
+      "repair": {
+        "prompt": "盐酸含 HCl 和水，所以它属于什么？",
+        "options": ["混合物", "单一化合物"],
+        "answer": 0,
+        "explanation": "盐酸是 HCl 的水溶液，属于混合物。"
+      }
+    }
+  ],
+  "ionic": [
+    {
+      "id": "ion_charge",
+      "title": "先认离子的电荷",
+      "prompt": "Ba²⁺ 中的“2+”表示什么？",
+      "options": ["有 2 个钡原子", "一个钡离子带 2 个单位正电荷", "有 2 个氧原子"],
+      "answer": 1,
+      "explanation": "Ba²⁺ 是带 2 个单位正电荷的钡离子；右上角的电荷与化学式右下角的下标不同。",
+      "bridge": "下一课要把 Ba²⁺ 与 SO₄²⁻ 配对，检查总电荷。",
+      "termIds": ["ion", "barium_ion", "charge_conservation"],
+      "repair": {
+        "prompt": "Cl⁻ 右上角的“−”表示什么？",
+        "options": ["带负电荷", "有一个氯分子"],
+        "answer": 0,
+        "explanation": "Cl⁻ 是带 1 个单位负电荷的氯离子。"
+      }
+    },
+    {
+      "id": "formula_subscript",
+      "title": "化学式下标",
+      "prompt": "BaCl₂ 的化学式说明钡和氯的数目比是多少？",
+      "options": ["1∶1", "1∶2", "2∶1"],
+      "answer": 1,
+      "explanation": "BaCl₂ 的数目比是 1∶2；一个 Ba²⁺ 对应两个 Cl⁻，总电荷为零。",
+      "bridge": "把 BaCl₂(aq) 拆成离子时，要写 Ba²⁺ + 2Cl⁻。",
+      "termIds": ["chemical_formula", "subscript", "bacl2"],
+      "repair": {
+        "prompt": "CaCl₂ 中 Cl 的下标是 2。一个化学式单位中有几个 Cl？",
+        "options": ["1 个", "2 个"],
+        "answer": 1,
+        "explanation": "下标 2 表示有 2 个 Cl。"
+      }
+    },
+    {
+      "id": "balancing",
+      "title": "方程式要配平",
+      "prompt": "下面哪个方程式已经配平？",
+      "options": ["H₂ + O₂ → H₂O", "2H₂ + O₂ → 2H₂O", "H₂ + 2O₂ → H₂O"],
+      "answer": 1,
+      "explanation": "配平后反应前后 H 都有 4 个、O 都有 2 个。系数写在化学式前，不随意改动下标。",
+      "bridge": "写 BaCl₂ 与 Na₂SO₄ 的反应时，产物 NaCl 前也要补系数 2。",
+      "termIds": ["chemical_equation", "balancing", "coefficient"],
+      "repair": {
+        "prompt": "H₂ + O₂ → H₂O 左右两边的氧原子数相等吗？",
+        "options": ["相等", "不相等"],
+        "answer": 1,
+        "explanation": "左边有 2 个 O，右边只有 1 个，所以没有配平。"
+      }
+    },
+    {
+      "id": "precipitate",
+      "title": "认识沉淀现象",
+      "prompt": "两种澄清溶液混合后出现并析出白色固体，这种固体通常叫作什么？",
+      "options": ["沉淀", "溶剂", "蒸气"],
+      "answer": 0,
+      "explanation": "反应中生成的难溶固体会从溶液中析出，叫沉淀；颜色本身还不能确定它的化学式。",
+      "bridge": "高中阶段要进一步凭离子组合和溶解性判断沉淀究竟是什么。",
+      "termIds": ["precipitate", "insoluble", "aqueous_solution"],
+      "repair": {
+        "prompt": "食盐加入水后逐渐看不见了。这是形成沉淀吗？",
+        "options": ["是", "不是，它是溶解"],
+        "answer": 1,
+        "explanation": "食盐溶于水与反应生成难溶固体是不同过程。"
+      }
+    },
+    {
+      "id": "acid_base_salt",
+      "title": "酸、碱、盐的例子",
+      "prompt": "HCl(aq)、NaOH(aq)、NaCl(aq) 对应的溶质分别属于哪类？",
+      "options": ["酸、碱、盐", "盐、碱、酸", "酸、盐、碱"],
+      "answer": 0,
+      "explanation": "HCl 是酸，NaOH 是碱，NaCl 是盐；写水溶液反应时要同时留意溶质类别与状态。",
+      "bridge": "这一课除了沉淀反应，还会看到酸碱中和。",
+      "termIds": ["acid", "base", "salt"],
+      "repair": {
+        "prompt": "NaCl 属于哪一类化合物？",
+        "options": ["盐", "酸"],
+        "answer": 0,
+        "explanation": "NaCl 是氯化钠，属于盐。"
+      }
+    }
+  ]
+}

@@ -1,0 +1,542 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#111f42">
+  <title>Chemistry Agentic Lab · 必修第一册第一、二章</title>
+  <style>
+    :root{--ink:#19294b;--muted:#64748e;--line:#dfe7f2;--paper:#fff;--bg:#f4f7fc;--blue:#315de7;--green:#127a5a;--amber:#9b5923}
+    *{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.6 -apple-system,BlinkMacSystemFont,"PingFang SC","Microsoft YaHei",sans-serif}
+    button,textarea{font:inherit}button{cursor:pointer}button:disabled{cursor:not-allowed;opacity:.5}button:focus-visible,textarea:focus-visible,a:focus-visible,summary:focus-visible{outline:3px solid #f5b74b;outline-offset:3px}
+    .shell{max-width:1190px;margin:auto;min-height:100vh;display:grid;grid-template-columns:258px minmax(0,1fr)}aside{background:#111f42;color:#d5e1fb;padding:28px 22px}main{min-width:0;padding:29px clamp(20px,4vw,58px) 55px}
+    .brand{display:flex;gap:10px;align-items:center;color:#fff;font-size:19px;font-weight:800;margin-bottom:46px}.brand-mark{display:grid;place-items:center;width:39px;height:39px;border-radius:12px;background:#4269f1;font-size:21px}.side-heading{color:#9ab0d7;font-size:11px;font-weight:700;letter-spacing:.13em;text-transform:uppercase}.side-list{list-style:none;padding:0;margin:13px 0 28px;display:grid;gap:3px}.side-list li{padding:9px 11px;border-radius:9px;color:#adc0e4;font-size:13px}.side-list li.active{background:#253b69;color:#fff}.side-list li.done{color:#88ddb5}.side-note{border:1px solid #354c76;border-radius:13px;padding:15px;background:#1a2d53;font-size:13px}.side-note strong{color:#fff}.side-note p{color:#b0c1e1;margin:5px 0 0}
+    .top{display:flex;align-items:center;justify-content:space-between;gap:14px;color:var(--muted);font-size:13px;margin-bottom:34px}.top strong{color:var(--ink)}.status{display:inline-flex;align-items:center;gap:7px;border:1px solid #d5def1;background:#fff;border-radius:30px;padding:6px 11px;font-weight:700}#agent-status[hidden]{display:none}.status i{width:7px;height:7px;border-radius:50%;background:#9eacbf}.status.online i{background:#22aa78}.status.offline i{background:#d37e54}
+    .eyebrow{color:#315ed2;font-size:12px;font-weight:800;letter-spacing:.13em;text-transform:uppercase}h1,h2,h3,p{margin-top:0}h1{font-size:clamp(32px,4.5vw,50px);line-height:1.18;letter-spacing:-.04em;margin:8px 0 15px}h2{font-size:23px;line-height:1.32;letter-spacing:-.02em;margin-bottom:11px}h3{font-size:16px;margin-bottom:8px}.lead{font-size:18px;color:var(--muted);max-width:660px}.muted{color:var(--muted)}
+    .hero{position:relative;overflow:hidden;min-height:280px;border-radius:24px;padding:38px;background:linear-gradient(125deg,#172b66,#294b82);color:#fff;box-shadow:0 18px 38px #15255323}.hero:after{content:"Na⁺  H⁺  SO₄²⁻";position:absolute;right:-26px;bottom:-12px;font-size:59px;color:#ffffff18;font-weight:800;transform:rotate(-12deg)}.hero h1,.hero p,.hero button,.hero .eyebrow{position:relative;z-index:1}.hero .eyebrow{color:#a8c8ff}.hero p{color:#d0dfff;max-width:570px}
+    .button{display:inline-flex;align-items:center;justify-content:center;gap:8px;min-height:45px;padding:10px 18px;border:1px solid transparent;border-radius:10px;background:var(--blue);color:#fff;text-decoration:none;font-weight:700}.button:hover:not(:disabled){background:#244bd0}.button.light{background:#fff;color:#284990}.button.secondary{background:#fff;border-color:#d4dfef;color:var(--ink)}.button.secondary:hover:not(:disabled){background:#f5f8ff}
+    .grid{display:grid;grid-template-columns:1.3fr 1fr;gap:18px;margin-top:19px}.card{background:var(--paper);border:1px solid var(--line);border-radius:17px;padding:23px;box-shadow:0 8px 24px #14254e08}.card p:last-child{margin-bottom:0}.tags{display:flex;flex-wrap:wrap;gap:8px;margin-top:17px}.tag{padding:5px 9px;border-radius:7px;background:#ecf1ff;color:#3154ad;font-size:12px;font-weight:700}.tag.violet{background:#f0ebfc;color:#7354ae}.tag.green{background:#e9f7ef;color:#197a56}
+    [hidden]{display:none!important}.progress-row{display:flex;justify-content:space-between;gap:12px;align-items:center;color:var(--muted);font-size:13px;margin:18px 0 8px}.bar{height:10px;background:#e7edf6;border-radius:99px;overflow:hidden}.bar span{display:block;width:0;height:100%;background:linear-gradient(90deg,#6179e8,#41b492);transition:width .25s}
+    .case-card{background:#fff;border:1px solid var(--line);border-radius:19px;padding:26px;margin-top:23px}.case-head{display:flex;align-items:center;justify-content:space-between;gap:12px}.case-label{font-size:12px;font-weight:800;color:#6c55ae;background:#f1edfc;padding:5px 10px;border-radius:20px}.case-title{font-size:31px;line-height:1.2;letter-spacing:-.03em;margin:13px 0 9px}.case-prompt{color:var(--muted);font-size:17px}.question{font-size:19px;font-weight:800;margin:23px 0 13px}.choice-row{display:grid;grid-template-columns:1fr 1fr;gap:11px}.choice{border:1px solid #d6e0ef;border-radius:11px;background:#fff;color:var(--ink);padding:16px;text-align:center;font-weight:700}.choice:hover:not(:disabled){border-color:#8ba7ef;background:#f5f8ff}.choice.selected{border-color:var(--blue);background:#ebf1ff;box-shadow:inset 0 0 0 1px var(--blue)}
+    label{display:block;font-weight:700;margin:22px 0 8px}textarea{display:block;width:100%;min-height:99px;resize:vertical;border:1px solid #d3deec;border-radius:11px;padding:12px 14px;color:var(--ink);background:#fff}.input-help{color:var(--muted);font-size:12px;margin-top:7px}.actions{display:flex;gap:10px;flex-wrap:wrap;margin-top:20px}.loading{display:inline-flex;align-items:center;gap:9px;color:#4b5f82;font-size:14px}.spinner{width:15px;height:15px;border:2px solid #c2d2f0;border-top-color:var(--blue);border-radius:50%;animation:spin .8s linear infinite}@keyframes spin{to{transform:rotate(360deg)}}
+    .feedback{margin-top:21px;border-left:4px solid #4d76df;border-radius:10px;background:#eef3ff;padding:17px;color:#2a4374}.feedback.good{background:#ecf8f1;border-color:#40a978;color:#176447}.feedback.warn{background:#fff4ea;border-color:#d7975b;color:#75481e}.feedback h3{margin-bottom:5px}.feedback p{margin:0 0 9px}.feedback p:last-child{margin:0}.fact{margin-top:14px;padding:14px;border-radius:10px;border:1px solid var(--line);background:#f8fafd}.fact strong{display:block}
+    .followup{margin-top:22px;border-top:1px solid var(--line);padding-top:18px}.followup-form{display:flex;gap:8px}.followup-form input{flex:1;min-width:0;border:1px solid #d3deec;border-radius:10px;padding:10px 12px;font:inherit}.followup-answer{margin-top:13px;padding:14px;background:#f5f7fc;border-radius:10px}.followup-answer p{margin:0}.next-callout{padding:14px 16px;background:#f4f7fc;border-radius:10px;color:#4f5e78;margin-top:18px}
+    details{margin-top:20px;padding:16px 18px;border:1px solid var(--line);border-radius:12px;background:#fff}summary{font-weight:700;cursor:pointer}.examples{width:100%;border-collapse:collapse;font-size:14px;margin-top:10px}.examples td,.examples th{padding:9px 7px;text-align:left;border-bottom:1px solid var(--line)}.examples tr:last-child td{border-bottom:0}.examples th{color:#60718d;font-size:12px}
+    .slide-guide{margin:10px 0 18px;padding:14px 16px;border-left:4px solid #6486d9;border-radius:9px;background:#eef3ff}.slide-guide strong{color:#254baf}.slide-guide p{margin:6px 0 0;font-size:14px}.slide-guide details{margin:11px 0 0;padding:10px 12px;background:#fff}.slide-guide summary{font-size:14px}.slide-guide details p{color:#405473}
+    .concept-map{margin:23px 0;padding:20px;border:1px solid #c8d8ef;border-radius:16px;background:#f9fbff}.concept-map h2{font-size:20px;margin:4px 0 13px}.source-slides{display:grid;gap:16px}.source-slides figure{margin:0}.source-slides a{display:block;border-radius:12px;overflow:hidden;background:#30493c}.source-slides img{display:block;width:100%;height:auto;aspect-ratio:16/9;object-fit:contain}.source-slides figcaption{margin:7px 2px 0;color:var(--muted);font-size:12px}.source-slides a:focus-visible{outline:3px solid #f5b74b;outline-offset:3px}
+    .score{font-size:50px;font-weight:800;color:var(--green);line-height:1.1;margin:10px 0 5px}.summary-box{background:#edf7f2;border-radius:12px;color:#236c4e;padding:16px;margin:18px 0}footer{font-size:12px;color:#8b98ab;margin-top:34px}
+    .top-actions{display:flex;align-items:center;gap:10px;flex-wrap:wrap}.term-link{border:1px solid #cbd9f2;border-radius:8px;background:#fff;color:#284990;padding:6px 10px;font-weight:700}.term-link:hover{background:#eef3ff}.term-row{display:flex;gap:8px;align-items:center;flex-wrap:wrap;margin:13px 0 18px;color:var(--muted);font-size:13px}.term-chip{border:1px solid #c9d7f1;border-radius:99px;background:#f2f6ff;color:#284990;padding:5px 10px;font-weight:700}.term-chip:hover{background:#e4edff}.review-term{margin-top:8px}dialog.glossary{width:min(860px,calc(100vw - 24px));max-height:min(760px,calc(100vh - 24px));border:1px solid #cbd7ea;border-radius:17px;padding:0;box-shadow:0 24px 70px #11204444;color:var(--ink)}dialog.glossary::backdrop{background:#10204499}.glossary-head{display:flex;justify-content:space-between;align-items:center;gap:15px;padding:19px 22px;border-bottom:1px solid var(--line)}.glossary-head h2{margin:0}.glossary-body{padding:18px 22px 24px;max-height:calc(100vh - 120px);overflow:auto}.glossary-search{width:100%;border:1px solid #cbd7ea;border-radius:10px;padding:11px 13px;font:inherit}.glossary-layout{display:grid;grid-template-columns:minmax(180px,230px) 1fr;gap:17px;margin-top:17px}.glossary-list{max-height:440px;overflow:auto;border:1px solid var(--line);border-radius:10px}.glossary-list button{display:block;width:100%;padding:10px 12px;text-align:left;border:0;border-bottom:1px solid var(--line);background:#fff;color:var(--ink)}.glossary-list button:hover,.glossary-list button.active{background:#ecf2ff}.glossary-detail{padding:14px 17px;border:1px solid var(--line);border-radius:10px;background:#fafcff;min-height:230px}.glossary-detail h3{font-size:25px;margin:0 0 5px}.glossary-detail .muted{font-size:13px}.glossary-detail p{margin:10px 0}.glossary-empty{padding:13px;color:var(--muted)}
+    .review-card{max-width:780px;margin-top:22px}.review-options{display:grid;gap:10px;margin:18px 0}.review-options button{width:100%;padding:13px 15px;text-align:left;border:1px solid #d6e0ef;border-radius:10px;background:#fff;color:var(--ink)}.review-options button:hover:not(:disabled){background:#f3f7ff;border-color:#8ba7ef}.review-options button.correct{background:#ecf8f1;border-color:#40a978}.review-options button.incorrect{background:#fff3ed;border-color:#d7975b}.review-options button:disabled{opacity:1;cursor:default}.review-progress{color:var(--muted);font-size:13px;font-weight:700}.review-summary{margin-top:14px;padding:14px;border-radius:10px;background:#edf7f2;color:#236c4e}
+    .exam-entry{margin-top:19px;background:#f8faff}.exam-entry .actions{margin-top:10px}.exam-options{display:grid;gap:10px;margin:18px 0}.exam-options button{text-align:left;border:1px solid #d6e0ef;border-radius:11px;background:#fff;color:var(--ink);padding:12px 15px}.exam-options button.selected{border-color:var(--blue);background:#ebf1ff;box-shadow:inset 0 0 0 1px var(--blue)}.exam-options button:disabled{opacity:1;cursor:default}.exam-options button.correct{border-color:#40a978;background:#ecf8f1}.exam-options button.incorrect{border-color:#d7975b;background:#fff4ea}.exam-analysis{margin-top:15px;padding:16px;background:#f8fafd;border:1px solid var(--line);border-radius:11px;white-space:pre-line}.exam-analysis p{margin:0 0 11px}.exam-analysis p:last-child{margin-bottom:0}
+    .step-practice{margin-top:23px}.step-tabs{display:flex;gap:7px;flex-wrap:wrap;margin:16px 0}.step-tabs button{border:1px solid #cbd8ee;border-radius:9px;background:#fff;color:var(--ink);padding:7px 10px}.step-tabs button.active{background:#315de7;color:#fff;border-color:#315de7}.step-tabs button.completed:not(.active){border-color:#75b998;color:#176447}.step-practice-question{border-top:1px solid var(--line);padding:17px 0}.step-practice-question p{margin:0 0 8px}.step-practice-question button{border:1px solid #cbd8ee;border-radius:8px;background:#fff;color:var(--ink);padding:7px 16px;margin-right:8px}.step-practice-question button:disabled{opacity:1}.step-practice-question button.correct{border-color:#40a978;background:#ecf8f1}.step-practice-question button.incorrect{border-color:#d7975b;background:#fff4ea}.step-practice-question .reason{margin:9px 0 0;color:#405473}.step-synthesis{margin:8px 0 0;padding:16px;border-radius:11px;background:#edf7f2}.step-synthesis p{margin:5px 0}
+    .step-practice-teaching{margin-top:12px;padding:15px;border:1px solid #d6e3f4;border-radius:11px;background:#f8fbff}.step-practice-teaching p{margin:7px 0}.step-practice-teaching .must{padding:9px 11px;border-radius:8px;background:#fff4df;color:#6f4816}.step-transfer{margin-top:14px;padding-top:13px;border-top:1px solid #d6e3f4}.step-transfer strong{display:block;margin-bottom:7px}.step-transfer button{font-size:14px}.step-transfer-result{margin-top:8px!important;color:#405473}
+    .term-teaching{border-top:1px solid var(--line);margin-top:17px;padding-top:15px}.term-teaching h4{font-size:15px;margin:15px 0 7px}.term-teaching .memory{background:#fff5e9;border-radius:9px;padding:11px 13px}.contrast-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px}.contrast-box{border:1px solid var(--line);border-radius:9px;padding:10px 12px;background:#fff}.contrast-box.positive{border-color:#b7dfc7}.contrast-box.negative{border-color:#f0d2bb}.contrast-box ul{margin:7px 0 0;padding-left:20px}.contrast-box li{margin:7px 0}.contrast-box li span{display:block;color:var(--muted);font-size:13px}.term-quiz{margin-top:15px;padding:14px;border-radius:10px;background:#edf3ff}.term-quiz .quiz-choices{display:flex;gap:8px;margin:10px 0}.term-quiz .quiz-choices button{padding:7px 12px;border:1px solid #c7d6f0;border-radius:8px;background:#fff;color:var(--ink);font-weight:700}.term-quiz .quiz-choices button:disabled{opacity:.65}.term-quiz .quiz-feedback{margin:8px 0}.term-quiz .quiz-feedback.good{color:var(--green)}.term-quiz .quiz-feedback.warn{color:#9b5923}
+    @media(max-width:800px){.shell{display:block}aside{padding:13px 20px}.brand{margin:0}.side-heading,.side-list,.side-note{display:none}main{padding:22px 17px 44px}.top{margin-bottom:23px}.grid{grid-template-columns:1fr}.hero{padding:27px;min-height:0}}
+    @media(max-width:520px){.hero:after{font-size:41px}.card,.case-card{padding:19px}.choice-row,.contrast-grid{grid-template-columns:1fr}.button{width:100%}.followup-form{flex-direction:column}.glossary-layout{grid-template-columns:1fr}.glossary-list{max-height:190px}.top{align-items:flex-start}}
+    @media(prefers-reduced-motion:reduce){*,*:before,*:after{animation-duration:.01ms!important;transition-duration:.01ms!important}}
+  </style>
+</head>
+<body>
+  <div class="shell">
+    <aside aria-label="学习路径">
+      <div class="brand"><span class="brand-mark" aria-hidden="true">⚗</span><span>Chemistry Agentic Lab</span></div>
+      <div class="side-heading">学习路径会因回答调整</div>
+      <ol class="side-list" id="side-list"><li class="active">纯净物与混合物</li><li>单质、化合物与氧化物</li><li>分类方法</li><li>分散系与胶体</li><li>物质转化</li></ol>
+      <div class="side-note"><strong>导师如何工作</strong><p>课程先核对事实；本机 CLI 分析你的解释，选择补救例子或继续迁移。</p></div>
+    </aside>
+    <main>
+      <div class="top"><span><strong>化学 · 必修第一册</strong> / <span id="course-name">选择学习任务</span></span><span class="top-actions"><button class="term-link" id="open-glossary" type="button">术语库 · 什么是电解质？</button><span class="status" id="agent-status" hidden><i></i><span>导师可选</span></span></span></div>
+      <div class="feedback warn" id="file-mode-notice" role="status" hidden><strong>当前以本地文件方式打开</strong><p>下方情境互动版可以直接打开；术语库和 CLI 导师需要运行本机课程服务。</p><a class="button secondary" href="http://127.0.0.1:8765/">进入可使用导师的课程 →</a></div>
+      <section class="view" id="welcome" aria-labelledby="welcome-title">
+        <div class="hero"><span class="eyebrow">第一章 · 物质及其变化</span><h1 id="welcome-title">按教材顺序，边学边判断</h1><p>先唤醒初中知识，再看原课件图、示范与正反例。每个学习步骤另有三道考法练习，答完提炼知识点和记法；理由和导师点评都可选。</p><button class="button light" id="start" data-start-lesson="classification">从第一节开始 →</button></div>
+        <div class="card" style="margin:14px 0;background:#f1f5fc"><span class="eyebrow">新版产品 · 第一章 12 节短课</span><h2>沿原图学习，再用练习检验理解</h2><p class="muted">初中回顾、原图、正反例、示范和记忆卡都能自由阅读；每节另有三道原创题、可选 AI 导师、间隔复习与本机试卷复盘。内容仍待独立教师审校。</p><a class="button secondary" href="/product-v1/">打开第一章短课 →</a></div>
+        <div class="grid"><div class="card"><span class="eyebrow">第一节 · 物质的分类及转化</span><h2>同一种物质可以怎样分类？</h2><p class="muted">从纯净物与混合物、单质与化合物出发，学树状/交叉分类、溶液与胶体、转化条件。</p><button class="button secondary" data-start-lesson="classification">开始第一节 →</button></div><div class="card"><span class="eyebrow">第二节 · 离子反应 · 上</span><h2>谁让溶液导电？</h2><p class="muted">对照纯水、盐、酸、碱、糖和电解质水，区分物质类别、状态与可移动离子。</p><button class="button secondary" data-start-lesson="conductivity">学习导电与电解质 →</button></div><div class="card"><span class="eyebrow">第二节 · 离子反应 · 下</span><h2>谁真正发生了反应？</h2><p class="muted">写电离式、预测沉淀、气体与水，练习离子共存和离子方程式的写、拆、删、查。</p><button class="button secondary" id="start-ionic" data-start-lesson="ionic">学习离子反应 →</button></div><div class="card"><span class="eyebrow">第三节 · 氧化还原反应</span><h2>电子怎样转移？</h2><p class="muted">从初中得氧失氧回顾，走到化合价、氧化剂与还原剂、电子守恒和配平。</p><button class="button secondary" data-start-lesson="redox">开始第三节 →</button></div></div>
+        <div class="card exam-entry"><span class="eyebrow">本次学情调研 · 可选补漏</span><h2>把卷子里连起来考的知识补完整</h2><p class="muted">对照你提供的试卷，补酸式盐、离子共存、化合价、复分解制盐、离子式配平和 FeSO₄ 情境。先看必须记住的规则，再做原创迁移练习；无需开启导师。</p><a class="button secondary" href="./exam-review-2026-09.html">进入试卷补漏课 →</a></div>
+        <div class="card exam-entry"><span class="eyebrow">第一章 · 高考迁移训练</span><h2>把知识用在陌生情境里</h2><p class="muted">每题先读条件，再选一项并解释依据。提交后会看到每个选项的判断依据、完整推理和一个换条件的问题。训练题均为课程自编，页面标出所参考的考试院评析。</p><div class="actions"><button class="button secondary" data-exam-section="classification">练第一节 →</button><button class="button secondary" data-exam-section="ionic">练第二节 →</button><button class="button secondary" data-exam-section="redox">练第三节 →</button></div></div>
+        <div class="card exam-entry"><span class="eyebrow">第二章 · 海水中的重要元素——钠和氯</span><h2>按教材顺序继续学习</h2><p class="muted">从实验现象认识钠和氯，接着用物质的量连接粒子、质量与体积，最后完成定量配液。每单元都有初中回顾、正反例、解释追问和高考迁移。</p></div>
+        <div class="grid"><div class="card"><span class="eyebrow">第一节 · 钠及其化合物</span><h2>相似的钠盐和氧化物，为何性质不同？</h2><p class="muted">钠与水、Na₂O 与 Na₂O₂、碳酸钠与碳酸氢钠，用现象、化合价和条件判断。</p><button class="button secondary" data-start-lesson="sodium">学习钠 →</button></div><div class="card"><span class="eyebrow">第二节 · 氯及其化合物</span><h2>氯气、氯水、氯离子是一回事吗？</h2><p class="muted">列粒子、辨漂白原理和氯离子检验，联系生活中的含氯消毒剂。</p><button class="button secondary" data-start-lesson="chlorine">学习氯 →</button></div><div class="card"><span class="eyebrow">第三节 · 物质的量</span><h2>怎样数看不见的粒子？</h2><p class="muted">先说清计数对象，再在粒子数、质量、气体体积和方程式系数之间换算。</p><button class="button secondary" data-start-lesson="mole">学习物质的量 →</button></div><div class="card"><span class="eyebrow">实验活动 · 配制溶液</span><h2>从称量到定容，误差在哪里？</h2><p class="muted">用 c=n/V 理解最终溶液体积，逐步判断转移、温度和定容误差。</p><button class="button secondary" data-start-lesson="solution_preparation">学习配液 →</button></div></div>
+        <div class="card exam-entry"><span class="eyebrow">第二章 · 高考迁移训练</span><h2>读条件、列证据、排干扰</h2><p class="muted">以下题目为课程原创；链接说明教材与考试评价依据，不表示题目曾在高考原卷出现。</p><div class="actions"><button class="button secondary" data-exam-section="sodium">练钠 →</button><button class="button secondary" data-exam-section="chlorine">练氯 →</button><button class="button secondary" data-exam-section="mole">练物质的量 →</button><button class="button secondary" data-exam-section="solution_preparation">练配液 →</button></div></div>
+      </section>
+
+      <section class="view" id="review" aria-labelledby="review-title" hidden>
+        <span class="eyebrow">开课前 · 初中知识唤醒</span><h1 id="review-title">先把需要的基础接起来</h1><p class="lead">每题先凭记忆判断。遇到忘记的概念，课程会解释并给一道更小的确认题；这一段不计入后面的高一成绩。</p>
+        <div class="card review-card"><div class="review-progress" id="review-progress">第 1 / 4 个基础概念</div><h2 id="review-topic">原子与离子</h2><p class="question" id="review-question"></p><div class="review-options" id="review-options"></div><div class="term-row"><strong>相关术语</strong><span id="review-terms"></span></div><div class="feedback" id="review-feedback" role="status" hidden></div><div class="review-summary" id="review-summary" hidden></div><div class="actions"><button class="button" id="review-next" hidden>下一个概念 →</button><button class="button secondary" id="review-skip">这些我会了，直接进入课程</button></div></div>
+      </section>
+
+      <section class="view" id="learning" aria-labelledby="learning-title" hidden>
+        <span class="eyebrow">按自己节奏学习</span><h1 id="learning-title">你来判断，课程来解析</h1><p class="lead" id="learning-lead">先选择判断；写理由和请求导师点评都是可选的。</p>
+        <section class="concept-map" data-map="classification" hidden aria-label="物质分类：原课件中的树状与交叉分类"><span class="eyebrow">课件原图</span><h2>物质分类：原课件中的树状与交叉分类</h2><div class="source-slides"><figure><a href="./assets/classification-tree.png" target="_blank" rel="noopener"><img src="./assets/classification-tree.png" alt="树状分类：先区分混合物与纯净物，再逐层细分" loading="lazy"></a><figcaption>原课件《分类方法：树状与交叉分类法》第 5 页 · 点击查看原尺寸</figcaption></figure><div class="slide-guide"><strong>跟着图看</strong><p>从图顶端的“物质”向下读，先用“样品里有几种物质”分出混合物与纯净物；只有走到纯净物分支，才按元素种类分单质和化合物。</p><details><summary>想一想：盐水含水和氯化钠，应该走哪条分支？</summary><p>走“混合物”分支。不能因为氯化钠是化合物，就把整份盐水当成化合物。</p></details></div><figure><a href="./assets/classification-cross.png" target="_blank" rel="noopener"><img src="./assets/classification-cross.png" alt="交叉分类：同一物质可以按不同标准归类" loading="lazy"></a><figcaption>原课件《分类方法：树状与交叉分类法》第 7 页 · 点击查看原尺寸</figcaption></figure><div class="slide-guide"><strong>跟着图看</strong><p>看左边的化学式和右边的两组名称。连线分别代表按金属离子或酸根离子分类；同一种盐可以同时落入两个类别。</p><details><summary>想一想：Na₂CO₃ 为什么既是钠盐又是碳酸盐？</summary><p>它含 Na⁺，所以是钠盐；含 CO₃²⁻，所以也是碳酸盐。两种分类标准可以同时成立。</p></details></div></div></section>
+        <section class="concept-map" data-map="conductivity" hidden aria-label="电解质与非电解质：原课件课堂小结"><span class="eyebrow">课件原图</span><h2>电解质与非电解质：原课件课堂小结</h2><div class="source-slides"><figure><a href="./assets/conductivity.png" target="_blank" rel="noopener"><img src="./assets/conductivity.png" alt="先区分单质、混合物与化合物，再判断电解质" loading="lazy"></a><figcaption>原课件《电解质与非电解质的概念、判断》第 9 页 · 点击查看原尺寸</figcaption></figure><div class="slide-guide"><strong>跟着图看</strong><p>先沿“物质→纯净物→化合物”找分类对象，再看电解质与非电解质。图上“自身电离”是关键：电解质是化合物的类别，导电则要看眼前样品的状态。</p><details><summary>想一想：铜丝导电、干燥 NaCl 晶体不明显导电，哪一个是电解质？</summary><p>NaCl 是电解质：它在水溶液或熔融状态可产生可移动离子；铜是单质，不属于电解质。</p></details></div></div></section>
+        <section class="concept-map" data-map="ionic" hidden aria-label="离子反应：原课件知识结构"><span class="eyebrow">课件原图</span><h2>离子反应：原课件知识结构</h2><div class="source-slides"><figure><a href="./assets/ionic.png" target="_blank" rel="noopener"><img src="./assets/ionic.png" alt="离子反应、离子方程式和写拆删查" loading="lazy"></a><figcaption>原课件《离子反应概念与离子方程式》第 11 页 · 点击查看原尺寸</figcaption></figure><div class="slide-guide"><strong>跟着图看</strong><p>先看中间的“离子方程式”，再顺着“书写”分支读“写、拆、删、查”。“删”是删去反应前后相同的旁观离子，“查”要核对原子数与电荷。</p><details><summary>想一想：BaCl₂ 溶液和 Na₂SO₄ 溶液混合，净离子式留下哪两个离子？</summary><p>留下 Ba²⁺ 和 SO₄²⁻：Ba²⁺ + SO₄²⁻ → BaSO₄↓。Na⁺、Cl⁻ 是旁观离子。</p></details></div></div></section>
+        <section class="concept-map" data-map="redox" hidden aria-label="氧化还原：原课件知识结构"><span class="eyebrow">课件原图</span><h2>氧化还原：原课件知识结构</h2><div class="source-slides"><figure><a href="./assets/redox.png" target="_blank" rel="noopener"><img src="./assets/redox.png" alt="氧化剂与还原剂的两条关系线" loading="lazy"></a><figcaption>原课件《氧化还原反应的基本模型与四对基本概念》第 7 页 · 点击查看原尺寸</figcaption></figure><div class="slide-guide"><strong>跟着图看</strong><p>横向读两条线：氧化剂得电子、化合价降低、被还原；还原剂失电子、化合价升高、被氧化。最后把两条线连起来，得失电子总数必须相等。</p><details><summary>想一想：Zn + Cu²⁺ → Zn²⁺ + Cu 中，哪一方是氧化剂？</summary><p>Cu²⁺ 得到电子、化合价由 +2 降到 0，因此是氧化剂；Zn 失去电子，是还原剂。</p></details></div></div></section>
+        <section class="concept-map" data-map="sodium" hidden aria-label="碳酸钠与碳酸氢钠：原课件比较图"><span class="eyebrow">课件原图</span><h2>碳酸钠与碳酸氢钠：原课件比较图</h2><div class="source-slides"><figure><a href="./assets/sodium.png" target="_blank" rel="noopener"><img src="./assets/sodium.png" alt="热稳定性、与盐酸和氢氧化钙的反应比较" loading="lazy"></a><figcaption>原课件《碳酸钠和碳酸氢钠的化学性质比较》第 12 页 · 点击查看原尺寸</figcaption></figure><div class="slide-guide"><strong>跟着图看</strong><p>这张原图集中比较 Na₂CO₃ 与 NaHCO₃。先看热稳定性，再看与盐酸、氢氧化钙反应；与酸反应还要读“先”“后”和试剂用量。</p><details><summary>想一想：受热更容易分解并放出 CO₂ 的是哪一种？</summary><p>NaHCO₃。它受热可生成 Na₂CO₃、CO₂ 和 H₂O；不能把这一结论套给 Na₂CO₃。</p></details></div></div></section>
+        <section class="concept-map" data-map="chlorine" hidden aria-label="氯水中的粒子：原课件关系图"><span class="eyebrow">课件原图</span><h2>氯水中的粒子：原课件关系图</h2><div class="source-slides"><figure><a href="./assets/chlorine.png" target="_blank" rel="noopener"><img src="./assets/chlorine.png" alt="新制氯水中的三种分子与四种离子" loading="lazy"></a><figcaption>原课件《氯及其化合物之间的相互转化》第 6 页 · 点击查看原尺寸</figcaption></figure><div class="slide-guide"><strong>跟着图看</strong><p>从中心“氯水”向两侧读：左边列三种分子，右边列四种离子。这里展示的是新制氯水的粒子组成，不能把氯水写成一个纯物质化学式。</p><details><summary>想一想：氯水里的 HCl 在图上为什么没有列为一种分子？</summary><p>盐酸中的 HCl 在水中主要电离为 H⁺ 和 Cl⁻；图中列出了这两种离子。</p></details></div></div></section>
+        <section class="concept-map" data-map="mole" hidden aria-label="物质的量：原课件公式关系"><span class="eyebrow">课件原图</span><h2>物质的量：原课件公式关系</h2><div class="source-slides"><figure><a href="./assets/mole.png" target="_blank" rel="noopener"><img src="./assets/mole.png" alt="粒子数、物质的量与质量的换算关系" loading="lazy"></a><figcaption>原课件《物质的量、阿伏伽德罗常数与摩尔质量：概念与计算》第 9 页 · 点击查看原尺寸</figcaption></figure><div class="slide-guide"><strong>跟着图看</strong><p>先认清 n、N、Nₐ、m、M 各是什么量，再读底部公式 N/Nₐ = n = m/M。算之前先说明所数的是分子、原子还是离子。</p><details><summary>想一想：1 mol O₂ 分子含多少 mol O 原子？</summary><p>2 mol O 原子，因为每个 O₂ 分子中有 2 个 O 原子。</p></details></div></div></section>
+        <section class="concept-map" data-map="solution_preparation" hidden aria-label="配制溶液：原课件实验步骤图"><span class="eyebrow">课件原图</span><h2>配制溶液：原课件实验步骤图</h2><div class="source-slides"><figure><a href="./assets/solution-preparation.png" target="_blank" rel="noopener"><img src="./assets/solution-preparation.png" alt="计算、称量、溶解、转移、洗涤、定容与摇匀" loading="lazy"></a><figcaption>原课件《配制步骤和误差分析》第 5 页 · 点击查看原尺寸</figcaption></figure><div class="slide-guide"><strong>跟着图看</strong><p>上方先给出九步操作，再沿下方实验图看仪器如何变化。重点停在“转移、洗涤、定容”：让溶质完整进入容量瓶，最后把溶液体积定到刻度。</p><details><summary>想一想：配制 500 mL 溶液，是向溶质加入 500 mL 水吗？</summary><p>不是。500 mL 指定容后的最终溶液体积；加水量与最终溶液体积不是同一概念。</p></details></div></div></section>
+        <details id="classification-details" hidden open><summary>第一节先学：一棵分类树与两种分散系</summary><p><strong>先问有几种物质：</strong>理想纯水只含 H₂O，是纯净物；盐水含水和 NaCl，是混合物。纯净物再按元素组成分：O₂ 是单质，H₂O 是化合物。CO₂ 是氧化物，H₂SO₄ 虽含氧却不是氧化物。</p><p><strong>两种分类法：</strong>树状分类逐级缩小范围；交叉分类让 Na₂CO₃ 同时属于钠盐和碳酸盐。换标准时须说明标准。</p><p><strong>分散系：</strong>溶液、胶体、浊液按分散质粒子大小区分。Fe(OH)₃ 胶体能使光发生散射，形成丁达尔效应；普通 NaCl 水溶液没有这种可见光路。胶体制取条件与直接生成 Fe(OH)₃ 沉淀不同。</p><p><strong>转化要看条件：</strong>CaO + H₂O → Ca(OH)₂，HCl + NaOH → NaCl + H₂O 都是具体反应；不能据此推出 CuO 与水也直接反应。</p></details>
+        <details id="sample-name-details" hidden open><summary>第一节补充：化学式表示物质，还是表示整杯溶液？</summary><p><strong>先确定分类对象：</strong>写 H₂SO₄、HNO₃、HCl、NH₃ 时，化学式指相应化合物；若题目给出的是它们与水形成的溶液，就要把水和溶质一起考虑。HCl 气体是纯净物，“盐酸”明确是 HCl 的水溶液，属于混合物。</p><table class="examples"><thead><tr><th>纯物质</th><th>含水的样品</th><th>样品类别</th></tr></thead><tbody><tr><td>硫酸 H₂SO₄</td><td>稀硫酸、硫酸溶液</td><td>混合物</td></tr><tr><td>氯化氢 HCl(g)</td><td>盐酸 HCl(aq)</td><td>混合物</td></tr><tr><td>硝酸 HNO₃</td><td>稀硝酸、浓硝酸（试剂）</td><td>混合物</td></tr><tr><td>氨 NH₃(g)</td><td>氨水</td><td>混合物</td></tr></tbody></table><p><strong>读题边界：</strong>单说“硫酸”或“硝酸”时，要看题目是在讨论化合物 H₂SO₄/HNO₃ 的类别，还是一瓶酸溶液、与金属反应的试剂；不能只凭名称断言整份样品的纯度。“浓”是浓度描述，不等于无水。</p><p><strong>粒子与简写：</strong>盐酸中 HCl 在水里主要表现为 H₃O⁺（高中常简写 H⁺）和 Cl⁻。稀硫酸可有 H₃O⁺、HSO₄⁻、SO₄²⁻ 等。氨水是 NH₃ 溶于水的体系，存在 NH₃、H₂O、少量 NH₄⁺、OH⁻ 等；NH₃·H₂O 是中学常用的水合写法，不是整瓶氨水的唯一化学式。</p><details><summary>自检：稀硫酸能用 H₂SO₄ 一个式子表示整瓶溶液吗？</summary><p>不能。H₂SO₄ 表示硫酸这一化合物；稀硫酸还含水，是混合物。先看题目给的是化合物名称，还是“稀、浓、溶液、(aq)”所描述的样品。</p></details></details>
+        <details id="water-details" hidden open><summary>先看水：纯水、自来水和盐水有什么不同？</summary><p>导电需要能移动的带电粒子。水分子大多保持为 H₂O，极少量发生自电离：<strong>2H₂O ⇌ H₃O⁺ + OH⁻</strong>。因此理想纯水电导率很小，但严格说不是零。25 ℃下理论值约 0.055 μS/cm；普通课堂小灯泡通常不明显发亮，灵敏电导仪可以测到。</p><table class="examples"><thead><tr><th>样品</th><th>主要看什么</th><th>判断</th></tr></thead><tbody><tr><td>理想纯水</td><td>极少量 H₃O⁺、OH⁻</td><td>极弱导电，电导率不为零</td></tr><tr><td>蒸馏水</td><td>制备、保存时可能带入微量杂质或吸收 CO₂</td><td>很低，但不等同于理想纯水</td></tr><tr><td>自来水</td><td>还含有溶解的矿物离子</td><td>电导率随水源和处理情况变化</td></tr><tr><td>NaCl 水溶液</td><td>另有较多可移动的 Na⁺、Cl⁻</td><td>在本课条件下明显导电</td></tr></tbody></table><p><strong>读题关键：</strong>“灯泡不亮”表示这个装置未观察到明显电流，不能改写成“电导率＝0”。比较电导率时还要留意温度与溶液组成。</p><p class="muted">真题关联：2011 年山东卷化学第 31 题涉及用电导率或电阻率检验蒸馏水纯度；这里的判断题是课程改编题。进阶到水的离子积和 pH 计算时，再处理定量关系。依据：<a href="https://www.yeyulingfeng.com/wendang/201661.html" target="_blank" rel="noopener noreferrer">2011 山东卷试题转载</a>、<a href="https://nvlpubs.nist.gov/nistpubs/jres/100/5/j15wu.pdf" target="_blank" rel="noopener noreferrer">NIST 纯水电导率资料</a>。</p></details>
+        <details id="sport-details" hidden open><summary>生活问题：运动后都需要电解质水吗？糖又是什么？</summary><p>汗液主要是水，也带走 Na⁺、Cl⁻ 和较少的 K⁺。饮料标签上的“电解质”通常指溶解在水中的离子；整瓶饮料是混合物。这里说的“糖”不是一种固定化学式，而是要看具体配料：</p><table class="examples"><thead><tr><th>饮料中可能出现的糖</th><th>分子式与组成</th><th>溶于水以后</th></tr></thead><tbody><tr><td>蔗糖（常见食糖）</td><td>C₁₂H₂₂O₁₁；含碳、氢、氧</td><td>主要是中性蔗糖分子</td></tr><tr><td>葡萄糖</td><td>C₆H₁₂O₆；含碳、氢、氧</td><td>主要是中性葡萄糖分子</td></tr><tr><td>果糖</td><td>C₆H₁₂O₆；与葡萄糖结构不同</td><td>主要是中性果糖分子</td></tr></tbody></table><p>为什么蔗糖的式子不同？它可以理解为葡萄糖与果糖两个单糖单元结合时脱去一分子水：C₆H₁₂O₆ + C₆H₁₂O₆ − H₂O = C₁₂H₂₂O₁₁。</p><p><strong>关键区别：</strong>葡萄糖等糖可经人体代谢提供能量；糖溶解后主要仍是中性分子。NaCl、KCl 则能在水中提供可移动离子。若一瓶含糖饮料能导电，可能是其中的盐类提供了离子，不能直接说“糖让它导电”。</p><p><strong>怎么判断需要什么？</strong>短时间普通运动通常喝水即可。炎热环境下长时间、大量出汗时，补水之外可能需要补回钠等电解质；需求因出汗量、饮食和环境而异。饮料不是给身体像电池一样“充电”。</p><p class="muted">资料：<a href="https://www.ncbi.nlm.nih.gov/books/NBK231139/" target="_blank" rel="noopener noreferrer">美国国家科学院</a>、<a href="https://medlineplus.gov/fluidandelectrolytebalance.html" target="_blank" rel="noopener noreferrer">美国国立医学图书馆</a>、<a href="https://www.healthychildren.org/English/healthy-living/nutrition/Pages/Sports-Nutrition-for-Busy-Families-and-Busy-Lifestyles.aspx" target="_blank" rel="noopener noreferrer">美国儿科学会</a>。</p></details>
+        <details id="ionic-solubility-details" hidden open><summary>先看：怎样判断沉淀，哪些需要记？</summary><p>混合溶液时先列离子，再考虑可能的新组合及其溶解性。例如 BaCl₂ 与 Na₂SO₄ 提供 Ba²⁺、Cl⁻、Na⁺、SO₄²⁻：BaSO₄ 难溶，NaCl 可溶，因此 BaSO₄ 析出。</p><table class="examples"><thead><tr><th>先记的规律</th><th>典型例子</th></tr></thead><tbody><tr><td>钠、钾、铵盐和硝酸盐通常可溶</td><td>NaCl、KNO₃、NaNO₃ 留在溶液中</td></tr><tr><td>多数氯化物可溶，AgCl 是常见难溶例外</td><td>Ag⁺＋Cl⁻ → AgCl↓</td></tr><tr><td>多数硫酸盐可溶，BaSO₄ 是常见难溶例外</td><td>Ba²⁺＋SO₄²⁻ → BaSO₄↓</td></tr><tr><td>多数碳酸盐难溶，钠、钾、铵盐通常可溶</td><td>Ca²⁺＋CO₃²⁻ → CaCO₃↓</td></tr></tbody></table><p><strong>需要背吗？</strong>先记规律和高频例外，不用一次背完整表。这样才能预测产物、判断离子方程式中哪些物质不拆，以及哪些离子不能大量共存。微溶或少见物质再查表。</p><p class="muted">难溶不等于完全不溶；实际是否析出还与离子浓度等条件有关。本课按常见课堂实验条件判断。</p></details>
+        <details id="ionic-method-details" hidden open><summary>第二节先学：电离、反应条件与写式</summary><p><strong>电离：</strong>Na₂SO₄ → 2Na⁺ + SO₄²⁻；CaCl₂ → Ca²⁺ + 2Cl⁻。先核对离子电荷与个数。盐酸中的 HCl 能电离，蔗糖溶解后主要仍为中性分子。</p><p><strong>反应条件：</strong>离子重新组合形成沉淀、气体或水等弱电解质，才可能出现净离子反应。Na₂CO₃ 遇酸：CO₃²⁻ + 2H⁺ → CO₂↑ + H₂O。酸性条件下 CO₃²⁻ 不能大量存在；碱性条件下 H⁺ 不能大量存在。</p><p><strong>写、拆、删、查：</strong>先配平化学方程式；水溶液中可溶性强电解质拆成离子，沉淀、气体、水和弱酸保留化学式；删去两侧相同的旁观离子；检查原子、电荷和真实反应。</p></details>
+        <details id="ionic-exam-details" hidden><summary>高考如何把“难溶”与电导率连起来？</summary><p>2023 年广东卷化学第 17 题第（4）问以 AgCl 饱和溶液为情境，让考生分析电导率、离子浓度和温度。由此可见，“AgCl 难溶”不等于“溶液中一个离子都没有”。</p><p><strong>本课改编判断：</strong>两份 AgCl 饱和溶液的电导率不同，仅凭数值大小就能断定哪一份溶解的 AgCl 更多吗？先检查测量温度是否相同；温度也会影响离子迁移与电导率。这里先学控制变量，不提前要求溶度积计算。</p><p class="muted">来源：<a href="https://www.renrendoc.com/paper/360137420.html" target="_blank" rel="noopener noreferrer">2023 广东卷试题转载，第 17 题</a>。上面的判断题为课程改编，不是真题原文。</p></details>
+        <details id="redox-details" hidden open><summary>第三节先学：升失氧，降得还</summary><p>初中学过“得氧、失氧”，高中要看<strong>化合价变化</strong>：Zn + Cu²⁺ → Zn²⁺ + Cu 中，Zn 从 0 到 +2，失去 2e⁻，被氧化，是还原剂；Cu 从 +2 到 0，得到 2e⁻，被还原，是氧化剂。Zn²⁺ 是氧化产物，Cu 是还原产物。</p><p><strong>判断步骤：</strong>先标变价元素，再算升降与参与原子数，确认得失电子数相等；最后配平全部元素并检查电荷。2FeCl₂ + Cl₂ → 2FeCl₃ 中，两个 Fe²⁺ 共失 2e⁻，Cl₂ 共得 2e⁻。</p><p><strong>常见陷阱：</strong>2Na + Cl₂ → 2NaCl 不含氧却是氧化还原；CaO 加水是化合反应却不是氧化还原；BaSO₄ 沉淀生成是离子反应，化合价不变。题目给反应能发生时才据此比较氧化性强弱。</p></details>
+        <details id="sodium-details" hidden open><summary>钠先学：从水中现象到两组易混物质</summary><p><strong>初中衔接：</strong>金属与水反应要判断新物质。少量 Na 与足量水反应：2Na + 2H₂O → 2NaOH + H₂↑；钠浮在水面、熔成小球并移动，气泡是 H₂，滴酚酞变红对应碱性产物 NaOH。实验只能在教师规范条件下进行。</p><p><strong>氧化物比较：</strong>Na₂O 中氧为 −2 价，Na₂O₂ 中氧为 −1 价。Na₂O + H₂O → 2NaOH；2Na₂O₂ + 2H₂O → 4NaOH + O₂↑。同样含钠和氧，不代表反应与氧化还原情况相同。</p><p><strong>两种白色盐：</strong>Na₂CO₃ 是碳酸钠，NaHCO₃ 是碳酸氢钠。2NaHCO₃ 受热可生成 Na₂CO₃ + CO₂↑ + H₂O；不能把这个现象直接套给普通加热条件下的 Na₂CO₃。判断题先核化学式、条件和产物。</p></details>
+        <details id="chlorine-details" hidden open><summary>氯先学：海水里的氯与氯水中的氯</summary><p><strong>粒子先分清：</strong>海水中的氯主要以 Cl⁻ 等氯化物形式存在，不是黄绿色 Cl₂。HCl 气体溶于水形成盐酸；HCl(aq) 表示水溶液。新制氯水是 Cl₂ 溶于水并与水反应后的混合物。</p><p><strong>关键反应：</strong>Cl₂ + H₂O ⇌ HCl + HClO。HClO 是弱酸，具有氧化性，与新制氯水漂白有关；光照下可分解，所以新制和久置氯水不能直接等同。Cl₂ + 2NaOH → NaCl + NaClO + H₂O；84 消毒液通常以 NaClO 体系为有效成分。它与酸性洁厕剂不能混用，可能放出有毒氯气。</p><p><strong>实验读题：</strong>检验 Cl⁻ 时可用稀硝酸酸化后加 AgNO₃，看不溶于稀硝酸的白色 AgCl；若先用盐酸酸化，就引入了待检 Cl⁻。任何颜色、沉淀结论都要检查试剂带来的干扰。</p></details>
+        <details id="mole-details" hidden open><summary>物质的量先学：先说粒子，再带单位计算</summary><p><strong>mol 是物质的量单位：</strong>1 mol 指约 6.02×10²³ 个<strong>指定基本粒子</strong>，要说明是 O 原子、O₂ 分子还是 NaCl 化学式单位。1 mol O₂ 分子含 2 mol O 原子；NaCl 晶体不能说由独立 NaCl 分子组成。</p><p><strong>两座桥：</strong>N=nNₐ，其中 Nₐ≈6.02×10²³ mol⁻¹；n=m/M，例如 M(H₂O)≈18 g·mol⁻¹，18 g 水约 1 mol。相对分子质量没有单位，摩尔质量有单位。方程式系数表示粒子数或物质的量比，不能直接当质量比。</p><p><strong>体积有条件：</strong>约 0 ℃、101.325 kPa 的标准状况下，1 mol 理想气体体积约 22.4 L。25 ℃ 常压不能直接套该数值，标准状况下的液态水也不能套气体公式。</p></details>
+        <details id="solution-preparation-details" hidden open><summary>配液先学：c=n/V 中的 V 是最终溶液体积</summary><p>配制 500 mL、0.200 mol·L⁻¹ NaCl 溶液，需 n=cV=0.100 mol，理论称量约 5.85 g。这里是把溶质配成<strong>最终 500 mL 溶液</strong>，不是加到 500 mL 水里。</p><p><strong>实验路径：</strong>计算与称量 → 烧杯中溶解 → 冷却 → 定量转移并洗涤烧杯和玻璃棒 → 容量瓶定容 → 摇匀。接近刻度时逐滴加水，平视凹液面最低处。容量瓶不用于直接溶解固体或加热。</p><p><strong>误差方法：</strong>只看 c=n/V：转移时洒出溶液使 n 下降，浓度偏低；定容过线使 V 增大，浓度偏低；在无挥发、受热膨胀前提下热时定容，冷却后 V 缩小，浓度可能偏高。洗涤液合并后仍定容到刻度不会因为“多加了洗涤水”就必然偏低。</p></details>
+        <div class="progress-row"><span id="progress-label">核心例子 0 / 15</span><span id="case-number">第 1 个例子</span><a href="#step-practice">做本步三题 ↓</a></div><div class="bar" aria-label="核心学习进度"><span id="progress-bar"></span></div>
+        <div class="case-card"><div class="case-head"><span class="eyebrow">当前案例</span><span class="case-label" id="case-category">盐 · 固态</span></div><h2 class="case-title" id="case-name">干燥 NaCl 晶体</h2><p class="case-prompt" id="case-prompt"></p><div class="term-row"><strong>本题术语</strong><span id="case-terms"></span></div><p class="question" id="case-question">你的判断是什么？</p><div class="choice-row" id="choices"><button class="choice" data-choice="yes">能导电</button><button class="choice" data-choice="no">通常不能明显导电</button></div><label for="explanation">可选：说说你的理由</label><textarea id="explanation" maxlength="350" placeholder="想解释时再写；也可以只选判断并提交"></textarea><div class="input-help">只选判断就能看解析；写下理由后，可主动请导师点评。</div><div class="actions"><button class="button" id="submit" disabled>提交并看解析 →</button><span class="loading" id="loading" hidden><span class="spinner"></span>正在核对答案…</span></div><div class="feedback" id="feedback" role="status" hidden></div><div class="fact" id="fact" hidden><strong>确定的化学依据</strong><span id="fact-text"></span><div id="review-term" class="review-term" hidden></div></div><div class="next-callout" id="next-callout" hidden></div><div class="actions"><button class="button secondary" id="coach" hidden>请导师点评我的理由</button><button class="button" id="next" hidden>继续下一个例子 →</button></div><div class="followup-answer" id="coach-feedback" role="status" hidden></div><div class="followup" id="followup" hidden><h3>还想追问导师？</h3><div class="followup-form"><input id="question" type="text" maxlength="300" aria-label="向导师提问" placeholder="例如：为什么 HCl 气体和盐酸不同？"><button class="button secondary" id="ask">提问</button></div><div class="followup-answer" id="followup-answer" role="status" hidden></div></div></div>
+        <section class="card step-practice" id="step-practice" aria-labelledby="step-practice-title" hidden><span class="eyebrow">真题考法 · 课程自编三题</span><h2 id="step-practice-title">每一步都练三题</h2><p class="muted">三题是课程根据原卷考法设计的判断练习，不是原题。每题作答后看考点、该记的规则，再做一道新情境判断；三题完成后提炼本步知识与记法。可自由切换步骤。</p><div class="step-tabs" id="step-tabs"></div><p class="muted" id="step-evidence"></p><div id="step-questions"></div><div class="step-synthesis" id="step-synthesis" hidden></div></section>
+        <details id="example-details"><summary>查看其他物质例子</summary><table class="examples"><thead><tr><th>物质</th><th>关键提示</th></tr></thead><tbody><tr><td>CaCl₂(aq)</td><td>看 Ca²⁺ 与 Cl⁻ 能否移动</td></tr><tr><td>Na₂SO₄(aq)</td><td>看 Na⁺ 与 SO₄²⁻ 能否移动</td></tr><tr><td>熔融 NaCl</td><td>不加水，状态也已变化</td></tr><tr><td>醋酸水溶液</td><td>部分电离，导电较弱</td></tr><tr><td>蔗糖 C₁₂H₂₂O₁₁ 水溶液</td><td>溶解后主要是中性分子</td></tr><tr><td>葡萄糖 C₆H₁₂O₆ 水溶液</td><td>不同的糖，同样不产生大量离子</td></tr></tbody></table></details>
+      </section>
+
+      <section class="view" id="finished" aria-labelledby="finished-title" hidden><span class="eyebrow">本轮结束</span><h1 id="finished-title">你建立了自己的判断路径</h1><div class="card"><div class="score" id="score">—</div><p class="muted">本轮案例的首次判断</p><div class="bar"><span id="score-bar"></span></div><h3 style="margin-top:23px">需要回看的地方</h3><p id="focus"></p><div class="summary-box"><strong>核心规则</strong><br><span id="rule-text"></span></div><p class="muted" id="recall"></p><div class="actions"><button class="button secondary" id="restart">重新练习</button><button class="button secondary" id="begin-exam">练本节高考迁移 →</button><button class="button" id="next-agent-lesson" hidden>继续下一单元 →</button><a class="button" id="next-lesson-link" href="../Chemistry_Learning_Engine_CH1_Lesson02_v0.4.html" hidden>打开交互式方程式编译器 →</a></div></div></section>
+      <section class="view" id="exam-learning" aria-labelledby="exam-title" hidden><span class="eyebrow">课程自编 · 高考考法迁移</span><h1 id="exam-title">第一章高考迁移训练</h1><p class="lead" id="exam-method"></p><div class="progress-row"><span id="exam-progress">第 1 题</span><span id="exam-topic"></span></div><div class="bar"><span id="exam-progress-bar"></span></div><div class="case-card"><p class="muted">考法依据：<a id="exam-source" target="_blank" rel="noopener noreferrer"></a>。题干和选项均为课程自编。</p><h2 id="exam-stem"></h2><div class="exam-options" id="exam-options"></div><label for="exam-explanation">可选：写下选项理由</label><textarea id="exam-explanation" maxlength="350" placeholder="想解释时再写；也可以直接提交选项看逐项解析。"></textarea><div class="actions"><button class="button" id="exam-submit" disabled>提交并看逐项解析 →</button><span class="loading" id="exam-loading" hidden>正在核对答案…</span></div><div class="feedback" id="exam-feedback" role="status" hidden></div><div class="exam-analysis" id="exam-analysis" hidden></div><div class="actions"><button class="button secondary" id="exam-coach" hidden>请导师点评我的理由</button><button class="button" id="exam-next" hidden>下一题 →</button></div><div class="followup-answer" id="exam-coach-feedback" role="status" hidden></div></div></section>
+      <section class="view" id="exam-finished" aria-labelledby="exam-finished-title" hidden><span class="eyebrow">高考迁移训练结束</span><h1 id="exam-finished-title">把判断过程带进新情境</h1><div class="card"><div class="score" id="exam-score"></div><p id="exam-review-topics"></p><div class="summary-box" id="exam-summary-method"></div><div class="actions"><button class="button secondary" id="exam-repeat">再练本节</button><button class="button" id="exam-home">返回课程目录</button></div></div></section>
+      <footer>必修第一册本机课程 · 默认显示固定解析；仅主动请求时调用 CLI 导师 · 不记录姓名或账号 · <a href="./TEACHING_DESIGN.md">考法依据与改编记录</a></footer>
+    </main>
+  </div>
+  <dialog class="glossary" id="glossary-dialog" aria-labelledby="glossary-title"><div class="glossary-head"><h2 id="glossary-title">化学术语库</h2><button class="term-link" id="close-glossary" type="button" aria-label="关闭术语库">关闭</button></div><div class="glossary-body"><input class="glossary-search" id="glossary-search" type="search" placeholder="搜索：电解质、NaCl、盐酸…" aria-label="搜索术语"><div class="glossary-layout"><div class="glossary-list" id="glossary-list" aria-label="术语列表"></div><article class="glossary-detail" id="glossary-detail" aria-live="polite"></article></div></div></dialog>
+  <script>
+    "use strict";
+    const $=id=>document.getElementById(id);
+    const lessonOrder=["classification","conductivity","ionic","redox","sodium","chlorine","mole","solution_preparation"];
+    const lessonNames={classification:"第一章第一节 · 物质的分类及转化",conductivity:"第一章第二节 · 导电与电解质",ionic:"第一章第二节 · 离子反应",redox:"第一章第三节 · 氧化还原反应",sodium:"第二章第一节 · 钠及其化合物",chlorine:"第二章第二节 · 氯及其化合物",mole:"第二章第三节 · 物质的量",solution_preparation:"第二章实验活动 · 配制溶液"};
+    const lessonSteps={classification:["纯净物与混合物","单质、化合物与氧化物","分类方法","分散系与胶体","物质转化"],conductivity:["水：极弱导电与样品差异","盐：状态与离子","运动与电解质水","酸、碱和非电解质","金属与电解质"],ionic:["电离与反应条件","判断沉淀","写化学方程式","拆成离子","删、查与迁移"],redox:["化合价与反应类型","氧化与还原","氧化剂、还原剂","电子守恒与配平","迁移与综合判断"],sodium:["初中回顾与钠单质","钠与水","氧化物对比","碳酸盐对比","实验与迁移"],chlorine:["氯的粒子","氯气的反应","氯水与次氯酸","含氯消毒剂","离子检验与实验"],mole:["计数对象与单位","粒子数换算","摩尔质量与质量","方程式和气体体积","条件与综合换算"],solution_preparation:["浓度与最终体积","计算和仪器","溶解与定量转移","定容和误差","摇匀、稀释与迁移"]};
+    const state={sessionId:null,lessonId:null,current:null,next:null,summary:null,choice:null,busy:false,submitted:false,answered:0,terms:[],termById:new Map(),termTeaching:{},selectedTerm:null,agentLabel:"CLI 导师",prerequisite:null,prerequisiteNext:null,prerequisiteDone:false,prerequisiteAnswered:false,prerequisiteBusy:false,prerequisiteTotal:0,reviewCompleted:0,pendingCase:null,pendingProgress:null};
+    const examState={sessionId:null,section:null,current:null,next:null,summary:null,choice:null,busy:false,submitted:false,answered:0,total:0};
+    let stepPracticeData=null,lastCoreStage=-1;
+    const volatileStepAnswers=new Map();
+    function stepAnswerKey(lessonId,index,questionIndex){return `chemistry-step-practice-v1:${lessonId}:${index}:${questionIndex}`;}
+    function transferAnswerKey(lessonId,index,questionIndex){return `chemistry-step-transfer-v1:${lessonId}:${index}:${questionIndex}`;}
+    function readBooleanAnswer(key){
+      if(volatileStepAnswers.has(key))return volatileStepAnswers.get(key);
+      try{const value=localStorage.getItem(key);return value===null?null:value==="true";}catch{return null;}
+    }
+    function readStepAnswer(lessonId,index,questionIndex){return readBooleanAnswer(stepAnswerKey(lessonId,index,questionIndex));}
+    function saveBooleanAnswer(key,value){volatileStepAnswers.set(key,value);try{localStorage.setItem(key,String(value));}catch{}}
+    function renderStepPractice(index){
+      const section=stepPracticeData?.bank?.[state.lessonId]?.[index];
+      if(!section){$("step-practice").hidden=true;return;}
+      $("step-practice").hidden=false;
+      $("step-practice-title").textContent="第 "+(index+1)+" 步 · "+section.title+" · 3 题";
+      const tabs=$("step-tabs");tabs.replaceChildren();
+      stepPracticeData.bank[state.lessonId].forEach((step,stepIndex)=>{
+        const button=document.createElement("button");button.type="button";button.textContent=(stepIndex+1)+" · "+step.title;
+        button.classList.toggle("active",stepIndex===index);
+        button.classList.toggle("completed",step.checks.every((_,q)=>readStepAnswer(state.lessonId,stepIndex,q)!==null));
+        button.addEventListener("click",()=>renderStepPractice(stepIndex));tabs.append(button);
+      });
+      const source=stepPracticeData.papers[section.evidence[0]];
+      const evidence=$("step-evidence");evidence.replaceChildren();
+      evidence.append("考法依据：");const link=document.createElement("a");link.href=source.url;link.target="_blank";link.rel="noopener noreferrer";link.textContent=source.label;evidence.append(link," · "+section.evidence[1]+"。");
+      const list=$("step-questions");list.replaceChildren();
+      section.checks.forEach((question,q)=>{
+        const row=document.createElement("div");row.className="step-practice-question";
+        const stem=document.createElement("p");stem.textContent="第 "+(q+1)+" 题 · "+question.stem;row.append(stem);
+        const chosen=readStepAnswer(state.lessonId,index,q);
+        for(const [value,label] of [[true,"正确"],[false,"不正确"]]){
+          const button=document.createElement("button");button.type="button";button.textContent=label;
+          if(chosen!==null){button.disabled=true;button.classList.toggle("correct",value===question.answer);button.classList.toggle("incorrect",value===chosen&&chosen!==question.answer);}
+          else button.addEventListener("click",()=>{saveBooleanAnswer(stepAnswerKey(state.lessonId,index,q),value);renderStepPractice(index);});
+          row.append(button);
+        }
+        if(chosen!==null){
+          const reason=document.createElement("p");reason.className="reason";reason.textContent=(chosen===question.answer?"答对了。":"这题要修正：")+question.why;row.append(reason);
+          const teaching=document.createElement("div");teaching.className="step-practice-teaching";
+          const point=document.createElement("p");point.textContent="考点："+question.point;
+          const rule=document.createElement("p");rule.className="must";rule.textContent=(state.lessonId==="classification"&&index===0?"必须背下来：":"本题要记住：")+section.knowledge;
+          const memory=document.createElement("p");memory.textContent="记忆方法："+section.memory;
+          teaching.append(point,rule,memory);
+          const transfer=document.createElement("div");transfer.className="step-transfer";
+          const label=document.createElement("strong");label.textContent="举一反三 · 换个例子再判断";
+          const prompt=document.createElement("p");prompt.textContent=question.transfer.stem;transfer.append(label,prompt);
+          const transferChosen=readBooleanAnswer(transferAnswerKey(state.lessonId,index,q));
+          for(const [value,text] of [[true,"正确"],[false,"不正确"]]){
+            const button=document.createElement("button");button.type="button";button.textContent=text;
+            if(transferChosen!==null){button.disabled=true;button.classList.toggle("correct",value===question.transfer.answer);button.classList.toggle("incorrect",value===transferChosen&&transferChosen!==question.transfer.answer);}
+            else button.addEventListener("click",()=>{saveBooleanAnswer(transferAnswerKey(state.lessonId,index,q),value);renderStepPractice(index);});
+            transfer.append(button);
+          }
+          if(transferChosen!==null){const result=document.createElement("p");result.className="step-transfer-result";result.textContent=(transferChosen===question.transfer.answer?"迁移答对了。":"换情境后要调整：")+question.transfer.why;transfer.append(result);}
+          teaching.append(transfer);row.append(teaching);
+        }
+        list.append(row);
+      });
+      const allAnswered=section.checks.every((_,q)=>readStepAnswer(state.lessonId,index,q)!==null);
+      const synthesis=$("step-synthesis");synthesis.replaceChildren();synthesis.hidden=!allAnswered;
+      if(allAnswered){const score=section.checks.filter((question,q)=>readStepAnswer(state.lessonId,index,q)===question.answer).length;
+        for(const line of ["三题完成 · 首次判断 "+score+" / 3","必会知识点："+section.knowledge,"记忆方法："+section.memory]){const p=document.createElement("p");p.textContent=line;synthesis.append(p);}
+      }
+    }
+    async function ensureStepPractice(){
+      if(!stepPracticeData){try{const response=await fetch("/api/step-practice");if(!response.ok)throw new Error("训练题加载失败");stepPracticeData=await response.json();}catch{return;}}
+      if(state.lessonId&&lastCoreStage>=0)renderStepPractice(lastCoreStage);
+    }
+    function setAgentStatus(status){
+      const element=$("agent-status");element.hidden=false;element.classList.toggle("online",status==="ready");element.classList.toggle("offline",status==="auth_required"||status==="error");
+      const label=status==="ready"?"已连接":status==="auth_required"?"需要重新登录":status==="error"?"暂不可用":"待首次验证";
+      element.lastElementChild.textContent=state.agentLabel+" · "+label;
+    }
+    function termButton(id,label){
+      const button=document.createElement("button"); button.type="button"; button.className="term-chip";
+      button.textContent=label||state.termById.get(id)?.name||id;
+      button.addEventListener("click",()=>openGlossary(id)); return button;
+    }
+    function selectTerm(id){
+      const term=state.termById.get(id); if(!term)return;
+      state.selectedTerm=id; const detail=$("glossary-detail"); detail.replaceChildren();
+      const title=document.createElement("h3");title.textContent=term.name;
+      const meta=document.createElement("div");meta.className="muted";meta.textContent=term.category+(term.aliases.length?" · 也叫 "+term.aliases.join("、"):"");
+      const definition=document.createElement("p");definition.textContent="定义："+term.definition;
+      const example=document.createElement("p");example.textContent="例子："+term.example;
+      const confusion=document.createElement("p");confusion.textContent="容易混淆："+term.confusion;
+      detail.append(title,meta,definition);
+      const teaching=state.termTeaching[id];
+      if(teaching)renderTermTeaching(detail,term,teaching);
+      else detail.append(example,confusion);
+      [...$("glossary-list").children].forEach(button=>button.classList.toggle("active",button.dataset.termId===id));
+    }
+    function reviewRecord(id){try{return JSON.parse(localStorage.getItem("chemistry-term-review-v1:"+id)||"null");}catch{return null;}}
+    function updateTermReviewBadge(){
+      const due=Object.keys(state.termTeaching).filter(id=>{const record=reviewRecord(id);return record&&record.due<=Date.now();});
+      $("open-glossary").textContent=due.length?"术语库 · "+due.length+" 个待复习":"术语库 · 什么是电解质？";
+      return due;
+    }
+    function renderTermTeaching(detail,term,teaching){
+      const root=document.createElement("section");root.className="term-teaching";
+      const memory=document.createElement("p");memory.className="memory";memory.textContent="🔴 必须背："+teaching.memory;
+      const worked=document.createElement("p");worked.textContent="🟡 必须懂 · 老师示范："+(teaching.worked||teaching.positive[0][0]+"——"+teaching.positive[0][1]);
+      const examples=document.createElement("div");examples.className="contrast-grid";
+      for(const [heading,key,kind] of [["正例 · 属于", "positive","positive"],["反例 · 不属于","negative","negative"]]){
+        const box=document.createElement("div");box.className="contrast-box "+kind;
+        const label=document.createElement("strong");label.textContent=heading+"“"+term.name+"”";
+        const list=document.createElement("ul");for(const [sample,why] of teaching[key]){const li=document.createElement("li");const title=document.createElement("strong");title.textContent=sample;const reason=document.createElement("span");reason.textContent=why;li.append(title,reason);list.append(li);}
+        box.append(label,list);examples.append(box);
+      }
+      const quiz=document.createElement("div");quiz.className="term-quiz";
+      const items=[...teaching.positive.map(([sample,why])=>({sample,why,yes:true})),...teaching.negative.map(([sample,why])=>({sample,why,yes:false}))];
+      const title=document.createElement("strong");title.textContent="🔵 必须会 · "+items.length+" 例快测";
+      const status=document.createElement("p");const record=reviewRecord(term.id);
+      status.textContent=record?(record.due<=Date.now()?"今天该复习这一项。":"已练过；下次复习："+new Date(record.due).toLocaleDateString("zh-CN")):"先看正反例，再遮住答案做判断。";
+      const start=document.createElement("button");start.type="button";start.className="term-link";start.textContent="遮住例子，开始快测";
+      const prompt=document.createElement("p");const choices=document.createElement("div");choices.className="quiz-choices";
+      const feedback=document.createElement("p");feedback.className="quiz-feedback";
+      const next=document.createElement("button");next.type="button";next.className="term-link";next.textContent="下一例 →";next.hidden=true;
+      let index=0,score=0;
+      function showQuestion(){
+        if(index>=items.length){
+          const old=reviewRecord(term.id);const streak=score===items.length?(old?.streak||0)+1:0;
+          const days=streak===1?1:streak===2?3:streak>=3?7:0;
+          const due=Date.now()+days*86400000;
+          try{localStorage.setItem("chemistry-term-review-v1:"+term.id,JSON.stringify({score,total:items.length,streak,due}));}catch{}
+          prompt.textContent="本轮 "+score+" / "+items.length+"。";
+          choices.replaceChildren();feedback.className="quiz-feedback "+(days?"good":"warn");
+          feedback.textContent=days?"已安排 "+days+" 天后复习。":"这项仍要练；现在可以重做。";
+          next.hidden=true;start.hidden=false;start.textContent="再练一次";examples.hidden=false;updateTermReviewBadge();return;
+        }
+        const item=items[index];prompt.textContent="第 "+(index+1)+" / "+items.length+" 例："+item.sample+" 属于“"+term.name+"”吗？";
+        feedback.textContent="";choices.replaceChildren();next.hidden=true;
+        for(const [answer,label] of [[true,"属于"],[false,"不属于"]]){
+          const button=document.createElement("button");button.type="button";button.textContent=label;
+          button.addEventListener("click",()=>{
+            if(answer===item.yes)score++;
+            [...choices.children].forEach(choice=>choice.disabled=true);
+            feedback.className="quiz-feedback "+(answer===item.yes?"good":"warn");
+            feedback.textContent=(answer===item.yes?"判断正确。":"再看边界：")+item.why;
+            next.hidden=false;
+          });choices.append(button);
+        }
+      }
+      start.addEventListener("click",()=>{index=0;score=0;examples.hidden=true;start.hidden=true;showQuestion();});
+      next.addEventListener("click",()=>{index++;showQuestion();});
+      quiz.append(title,status,start,prompt,choices,feedback,next);
+      root.append(memory,worked,examples,quiz);detail.append(root);
+    }
+    function renderGlossaryList(query=""){
+      const normalized=query.trim().toLocaleLowerCase();
+      const matches=state.terms.filter(term=>[term.name,...term.aliases,term.definition,term.category].some(value=>value.toLocaleLowerCase().includes(normalized)));
+      const list=$("glossary-list");list.replaceChildren();
+      if(!matches.length){const empty=document.createElement("div");empty.className="glossary-empty";empty.textContent="没有找到术语。试试化学式或近义词。";list.append(empty);$("glossary-detail").textContent="";return;}
+      for(const term of matches){const button=document.createElement("button");button.type="button";button.dataset.termId=term.id;button.textContent=term.name+" · "+term.category;button.addEventListener("click",()=>selectTerm(term.id));list.append(button);}
+      selectTerm(matches.some(term=>term.id===state.selectedTerm)?state.selectedTerm:matches[0].id);
+    }
+    async function loadGlossary(){
+      const response=await fetch("/api/glossary");if(!response.ok)throw new Error("术语库加载失败");
+      const data=await response.json();state.terms=data.terms;state.termById=new Map(data.terms.map(term=>[term.id,term]));state.termTeaching=data.teaching||{};
+      renderGlossaryList();updateTermReviewBadge();if(state.current)renderCaseTerms(state.current);
+    }
+    function openGlossary(id){
+      if(!state.terms.length){alert("术语库尚未加载，请稍后重试");return;}
+      $("glossary-search").value="";renderGlossaryList();const due=updateTermReviewBadge();selectTerm(id||due[0]||"electrolyte");
+      $("glossary-dialog").showModal();$("glossary-search").focus();
+    }
+    function renderCaseTerms(item){
+      const container=$("case-terms");container.replaceChildren();
+      for(const id of item.terms||[])container.append(termButton(id));
+    }
+    $("open-glossary").addEventListener("click",()=>openGlossary());
+    $("close-glossary").addEventListener("click",()=>$("glossary-dialog").close());
+    $("glossary-search").addEventListener("input",event=>renderGlossaryList(event.target.value));
+    if(location.protocol==="file:"){
+      $("file-mode-notice").hidden=false;
+      document.querySelectorAll("[data-start-lesson],[data-exam-section]").forEach(button=>button.disabled=true);$("open-glossary").disabled=true;
+      $("agent-status").hidden=true;
+    }else loadGlossary().catch(error=>{ $("open-glossary").textContent="术语库暂不可用"; $("open-glossary").title=error.message; });
+    function show(id){ for(const name of ["welcome","review","learning","finished","exam-learning","exam-finished"]) $(name).hidden=name!==id; window.scrollTo({top:0,behavior:"smooth"}); }
+    async function api(path,body){
+      const response=await fetch(path,{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify(body)});
+      const data=await response.json();
+      if(!response.ok) throw new Error(data.error||"请求失败");
+      return data;
+    }
+    function renderPrerequisite(item,completed){
+      state.prerequisite=item;state.prerequisiteNext=null;state.prerequisiteAnswered=false;state.prerequisiteDone=false;
+      $("review-topic").textContent=item.title;
+      $("review-progress").textContent="第 "+(completed+1)+" / "+state.prerequisiteTotal+" 个基础概念"+(item.phase==="repair"?" · 再试一个小问题":"");
+      $("review-question").textContent=item.prompt;
+      const choices=$("review-options");choices.replaceChildren();
+      item.options.forEach((label,index)=>{const button=document.createElement("button");button.type="button";button.dataset.choice=String(index);button.textContent=label;choices.append(button);});
+      const terms=$("review-terms");terms.replaceChildren();for(const id of item.termIds)terms.append(termButton(id));
+      $("review-feedback").hidden=true;$("review-summary").hidden=true;$("review-next").hidden=true;$("review-skip").hidden=false;$("review-skip").disabled=false;
+      show("review");
+    }
+    function beginLesson(){
+      state.prerequisite=null;
+      setProgress(state.pendingProgress);renderCase(state.pendingCase);
+    }
+    $("review-options").addEventListener("click",async event=>{
+      const button=event.target.closest("button[data-choice]");if(!button||state.prerequisiteBusy||state.prerequisiteAnswered)return;
+      state.prerequisiteBusy=true;const item=state.prerequisite;
+      [...$("review-options").children].forEach(option=>option.disabled=true);$("review-skip").disabled=true;
+      try{
+        const data=await api("/api/prerequisite",{sessionId:state.sessionId,questionId:item.id,phase:item.phase,choice:Number(button.dataset.choice)});
+        state.prerequisiteAnswered=true;state.prerequisiteNext=data.next;state.prerequisiteDone=data.done;state.reviewCompleted=data.progress.completed;
+        [...$("review-options").children].forEach(option=>{option.classList.toggle("correct",Number(option.dataset.choice)===data.correctChoice);option.classList.toggle("incorrect",option===button&&!data.correct);});
+        $("review-feedback").className="feedback "+(data.correct?"good":"warn");
+        $("review-feedback").textContent=(data.correct?"答对了。":"先补上这个知识点：")+data.feedback+" 高一会这样用："+data.bridge;
+        $("review-feedback").hidden=false;
+        if(data.done){
+          const s=data.summary;$("review-summary").textContent="初中回顾完成：首次判断 "+s.firstCorrect+" / "+s.total+"。"+(s.gaps.length?"建议回看："+s.gaps.map(g=>g.title).join("、")+"。":"这些基础概念已经接上了。");
+          $("review-summary").hidden=false;$("review-skip").hidden=true;
+        } else $("review-skip").disabled=false;
+        $("review-next").textContent=data.done?"进入高一课程 →":data.next.phase==="repair"?"做一道确认题 →":"下一个概念 →";
+        $("review-next").hidden=false;
+      }catch(error){$("review-feedback").className="feedback warn";$("review-feedback").textContent=error.message;$("review-feedback").hidden=false;[...$("review-options").children].forEach(option=>option.disabled=false);$("review-skip").disabled=false;}
+      finally{state.prerequisiteBusy=false;}
+    });
+    $("review-next").addEventListener("click",()=>{if(state.prerequisiteDone)beginLesson();else if(state.prerequisiteNext)renderPrerequisite(state.prerequisiteNext,state.reviewCompleted);});
+    $("review-skip").addEventListener("click",async()=>{
+      if(state.prerequisiteBusy)return;state.prerequisiteBusy=true;$("review-skip").disabled=true;
+      try{await api("/api/prerequisite/skip",{sessionId:state.sessionId});beginLesson();}
+      catch(error){$("review-feedback").className="feedback warn";$("review-feedback").textContent=error.message;$("review-feedback").hidden=false;$("review-skip").disabled=false;}
+      finally{state.prerequisiteBusy=false;}
+    });
+    function setBusy(value){ state.busy=value; updateSubmit(); $("loading").hidden=!value; }
+    function updateSubmit(){ $("submit").disabled=state.busy||state.submitted||!state.choice; }
+    function renderCase(item){
+      state.current=item; state.choice=null; state.next=null; state.summary=null; state.submitted=false;
+      $("case-name").textContent=item.name; $("case-category").textContent=item.category; $("case-prompt").textContent=item.prompt;
+      renderCaseTerms(item);
+      $("case-number").textContent="第 "+(state.answered+1)+" 个例子";
+      const statement=state.lessonId!=="conductivity"||item.kind==="statement";
+      $("case-question").textContent=statement?"这句话正确吗？":"它能导电吗？";
+      $("choices").children[0].textContent=statement?"正确":"能导电";
+      $("choices").children[1].textContent=statement?"不正确":"通常不能明显导电";
+      $("explanation").value=""; $("explanation").disabled=false; $("question").value="";
+      $("explanation").placeholder="理由可写可不写；提交后都能查看课程解析";
+      const category=item.category;
+      const index=Number.isInteger(item.stage)?item.stage:state.lessonId==="classification"?(category.startsWith("转化")?4:category.startsWith("胶体")||category.startsWith("分散系")?3:category.includes("方法")?2:category.includes("单质")||category.includes("氧化物")||category.includes("反例")?1:0)
+        :state.lessonId==="redox"?(category.includes("配平")||category.includes("表示")?3:category.includes("四对概念")?2:category.includes("电子转移")?1:category.includes("综合")||category.includes("氧化性")?4:0)
+        :state.lessonId==="ionic"?(category.startsWith("电离")||category.startsWith("反应条件")?0:category.startsWith("沉淀")?1:category.startsWith("写")?2:category.startsWith("拆")?3:4)
+        :(category.startsWith("水")?0:category.startsWith("盐")?1:category.startsWith("生活")?2:category.startsWith("金属")?4:3);
+      [...$("side-list").children].forEach((node,i)=>node.className=i===index?"active":i<index?"done":"");
+      if(index!==lastCoreStage){lastCoreStage=index;if(stepPracticeData)renderStepPractice(index);}
+      [...$("choices").children].forEach(button=>{button.className="choice";button.disabled=false;});
+      for(const id of ["feedback","fact","review-term","next-callout","coach","coach-feedback","next","followup","followup-answer"]) $(id).hidden=true;
+      $("coach").disabled=false;
+      updateSubmit(); show("learning");
+    }
+    function setProgress(progress){
+      state.answered=progress.answered;
+      $("progress-label").textContent="核心例子 "+progress.core+" / "+(progress.coreTotal||progress.core||9);
+      $("progress-bar").style.width=Math.round(progress.core/Math.max(1,progress.coreTotal||9)*100)+"%";
+    }
+    async function start(lessonId){
+      document.querySelectorAll("[data-start-lesson]").forEach(button=>button.disabled=true);
+      try {
+        const data=await api("/api/start",{lessonId});
+        state.sessionId=data.sessionId; state.lessonId=data.lesson.id;
+        state.pendingCase=data.case;state.pendingProgress=data.progress;state.prerequisiteTotal=data.prerequisiteTotal;state.reviewCompleted=0;
+        $("course-name").textContent=data.lesson.title;
+        $("learning-title").textContent=data.lesson.title+" · 你来判断";
+        $("learning-lead").textContent=data.lesson.description.replace(/[。！？]$/u,"")+"。先选择判断；下方每步另有三道考法练习。理由和导师点评都可以跳过。";
+        document.querySelectorAll("[data-map]").forEach(map=>map.hidden=map.dataset.map!==state.lessonId);
+        $("example-details").hidden=state.lessonId!=="conductivity";
+        $("classification-details").hidden=state.lessonId!=="classification";
+        $("sample-name-details").hidden=state.lessonId!=="classification";
+        $("water-details").hidden=state.lessonId!=="conductivity";
+        $("ionic-solubility-details").hidden=state.lessonId!=="ionic";
+        $("ionic-method-details").hidden=state.lessonId!=="ionic";
+        $("ionic-exam-details").hidden=state.lessonId!=="ionic";
+        $("sport-details").hidden=state.lessonId!=="conductivity";
+        $("redox-details").hidden=state.lessonId!=="redox";
+        $("sodium-details").hidden=state.lessonId!=="sodium";
+        $("chlorine-details").hidden=state.lessonId!=="chlorine";
+        $("mole-details").hidden=state.lessonId!=="mole";
+        $("solution-preparation-details").hidden=state.lessonId!=="solution_preparation";
+        const labels=lessonSteps[state.lessonId];
+        [...$("side-list").children].forEach((node,i)=>node.textContent=labels[i]);
+        renderPrerequisite(data.prerequisite,0);
+        lastCoreStage=-1;ensureStepPractice();
+      }
+      catch(error){ alert(error.message); }
+      finally { document.querySelectorAll("[data-start-lesson]").forEach(button=>button.disabled=false); }
+    }
+    document.querySelectorAll("[data-start-lesson]").forEach(button=>button.addEventListener("click",()=>start(button.dataset.startLesson)));
+    $("restart").addEventListener("click",()=>start(state.lessonId||"classification"));
+    $("next-agent-lesson").addEventListener("click",()=>start(lessonOrder[lessonOrder.indexOf(state.lessonId)+1]));
+    $("choices").addEventListener("click",event=>{
+      const button=event.target.closest("button[data-choice]"); if(!button||state.busy)return;
+      state.choice=button.dataset.choice;
+      [...$("choices").children].forEach(x=>x.classList.toggle("selected",x===button));
+      updateSubmit();
+    });
+    $("explanation").addEventListener("input",updateSubmit);
+    $("submit").addEventListener("click",async()=>{
+      if(!state.choice)return;
+      setBusy(true);
+      try {
+        const data=await api("/api/answer",{sessionId:state.sessionId,caseId:state.current.id,choice:state.choice,explanation:$("explanation").value.trim()});
+        state.submitted=true;
+        state.next=data.nextCase; state.summary=data.summary||null; setProgress(data.progress);
+        [...$("choices").children].forEach(b=>b.disabled=true); $("explanation").disabled=true;
+        $("feedback").className="feedback "+(data.correct?"good":"warn");
+        $("feedback").replaceChildren();
+        const heading=document.createElement("h3"); heading.textContent=data.correct?"判断正确":"值得修正的判断";
+        $("feedback").append(heading);
+        $("feedback").hidden=false;
+        $("fact-text").textContent=data.explanation+(state.lessonId==="conductivity"&&state.current.kind!=="statement"?" 载流粒子：":" 关键线索：")+data.carrier+"。"; $("fact").hidden=false;
+        $("review-term").replaceChildren();
+        if(data.reviewTerm){$("review-term").append("建议回看：",termButton(data.reviewTerm.id,data.reviewTerm.name));$("review-term").hidden=false;}
+        $("next-callout").textContent=data.nextCase?"下一例："+data.nextCase.name+"。"+data.nextReason:"核心例子已完成，可以查看本轮结果。";
+        $("next-callout").hidden=false; $("coach").textContent=$("explanation").value.trim()?"请导师点评我的理由":"请导师再解释这题"; $("coach").hidden=false; $("next").textContent=data.nextCase?"继续下一个例子 →":"查看学习结果 →"; $("next").hidden=false;
+        $("followup").hidden=false;
+      } catch(error){
+        $("feedback").className="feedback warn";$("feedback").textContent=error.message;$("feedback").hidden=false;
+      } finally { setBusy(false); }
+    });
+    $("coach").addEventListener("click",async()=>{
+      if(!state.submitted||$("coach").disabled)return;
+      const caseId=state.current.id;
+      $("coach").disabled=true;$("next").disabled=true;
+      $("coach-feedback").textContent="导师正在点评…";$("coach-feedback").hidden=false;
+      try{
+        const data=await api("/api/coach",{sessionId:state.sessionId,caseId});
+        if(state.current.id===caseId){$("coach-feedback").textContent=(data.diagnosis?data.diagnosis+"：":"")+data.feedback;setAgentStatus(data.tutorStatus);}
+      }catch(error){if(state.current.id===caseId){$("coach-feedback").textContent=error.message;$("coach").disabled=false;}}
+      finally{$("next").disabled=false;}
+    });
+    $("next").addEventListener("click",()=>{
+      if(state.next){ $("explanation").disabled=false; renderCase(state.next); }
+      else if(state.summary){
+        const s=state.summary; $("score").textContent=s.correct+" / "+s.total;
+        $("score-bar").style.width=Math.round(s.correct/Math.max(1,s.total)*100)+"%";
+        const basics=s.prerequisite?.gaps?.map(item=>item.title)||[];
+        $("focus").textContent=(s.focus.length?s.focus.join("、"):"本轮没有发现明显误区。")+(basics.length?" 初中知识可再回看："+basics.join("、")+"。":"");
+        $("rule-text").textContent=s.rule; $("recall").textContent=s.recall;
+        const nextLesson=lessonOrder[lessonOrder.indexOf(state.lessonId)+1];
+        $("next-agent-lesson").hidden=!nextLesson;
+        if(nextLesson)$("next-agent-lesson").textContent="继续："+lessonNames[nextLesson]+" →";
+        $("next-lesson-link").hidden=state.lessonId!=="ionic";
+        $("begin-exam").hidden=state.lessonId==="conductivity";
+        show("finished");
+      }
+    });
+    $("ask").addEventListener("click",async()=>{
+      const question=$("question").value.trim(); if(!question)return;
+      $("ask").disabled=true; $("followup-answer").textContent="导师正在思考…"; $("followup-answer").hidden=false;
+      try { const data=await api("/api/ask",{sessionId:state.sessionId,question}); $("followup-answer").textContent=data.answer+"\n\n想一想："+data.checkQuestion; }
+      catch(error){ $("followup-answer").textContent=error.message; }
+      finally { $("ask").disabled=false; }
+    });
+    function examSubmitState(){ $("exam-submit").disabled=examState.busy||examState.submitted||examState.choice===null; }
+    function renderExamCase(item){
+      examState.current=item;examState.choice=null;examState.next=null;examState.summary=null;examState.submitted=false;
+      $("exam-stem").textContent=item.stem;$("exam-topic").textContent=item.topic;
+      $("exam-progress").textContent="第 "+(examState.answered+1)+" / "+examState.total+" 题";
+      $("exam-progress-bar").style.width=Math.round(examState.answered/Math.max(1,examState.total)*100)+"%";
+      $("exam-source").textContent=item.source.label;$("exam-source").href=item.source.url;
+      const options=$("exam-options");options.replaceChildren();
+      item.options.forEach((option,index)=>{const button=document.createElement("button");button.type="button";button.dataset.examChoice=String(index);button.textContent="ABCD"[index]+"．"+option;options.append(button);});
+      $("exam-explanation").value="";$("exam-explanation").disabled=false;
+      $("exam-feedback").hidden=true;$("exam-analysis").hidden=true;$("exam-coach").hidden=true;$("exam-coach").disabled=false;$("exam-coach-feedback").hidden=true;$("exam-next").hidden=true;examSubmitState();show("exam-learning");
+    }
+    async function startExam(section){
+      document.querySelectorAll("[data-exam-section]").forEach(button=>button.disabled=true);
+      try{
+        const data=await api("/api/exam/start",{section});
+        examState.sessionId=data.sessionId;examState.section=section;examState.answered=0;examState.total=data.progress.total;
+        $("exam-title").textContent=data.section.title;$("exam-method").textContent="出题思路："+data.section.method;
+        $("course-name").textContent=data.section.title;
+        ["读题与条件","识别关键概念","排除干扰选项","解释证据","变条件再判断"].forEach((label,index)=>$("side-list").children[index].textContent=label);
+        renderExamCase(data.case);
+      }catch(error){alert(error.message);}
+      finally{document.querySelectorAll("[data-exam-section]").forEach(button=>button.disabled=false);}
+    }
+    document.querySelectorAll("[data-exam-section]").forEach(button=>button.addEventListener("click",()=>startExam(button.dataset.examSection)));
+    $("begin-exam").addEventListener("click",()=>startExam(state.lessonId));
+    $("exam-options").addEventListener("click",event=>{
+      const button=event.target.closest("button[data-exam-choice]");if(!button||examState.busy||examState.submitted)return;
+      examState.choice=Number(button.dataset.examChoice);
+      [...$("exam-options").children].forEach(option=>option.classList.toggle("selected",option===button));examSubmitState();
+    });
+    $("exam-explanation").addEventListener("input",examSubmitState);
+    $("exam-submit").addEventListener("click",async()=>{
+      if(examState.choice===null)return;
+      examState.busy=true;examSubmitState();$("exam-loading").hidden=false;
+      try{
+        const data=await api("/api/exam/answer",{sessionId:examState.sessionId,caseId:examState.current.id,choice:examState.choice,explanation:$("exam-explanation").value.trim()});
+        examState.submitted=true;examState.next=data.nextCase;examState.summary=data.summary||null;examState.answered=data.progress.answered;
+        $("exam-progress-bar").style.width=Math.round(examState.answered/Math.max(1,examState.total)*100)+"%";
+        [...$("exam-options").children].forEach((button,index)=>{button.disabled=true;button.classList.toggle("correct",index===data.correctChoice);button.classList.toggle("incorrect",index===examState.choice&&!data.correct);});
+        $("exam-explanation").disabled=true;
+        $("exam-feedback").className="feedback "+(data.correct?"good":"warn");
+        $("exam-feedback").textContent=(data.correct?"判断正确。":"这题应选 "+"ABCD"[data.correctChoice]+"。")+" "+data.choiceFeedback;
+        $("exam-feedback").hidden=false;
+        const analysis=$("exam-analysis");analysis.replaceChildren();
+        for(const line of ["完整推理："+data.worked,"解题方法："+data.method,...data.optionAnalysis.map((option,index)=>""+"ABCD"[index]+" 项："+option.explanation),"换条件再想："+data.transfer]){
+          const paragraph=document.createElement("p");paragraph.textContent=line;analysis.append(paragraph);
+        }
+        analysis.hidden=false;$("exam-coach").textContent=$("exam-explanation").value.trim()?"请导师点评我的理由":"请导师再解释这题";$("exam-coach").hidden=false;$("exam-next").textContent=data.nextCase?"继续下一题 →":"查看本节训练结果 →";$("exam-next").hidden=false;
+      }catch(error){$("exam-feedback").className="feedback warn";$("exam-feedback").textContent=error.message;$("exam-feedback").hidden=false;}
+      finally{examState.busy=false;$("exam-loading").hidden=true;examSubmitState();}
+    });
+    $("exam-coach").addEventListener("click",async()=>{
+      if(!examState.submitted||examState.busy)return;
+      const caseId=examState.current.id;
+      $("exam-coach").disabled=true;$("exam-coach-feedback").textContent="导师正在解释…";$("exam-coach-feedback").hidden=false;
+      try{
+        const data=await api("/api/exam/coach",{sessionId:examState.sessionId,caseId});
+        if(examState.current.id===caseId){$("exam-coach-feedback").textContent="导师点评："+data.feedback;setAgentStatus(data.tutorStatus);}
+      }catch(error){
+        if(examState.current.id===caseId){$("exam-coach-feedback").textContent=error.message;$("exam-coach").disabled=false;}
+      }
+    });
+    $("exam-next").addEventListener("click",()=>{
+      if(examState.next){renderExamCase(examState.next);return;}
+      if(!examState.summary)return;
+      const summary=examState.summary;$("exam-score").textContent=summary.correct+" / "+summary.total;
+      $("exam-review-topics").textContent=summary.reviewTopics.length?"建议回看："+[...new Set(summary.reviewTopics)].join("、")+"。":"本轮的选项判断全部正确。";
+      $("exam-summary-method").textContent="下一次请不看解析，复述这条路径："+summary.method;
+      show("exam-finished");
+    });
+    $("exam-repeat").addEventListener("click",()=>startExam(examState.section));
+    $("exam-home").addEventListener("click",()=>{$("course-name").textContent="选择学习任务";show("welcome");});
+    if(location.protocol!=="file:")fetch("/api/health").then(r=>r.json()).then(data=>{
+      state.agentLabel=data.agent||"CLI 导师";
+    }).catch(()=>{});
+  </script>
+</body>
+</html>

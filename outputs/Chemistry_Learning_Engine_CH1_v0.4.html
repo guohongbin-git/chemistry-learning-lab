@@ -1,0 +1,455 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#101b38">
+  <title>Chemistry Lab · 哪些物质能导电？ · v0.4</title>
+  <style>
+    :root { color-scheme: light; --ink:#172243; --muted:#63718b; --blue:#315be8; --violet:#7352ca; --green:#15825c; --red:#c04444; --line:#e5eaf2; --paper:#fff; --bg:#f5f7fc; }
+    * { box-sizing:border-box; }
+    body { margin:0; background:var(--bg); color:var(--ink); font:16px/1.6 -apple-system,BlinkMacSystemFont,"PingFang SC","Microsoft YaHei",sans-serif; }
+    button { font:inherit; cursor:pointer; }
+    button:focus-visible { outline:3px solid #ffb547; outline-offset:3px; }
+    button:disabled { cursor:not-allowed; opacity:.45; }
+    .shell { max-width:1120px; min-height:100vh; margin:auto; display:grid; grid-template-columns:252px minmax(0,1fr); }
+    .sidebar { min-height:100vh; padding:28px 22px; background:#101b38; color:#dce6ff; }
+    .brand { display:flex; gap:11px; align-items:center; margin-bottom:52px; color:#fff; font-weight:800; letter-spacing:.02em; font-size:19px; }
+    .brand-mark { display:grid; place-items:center; width:38px; height:38px; border-radius:12px; background:#4267f0; font-size:21px; }
+    .sidebar small { color:#8fa2c8; font-size:12px; text-transform:uppercase; letter-spacing:.15em; }
+    .nav-list { list-style:none; padding:0; margin:16px 0 30px; display:grid; gap:5px; }
+    .nav-list li { display:flex; align-items:center; gap:10px; padding:10px 12px; border-radius:10px; color:#aebde0; font-size:14px; }
+    .nav-list li.active { background:#22355f; color:#fff; }
+    .nav-list .dot { width:7px; height:7px; border-radius:50%; background:#7d93c4; }
+    .nav-list li.active .dot { background:#7be0ba; }
+    .side-note { border:1px solid #34476c; border-radius:15px; padding:17px; background:#1a2a4d; font-size:13px; }
+    .side-note strong { display:block; color:#fff; margin-bottom:6px; }
+    .side-note p { color:#aebde0; margin:0; }
+    main { padding:30px clamp(20px,4vw,54px) 60px; min-width:0; }
+    .topline { display:flex; justify-content:space-between; align-items:center; gap:14px; margin-bottom:36px; color:var(--muted); font-size:13px; }
+    .topline strong { color:var(--ink); }
+    .pill { display:inline-block; padding:5px 11px; border:1px solid #cfdaf9; border-radius:30px; background:#eef3ff; color:#3153aa; font-size:12px; font-weight:700; }
+    .eyebrow { color:var(--blue); font-size:12px; font-weight:800; letter-spacing:.13em; text-transform:uppercase; }
+    h1,h2,h3,p { margin-top:0; }
+    h1 { font-size:clamp(30px,4vw,46px); line-height:1.22; letter-spacing:-.035em; margin:8px 0 14px; }
+    h2 { font-size:23px; line-height:1.35; letter-spacing:-.02em; margin-bottom:10px; }
+    h3 { font-size:16px; margin-bottom:8px; }
+    .lead { color:var(--muted); font-size:17px; max-width:620px; }
+    .hero { position:relative; overflow:hidden; border-radius:24px; background:#172a62; color:#fff; padding:38px; min-height:246px; box-shadow:0 16px 34px #172a621f; }
+    .hero:after { content:"Na⁺   Cl⁻"; position:absolute; top:34px; right:-20px; color:#ffffff17; font-weight:800; font-size:90px; transform:rotate(-17deg); pointer-events:none; }
+    .hero .eyebrow { color:#a6c8ff; }
+    .hero h1 { max-width:560px; position:relative; z-index:1; }
+    .hero p { color:#c9d8f7; position:relative; z-index:1; max-width:510px; }
+    .hero .button { position:relative; z-index:1; }
+    .button { display:inline-flex; align-items:center; justify-content:center; gap:8px; min-height:46px; padding:10px 20px; border:1px solid transparent; border-radius:10px; background:var(--blue); color:#fff; font-weight:700; text-decoration:none; }
+    .button:hover:not(:disabled) { background:#234bcc; }
+    .button.secondary { background:#fff; border-color:#d6dfef; color:var(--ink); }
+    .button.secondary:hover:not(:disabled) { background:#f4f7ff; }
+    .button.light { background:#fff; color:#203f92; }
+    .button.light:hover:not(:disabled) { background:#e8efff; }
+    .button.small { min-height:38px; padding:7px 13px; font-size:13px; }
+    .grid { display:grid; grid-template-columns:1.5fr 1fr; gap:18px; margin-top:20px; }
+    .card { background:var(--paper); border:1px solid var(--line); border-radius:18px; padding:24px; box-shadow:0 7px 24px #14204b08; }
+    .meta-row { display:flex; flex-wrap:wrap; gap:9px; margin:18px 0 24px; }
+    .tag { display:inline-block; padding:5px 10px; border-radius:7px; background:#f0ecff; color:#6346a6; font-size:12px; font-weight:700; }
+    .tag.green { background:#e8f7f0; color:#14704f; }
+    .tag.blue { background:#eaf0ff; color:#3153aa; }
+    .muted { color:var(--muted); }
+    .stat { display:flex; justify-content:space-between; align-items:baseline; gap:15px; margin:16px 0 7px; }
+    .stat b { font-size:24px; }
+    .bar { height:9px; overflow:hidden; background:#edf1f7; border-radius:99px; }
+    .bar > span { display:block; height:100%; width:50%; border-radius:99px; background:linear-gradient(90deg,#677eee,#47bcaa); transition:width .3s; }
+    .steps { display:flex; align-items:center; gap:7px; flex-wrap:wrap; margin:3px 0 27px; }
+    .step { padding:6px 10px; color:#7a879f; border-radius:8px; font-size:12px; font-weight:700; }
+    .step.active { color:#2446bd; background:#e9efff; }
+    .step.done { color:#087352; background:#e8f7f0; }
+    .lesson-head { margin-bottom:20px; }
+    .lesson-head .lead { margin-bottom:0; }
+    .question { font-size:21px; font-weight:800; line-height:1.4; margin:16px 0 18px; }
+    .options { display:grid; gap:11px; margin:17px 0; }
+    .option { width:100%; text-align:left; border:1px solid #dbe3f0; border-radius:12px; padding:15px 16px; background:#fff; color:var(--ink); }
+    .option:hover:not(:disabled) { border-color:#90a8f8; background:#f7f9ff; }
+    .option.selected { border-color:var(--blue); background:#edf2ff; box-shadow:inset 0 0 0 1px var(--blue); }
+    .option.correct { border-color:#45a782; background:#ecf9f3; }
+    .option.incorrect { border-color:#d98484; background:#fff0f0; }
+    .feedback { margin:16px 0; padding:15px 17px; border-left:4px solid #5c81e8; border-radius:9px; background:#f2f5ff; color:#2b3f70; }
+    .feedback.good { border-color:#32a172; background:#edf9f3; color:#176144; }
+    .feedback.warn { border-color:#db9867; background:#fff6ee; color:#76431f; }
+    .actions { display:flex; flex-wrap:wrap; gap:10px; margin-top:24px; }
+    .stage { display:none; }
+    .stage.active { display:block; animation:appear .25s ease-out; }
+    @keyframes appear { from { opacity:.4; transform:translateY(5px); } to { opacity:1; transform:none; } }
+    .lab-grid { display:grid; grid-template-columns:minmax(0,1.45fr) minmax(230px,.7fr); gap:18px; }
+    .canvas-wrap { border-radius:16px; overflow:hidden; background:#102144; }
+    canvas { display:block; width:100%; height:320px; }
+    .canvas-caption { padding:13px 17px; color:#c5d5f5; background:#142750; font-size:13px; }
+    .scene-controls { display:flex; flex-wrap:wrap; gap:8px; margin:16px 0; }
+    .scene-controls .button { flex:1; white-space:nowrap; }
+    .readout { padding:14px; border-radius:12px; background:#f5f7fc; border:1px solid var(--line); font-size:14px; }
+    .readout strong { display:block; margin-bottom:4px; }
+    .triple { display:grid; gap:12px; margin:18px 0; }
+    .triple article { display:grid; grid-template-columns:74px 1fr; align-items:start; gap:12px; border:1px solid var(--line); border-radius:12px; padding:15px 17px; }
+    .triple b { color:#5d49b2; }
+    .triple p { margin:0; }
+    .formula { font-family:ui-monospace,SFMono-Regular,Menlo,monospace; font-size:18px; font-weight:700; }
+    .quiz-count { color:var(--muted); font-size:13px; font-weight:700; }
+    .case-progress { display:flex; justify-content:space-between; align-items:center; gap:12px; color:var(--muted); font-size:13px; font-weight:700; margin:15px 0; }
+    .case-card { padding:22px; border-radius:16px; background:linear-gradient(130deg,#1a3269,#244977); color:#fff; margin:18px 0; }
+    .case-card small { display:block; color:#b5cdf5; font-weight:700; letter-spacing:.08em; }
+    .case-card h3 { font-size:27px; margin:8px 0 4px; }
+    .case-card p { color:#d9e7ff; margin:0; }
+    .example-table { width:100%; border-collapse:collapse; font-size:14px; }
+    .example-table th,.example-table td { padding:10px 8px; border-bottom:1px solid var(--line); text-align:left; vertical-align:top; }
+    .example-table th { color:#526482; font-size:12px; }
+    .example-table tr:last-child td { border-bottom:0; }
+    .rule-box { padding:16px; border-radius:12px; background:#eef4ff; color:#284575; margin-top:15px; }
+    .result-number { font-size:50px; line-height:1; font-weight:800; color:var(--green); margin:10px 0 5px; }
+    .review-box { padding:17px; background:#eef7f3; border-radius:12px; color:#21674d; }
+    footer { margin-top:35px; color:#8a96a9; font-size:12px; }
+    @media (max-width:800px) { .shell { display:block; } .sidebar { min-height:0; padding:14px 20px; } .brand { margin:0; } .sidebar > small,.nav-list,.side-note { display:none; } main { padding:22px 18px 45px; } .grid,.lab-grid { grid-template-columns:1fr; } .hero { padding:27px; min-height:0; } .topline { margin-bottom:23px; } }
+    @media (max-width:520px) { .card { padding:19px; } .hero:after { font-size:55px; top:12px; } .triple article { grid-template-columns:1fr; gap:2px; } canvas { height:260px; } .button { width:100%; } .scene-controls .button { width:auto; } }
+    @media (prefers-reduced-motion:reduce) { *,*:before,*:after { animation-duration:.01ms!important; transition-duration:.01ms!important; } }
+  </style>
+</head>
+<body>
+  <div class="shell">
+    <aside class="sidebar" aria-label="课程导航">
+      <div class="brand"><span class="brand-mark" aria-hidden="true">⚗</span><span>Chemistry Lab</span></div>
+      <small>第一章 · 物质及其变化</small>
+      <ol class="nav-list" id="nav-list">
+        <li class="active"><span class="dot"></span>今日任务</li>
+        <li><span class="dot"></span>预测与观察</li>
+        <li><span class="dot"></span>建立模型</li>
+        <li><span class="dot"></span>检验理解</li>
+      </ol>
+      <div class="side-note"><strong>本节的关键问题</strong><p>晶体中已经有离子，为什么还不能导电？</p></div>
+    </aside>
+    <main>
+      <div class="topline"><span><strong>化学学习引擎</strong> / 第 1 个学习任务</span><span class="pill">约 15 分钟</span></div>
+
+      <section id="dashboard" class="stage active" aria-labelledby="dashboard-title">
+        <div class="hero">
+          <span class="eyebrow">TODAY'S EXPERIMENT · 离子世界</span>
+          <h1 id="dashboard-title">哪些物质能导电？</h1>
+          <p>从 NaCl 出发，再比较其他盐、盐酸、稀硫酸、碱和非电解质。每次先预测，再看粒子解释。</p>
+          <button class="button light" id="start-btn">开始实验 <span aria-hidden="true">→</span></button>
+        </div>
+        <div class="grid">
+          <div class="card">
+            <span class="eyebrow">今日学习目标</span><h2>从一个例子找到通用规则</h2>
+            <p class="muted">完成后，你应该能判断 NaCl、其他盐、盐酸和稀硫酸在指定状态下能否导电，并说明是谁在传递电荷。</p>
+            <div class="meta-row"><span class="tag blue">先预测</span><span class="tag">对比例子</span><span class="tag green">迁移判断</span></div>
+            <div class="readout"><strong>核心线索</strong>导电需要能够自由移动的带电粒子。</div>
+          </div>
+          <div class="card">
+            <span class="eyebrow">我的学习状态</span><h2>导电判断</h2>
+            <div class="stat"><span class="muted">上次练习准确率</span><b id="dashboard-mastery">—</b></div>
+            <div class="bar" aria-label="上次练习准确率"><span id="dashboard-bar"></span></div>
+            <p class="muted" id="dashboard-status" style="margin:16px 0 0;font-size:14px">完成本节后会更新。</p>
+            <a class="button secondary" href="Chemistry_Learning_Engine_CH1_Lesson02_v0.2.html" style="margin-top:20px">进入下一课：离子方程式 →</a>
+          </div>
+        </div>
+      </section>
+
+      <div id="lesson" hidden>
+        <div class="lesson-head"><span class="eyebrow">LESSON 01 · CH1_2_002</span><h1>从 NaCl 到酸与碱</h1><p class="lead">先理解一个例子，再通过相似例子和反例，建立能迁移的判断方法。</p></div>
+        <div class="steps" id="steps" aria-label="学习进度"><span class="step">01 预测</span><span class="step">02 实验</span><span class="step">03 解释</span><span class="step">04 对比</span><span class="step">05 练习</span><span class="step">06 完成</span></div>
+
+        <section id="predict" class="stage card" aria-labelledby="predict-title">
+          <span class="eyebrow">01 / 先猜一猜</span><h2 id="predict-title">晶体里已经有 Na⁺ 和 Cl⁻</h2>
+          <p class="question">固体 NaCl 能导电吗？</p>
+          <div class="options" id="predict-options">
+            <button class="option" data-predict="yes">能。只要有离子就能导电。</button>
+            <button class="option" data-predict="no">不能。还要看离子能否自由移动。</button>
+            <button class="option" data-predict="unsure">我不确定，想先看实验。</button>
+          </div>
+          <div id="predict-feedback" class="feedback" role="status" hidden></div>
+          <div class="actions"><button class="button" id="to-lab" disabled>去实验室 <span aria-hidden="true">→</span></button></div>
+        </section>
+
+        <section id="lab" class="stage" aria-labelledby="lab-title">
+          <span class="eyebrow">02 / 可操作粒子模型</span><h2 id="lab-title">让离子动起来</h2>
+          <p class="muted">依次观察晶体、加入水、接通电路。动画是教学示意，不按真实尺寸和速度绘制。</p>
+          <div class="lab-grid">
+            <div class="card">
+              <div class="canvas-wrap"><canvas id="ion-canvas" role="img" aria-label="NaCl 晶体中离子固定在晶格位置的示意图"></canvas><div class="canvas-caption" id="canvas-caption">晶体：Na⁺、Cl⁻ 有序排列，不能自由移动。</div></div>
+              <div class="scene-controls"><button class="button secondary small" id="reset-lab">看晶体</button><button class="button secondary small" id="add-water">加入水</button><button class="button small" id="connect-circuit" disabled>接通电路</button></div>
+              <div class="readout" id="lab-readout" role="status"><strong>观察提示</strong>先看离子的位置：它们能在晶体中自由移动吗？</div>
+            </div>
+            <div class="card"><span class="eyebrow">实验记录</span><h3>两个必要条件</h3><p>① 有带电粒子</p><p>② 带电粒子能自由移动</p><div class="bar"><span id="lab-bar" style="width:0%"></span></div><p class="muted" id="lab-progress" style="font-size:13px;margin:12px 0 0">已观察 0 / 3 个状态</p><div class="actions"><button class="button" id="to-explain" disabled>建立解释 <span aria-hidden="true">→</span></button></div></div>
+          </div>
+        </section>
+
+        <section id="explain" class="stage card" aria-labelledby="explain-title">
+          <span class="eyebrow">03 / 三重表征</span><h2 id="explain-title">把现象、粒子和符号连起来</h2>
+          <div class="triple"><article><b>宏观</b><p>固体 NaCl 通常不导电；NaCl 水溶液能导电。</p></article><article><b>微观</b><p>晶体中的 Na⁺、Cl⁻ 被束缚在晶格位置。溶于水后，离子分散并能自由移动；接通电路时，它们发生定向迁移。</p></article><article><b>符号</b><p class="formula">NaCl(s) → Na⁺(aq) + Cl⁻(aq)</p></article></div>
+          <div class="feedback good"><strong>一句话解释：</strong>NaCl 水溶液导电，是因为其中有能够自由移动的 Na⁺ 和 Cl⁻。</div>
+          <div class="readout"><strong>迁移一步：熔融 NaCl 呢？</strong>熔化后，Na⁺ 和 Cl⁻ 也能自由移动，所以熔融 NaCl 同样能导电。关键条件是离子能移动，不是一定要有水。</div>
+          <div class="actions"><button class="button secondary" id="back-to-lab">再看实验</button><button class="button" id="to-compare">比较更多物质 <span aria-hidden="true">→</span></button></div>
+        </section>
+
+        <section id="compare" class="stage card" aria-labelledby="compare-title">
+          <span class="eyebrow">04 / 先预测，再对照</span><h2 id="compare-title">盐酸、稀硫酸也能导电吗？</h2>
+          <p class="muted">逐个判断指定状态下的物质。留意：物质类别相同，状态不同，答案也可能不同。</p>
+          <div class="case-progress"><span id="case-count">例子 1 / 10</span><span id="case-category">盐 · 固态</span></div>
+          <div class="case-card"><small>这一种物质</small><h3 id="case-name">NaCl 晶体</h3><p id="case-prompt">干燥的固体状态</p></div>
+          <p class="question">它能让简单电路中的灯泡亮起吗？</p>
+          <div class="options" id="case-options"><button class="option" data-case="yes">能导电</button><button class="option" data-case="no">通常不能导电</button></div>
+          <div class="feedback" id="case-feedback" role="status" hidden></div>
+          <div class="actions"><button class="button" id="case-next" disabled>下一个例子 →</button></div>
+          <div class="rule-box" id="case-rule" hidden><strong>你发现的规律：</strong>先看有没有能够自由移动的带电粒子，再看是谁在移动。盐、酸、碱的水溶液常由离子导电；金属可由电子导电。盐酸和硫酸属于酸，不属于盐。本课讨论的是稀硫酸水溶液，不据此推断不同浓度硫酸的导电强弱。<div class="actions"><button class="button" id="to-quiz">检验迁移能力 →</button></div></div>
+          <details style="margin-top:25px"><summary style="cursor:pointer;font-weight:700">更多盐的例子</summary><table class="example-table"><thead><tr><th>例子</th><th>指定状态下的判断</th></tr></thead><tbody><tr><td>KCl(aq)</td><td>能导电：K⁺、Cl⁻ 可移动</td></tr><tr><td>KNO₃(aq)</td><td>能导电：K⁺、NO₃⁻ 可移动</td></tr><tr><td>CaCl₂(aq)</td><td>能导电：Ca²⁺、Cl⁻ 可移动</td></tr><tr><td>Na₂SO₄(aq)</td><td>能导电：Na⁺、SO₄²⁻ 可移动</td></tr><tr><td>熔融 NaCl</td><td>能导电：离子可移动，无需水</td></tr><tr><td>固体 BaSO₄</td><td>通常不能导电：离子被束缚</td></tr></tbody></table></details>
+        </section>
+
+        <section id="quiz" class="stage card" aria-labelledby="quiz-title">
+          <span class="eyebrow">05 / 错误驱动练习</span><div class="quiz-count" id="quiz-count">第 1 / 7 题</div><h2 id="quiz-title">换一种物质，你还会判断吗？</h2>
+          <p class="question" id="quiz-question"></p><div class="options" id="quiz-options"></div>
+          <div id="quiz-feedback" class="feedback" role="status" hidden></div>
+          <div class="actions"><button class="button" id="quiz-next" disabled>下一题 <span aria-hidden="true">→</span></button></div>
+        </section>
+
+        <section id="result" class="stage card" aria-labelledby="result-title">
+          <span class="eyebrow">06 / 本节完成</span><h2 id="result-title">你已经完成跨物质的判断</h2>
+          <div class="result-number" id="result-score">—</div><p class="muted">本课首次作答准确率 · 本地学习记录</p>
+          <div class="bar"><span id="result-bar"></span></div><p id="result-summary" style="margin-top:20px"></p>
+          <div class="review-box"><strong>带走这个判断句：</strong><br>先说明物质的状态，再寻找能够自由移动的带电粒子。盐酸和稀硫酸水溶液能导电；HCl 气体与干燥 NaCl 固体通常不能。铜能导电，但依靠电子，不属于电解质。</div>
+          <p class="muted" id="review-date" style="margin-top:16px;font-size:14px"></p>
+          <div class="actions"><button class="button secondary" id="restart">重新练习</button><button class="button secondary" id="home">返回首页</button><a class="button" href="Chemistry_Learning_Engine_CH1_Lesson02_v0.2.html">开始下一课 →</a></div>
+        </section>
+      </div>
+      <footer>第一章交互原型 v0.4 · 参考资源包中的“电解质的电离与电离方程式”及“电解质与非电解质”课件 · 所有进度只保存在此浏览器中</footer>
+    </main>
+  </div>
+  <script>
+    "use strict";
+    const KNOWLEDGE = { id:"CH1_2_002", title:"电解质导电原因", core:"存在自由移动的离子" };
+    const ANIMATION = { id:"ION_NACL_001", states:["crystal","water","conduct"] };
+    const CASES = [
+      { name:"干燥 NaCl 晶体", category:"盐 · 固态", prompt:"Na⁺、Cl⁻ 在晶格中有序排列", conducts:false, why:"固体里有离子，但离子被束缚，不能自由移动。" },
+      { name:"KCl 水溶液", category:"盐 · 水溶液", prompt:"把氯化钾溶于水", conducts:true, why:"K⁺ 和 Cl⁻ 在水中能够自由移动。判断方法可以从 NaCl 迁移到 KCl。" },
+      { name:"HCl 气体", category:"酸的对照 · 气态", prompt:"尚未溶于水的氯化氢气体", conducts:false, why:"在通常的课堂条件下，HCl 气体主要是中性分子，没有足量自由移动的离子。" },
+      { name:"盐酸 HCl(aq)", category:"酸 · 水溶液", prompt:"HCl 溶于水形成盐酸", conducts:true, why:"盐酸中有能够自由移动的水合氢离子和 Cl⁻，所以能导电。严格分类时，HCl 是电解质，盐酸是它的水溶液。" },
+      { name:"稀硫酸 H₂SO₄(aq)", category:"酸 · 水溶液", prompt:"硫酸与水配成的稀溶液", conducts:true, why:"稀硫酸中有能够自由移动的离子，如水合氢离子、HSO₄⁻ 和 SO₄²⁻。这里讨论的是稀硫酸水溶液。" },
+      { name:"蔗糖水溶液", category:"反例 · 分子溶质", prompt:"蔗糖溶于水，但主要仍是中性分子", conducts:false, why:"蔗糖溶解不等于电离。普通课堂灯泡装置中通常不会因蔗糖而明显导电。" },
+      { name:"KNO₃ 水溶液", category:"盐 · 水溶液", prompt:"把硝酸钾溶于水", conducts:true, why:"K⁺ 和 NO₃⁻ 在水中能够自由移动。导电条件不依赖某一种特定离子。" },
+      { name:"NaOH 水溶液", category:"碱 · 水溶液", prompt:"氢氧化钠溶于水", conducts:true, why:"Na⁺ 和 OH⁻ 可以自由移动。碱的水溶液也可能导电。" },
+      { name:"铜丝", category:"金属 · 固态", prompt:"把一段铜丝接入电路", conducts:true, why:"铜由自由电子导电。能导电并不代表它是电解质；铜是单质。" },
+      { name:"熔融 NaCl", category:"盐 · 熔融态", prompt:"氯化钠加热熔化后的状态", conducts:true, why:"熔融后 Na⁺ 和 Cl⁻ 能自由移动，因此不靠水也能导电。" }
+    ];
+    const QUESTIONS = [
+      { id:"Q_CH1_020", text:"固体 NaCl 不能导电，最关键的原因是什么？", options:["固体中没有 Na⁺ 和 Cl⁻","Na⁺ 和 Cl⁻ 不能自由移动","NaCl 不是电解质"], answer:1, errors:{0:"晶体中有离子，只是它们被束缚在晶格位置。",2:"NaCl 是电解质；要区分物质类别和当前状态能否导电。"} },
+      { id:"Q_CH1_021", text:"NaCl 水溶液接通电路后，什么在定向迁移？", options:["Na⁺ 和 Cl⁻","水分子","NaCl 分子"], answer:0, errors:{1:"水是溶剂；这里主要由溶液中的离子承担导电。",2:"NaCl 溶于水后，形成分散的 Na⁺ 和 Cl⁻。"} },
+      { id:"Q_CH1_022", text:"把 NaCl 换成 KCl 水溶液，最合理的预测是？", options:["不能导电，因为没有 Na⁺","能导电，因为有自由移动的 K⁺ 和 Cl⁻","只能在固态导电"], answer:1, errors:{0:"关键是自由移动的离子，不要求一定是 Na⁺。",2:"固体离子通常不能自由移动；水溶液中的离子可以。"} },
+      { id:"Q_CH1_023", text:"把 NaCl 加热至熔融，接通电路后会怎样？", options:["不能导电，因为没有水","能导电，因为离子能够自由移动","不能导电，因为离子消失了"], answer:1, errors:{0:"水可以帮助 NaCl 晶体解离，但熔融也能让离子自由移动。",2:"熔融时 Na⁺ 和 Cl⁻ 仍然存在，并能移动。"} },
+      { id:"Q_CH1_024", text:"HCl 气体与盐酸（HCl 水溶液）相比，哪一种说法正确？", options:["两者在通常条件下都靠 HCl 分子导电","盐酸能导电；HCl 气体通常不能，因为状态不同","HCl 气体能导电；盐酸不能"], answer:1, errors:{0:"盐酸中的可移动离子传递电荷，不是中性 HCl 分子。",2:"HCl 溶于水后形成可移动离子；通常条件下气态 HCl 没有足量自由离子。"} },
+      { id:"Q_CH1_025", text:"稀硫酸水溶液能导电吗？", options:["能，其中有自由移动的离子","不能，因为它不是盐","只能在无水状态下导电"], answer:0, errors:{1:"酸的水溶液也能通过离子导电，导电不局限于盐。",2:"本题指定的是稀硫酸水溶液，其中存在可移动离子。"} },
+      { id:"Q_CH1_026", text:"蔗糖水溶液与铜丝的判断，哪项正确？", options:["都属于电解质","蔗糖水溶液通常不明显导电；铜丝能由电子导电","蔗糖溶于水就一定强烈导电"], answer:1, errors:{0:"蔗糖是非电解质；铜是单质，也不属于电解质。",2:"溶解不等于电离。蔗糖主要以中性分子存在。"} }
+    ];
+    const STORAGE_KEY = "chemistry-lab-ch1-ion-v0.4";
+    const $ = id => document.getElementById(id);
+    const state = { page:"dashboard", predict:null, scene:"crystal", seen:new Set(), caseIndex:0, caseAnswered:false, caseCorrect:0, quizIndex:0, answers:[], complete:false, mastery:0 };
+    const prefersReducedMotion = matchMedia("(prefers-reduced-motion: reduce)").matches;
+    const canvas = $("ion-canvas");
+    const ctx = canvas.getContext("2d");
+    let particles = [], frame = 0, animationId = null;
+
+    function save() {
+      try { localStorage.setItem(STORAGE_KEY, JSON.stringify({ mastery:state.mastery, complete:state.complete, completedAt:state.complete ? new Date().toISOString() : null })); } catch (_) { /* Private browsing may block storage. */ }
+    }
+    function load() {
+      try { const data = JSON.parse(localStorage.getItem(STORAGE_KEY) || "null"); if (data && Number.isFinite(data.mastery)) { state.mastery = Math.max(0,Math.min(100,data.mastery)); state.complete = !!data.complete; } } catch (_) { /* Continue without saved data. */ }
+      updateDashboard();
+    }
+    function updateDashboard() {
+      $("dashboard-mastery").textContent = state.complete ? state.mastery + "%" : "—";
+      $("dashboard-bar").style.width = state.mastery + "%";
+      $("dashboard-status").textContent = state.complete ? "已完成本节。你可以再次练习。" : "完成本节后会更新。";
+    }
+    const PAGE_ORDER = ["predict","lab","explain","compare","quiz","result"];
+    function show(page) {
+      state.page = page;
+      $("dashboard").classList.toggle("active",page === "dashboard");
+      $("lesson").hidden = page === "dashboard";
+      PAGE_ORDER.forEach(id => $(id).classList.toggle("active",id === page));
+      [...$("steps").children].forEach((node,index) => { node.className = "step" + (PAGE_ORDER[index] === page ? " active" : PAGE_ORDER.indexOf(page) > index ? " done" : ""); });
+      [...$("nav-list").children].forEach((node,index) => node.classList.toggle("active", index === (page === "dashboard" ? 0 : page === "predict" || page === "lab" ? 1 : page === "explain" || page === "compare" ? 2 : 3)));
+      if (page === "lab") { resizeCanvas(); startAnimation(); } else stopAnimation();
+      window.scrollTo({top:0,behavior:prefersReducedMotion ? "instant" : "smooth"});
+    }
+    function resetLesson() {
+      state.predict = null; state.scene = "crystal"; state.seen = new Set(); state.caseIndex = 0; state.caseAnswered = false; state.caseCorrect = 0; state.quizIndex = 0; state.answers = [];
+      [...$("predict-options").children].forEach(b => b.classList.remove("selected"));
+      $("predict-feedback").hidden = true; $("to-lab").disabled = true;
+      $("add-water").disabled = false; $("connect-circuit").disabled = true; $("to-explain").disabled = true;
+      setScene("crystal");
+      show("predict");
+    }
+    $("start-btn").addEventListener("click",resetLesson);
+    $("restart").addEventListener("click",resetLesson);
+    $("home").addEventListener("click",() => { updateDashboard(); show("dashboard"); });
+    $("predict-options").addEventListener("click",event => {
+      const button = event.target.closest("button[data-predict]"); if (!button) return;
+      state.predict = button.dataset.predict;
+      [...$("predict-options").children].forEach(b => b.classList.toggle("selected",b === button));
+      const note = state.predict === "yes" ? "你的预测抓住了“有离子”，接下来观察这些离子能否移动。" : state.predict === "no" ? "很好。接下来用实验检验“能否移动”是不是关键。" : "不确定很正常。接下来亲手观察三种状态。";
+      $("predict-feedback").textContent = note; $("predict-feedback").hidden = false; $("to-lab").disabled = false;
+    });
+    $("to-lab").addEventListener("click",() => { state.seen.add("crystal"); updateLab(); show("lab"); });
+    $("reset-lab").addEventListener("click",() => setScene("crystal"));
+    $("add-water").addEventListener("click",() => setScene("water"));
+    $("connect-circuit").addEventListener("click",() => setScene("conduct"));
+    $("to-explain").addEventListener("click",() => show("explain"));
+    $("back-to-lab").addEventListener("click",() => show("lab"));
+    $("to-compare").addEventListener("click",() => { state.caseIndex = 0; state.caseAnswered = false; state.caseCorrect = 0; renderCase(); show("compare"); });
+    $("to-quiz").addEventListener("click",() => { state.quizIndex = 0; state.answers = []; renderQuestion(); show("quiz"); });
+
+    function setScene(scene) {
+      state.scene = scene; state.seen.add(scene);
+      if (scene === "crystal") { $("connect-circuit").disabled = true; $("add-water").disabled = false; }
+      else { $("connect-circuit").disabled = scene === "conduct"; $("add-water").disabled = true; }
+      const labels = {
+        crystal:["晶体：Na⁺、Cl⁻ 有序排列，不能自由移动。","晶体中有离子，但离子被束缚在晶格位置。灯泡不亮。"],
+        water:["溶于水：Na⁺、Cl⁻ 分散并自由移动。","加水后晶格解离，离子在溶液中能够自由移动。现在试着接通电路。"],
+        conduct:["接通电路：离子定向迁移，灯泡亮起。","Na⁺ 趋向负极，Cl⁻ 趋向正极；移动的离子传递电荷。"]
+      };
+      $("canvas-caption").textContent = labels[scene][0];
+      $("lab-readout").innerHTML = "<strong>观察结果</strong>" + labels[scene][1];
+      canvas.setAttribute("aria-label",labels[scene][0]);
+      updateLab(); seedParticles(); draw();
+    }
+    function updateLab() {
+      const n = state.seen.size;
+      $("lab-bar").style.width = Math.round(n / 3 * 100) + "%";
+      $("lab-progress").textContent = "已观察 " + n + " / 3 个状态";
+      $("to-explain").disabled = !["crystal","water","conduct"].every(x => state.seen.has(x));
+    }
+    function resizeCanvas() {
+      const rect = canvas.getBoundingClientRect(); if (!rect.width) return;
+      const ratio = Math.min(devicePixelRatio || 1,2);
+      canvas.width = Math.round(rect.width * ratio); canvas.height = Math.round(rect.height * ratio);
+      ctx.setTransform(ratio,0,0,ratio,0,0); seedParticles(); draw();
+    }
+    function seedParticles() {
+      const w = canvas.clientWidth, h = canvas.clientHeight;
+      particles = Array.from({length:16},(_,i) => {
+        const row = Math.floor(i / 4), col = i % 4;
+        const crystalX = w * (.25 + col * .17), crystalY = h * (.25 + row * .17);
+        const x = state.scene === "crystal" ? crystalX : 55 + ((i * 103 + 37) % Math.max(1,w - 110));
+        const y = state.scene === "crystal" ? crystalY : 50 + ((i * 71 + 19) % Math.max(1,h - 100));
+        return { type:(row+col)%2 ? "Cl⁻" : "Na⁺", x, y, vx:((i*17)%7-3)*.28, vy:((i*11)%5-2)*.25 };
+      });
+    }
+    function roundRect(x,y,w,h,r,fill) { ctx.fillStyle=fill; ctx.beginPath(); ctx.roundRect(x,y,w,h,r); ctx.fill(); }
+    function draw() {
+      const w = canvas.clientWidth, h = canvas.clientHeight; if (!w || !h) return;
+      ctx.clearRect(0,0,w,h); ctx.fillStyle = state.scene === "crystal" ? "#142348" : "#102b53"; ctx.fillRect(0,0,w,h);
+      if (state.scene !== "crystal") {
+        ctx.fillStyle="#77bdff10";
+        for (let i=0;i<18;i++) { const x=(i*83+22)%w, y=(i*57+34)%h; ctx.beginPath(); ctx.arc(x,y,8+(i%3)*3,0,Math.PI*2); ctx.fill(); }
+      }
+      if (state.scene === "conduct") {
+        ctx.strokeStyle="#80afe988"; ctx.lineWidth=2; ctx.beginPath(); ctx.moveTo(30,18); ctx.lineTo(30,h-18); ctx.moveTo(w-30,18); ctx.lineTo(w-30,h-18); ctx.stroke();
+        roundRect(w-76,17,48,26,8,"#ffd985"); ctx.fillStyle="#634713"; ctx.font="bold 12px sans-serif"; ctx.textAlign="center"; ctx.fillText("亮",w-52,35);
+        ctx.fillStyle="#b3ccf1"; ctx.fillText("−",31,37); ctx.fillText("+",w-30,37);
+      }
+      for (const p of particles) {
+        const isNa=p.type==="Na⁺"; ctx.beginPath(); ctx.arc(p.x,p.y,20,0,Math.PI*2);
+        ctx.fillStyle=isNa ? "#6da7ff" : "#a990fa"; ctx.fill();
+        ctx.fillStyle="#fff"; ctx.font="bold 13px sans-serif"; ctx.textAlign="center"; ctx.textBaseline="middle"; ctx.fillText(p.type,p.x,p.y+1);
+      }
+      if (state.scene === "crystal") { ctx.fillStyle="#d9e6ff"; ctx.font="bold 13px sans-serif"; ctx.textAlign="left"; ctx.textBaseline="alphabetic"; ctx.fillText("离子固定在晶格位置",17,h-18); }
+      else if (state.scene === "water") { ctx.fillStyle="#d9e6ff"; ctx.font="bold 13px sans-serif"; ctx.textAlign="left"; ctx.textBaseline="alphabetic"; ctx.fillText("离子自由移动",17,h-18); }
+      else { ctx.fillStyle="#d9e6ff"; ctx.font="bold 13px sans-serif"; ctx.textAlign="left"; ctx.textBaseline="alphabetic"; ctx.fillText("离子定向迁移",17,h-18); }
+    }
+    function animate() {
+      if (state.page !== "lab") return;
+      frame++;
+      if (!prefersReducedMotion && state.scene !== "crystal") {
+        const w=canvas.clientWidth, h=canvas.clientHeight;
+        for (const p of particles) {
+          if (state.scene === "conduct") p.x += p.type === "Na⁺" ? -.7 : .7;
+          else { p.x += p.vx; p.y += p.vy; }
+          if (p.x < 55) p.x=w-55; if (p.x > w-55) p.x=55;
+          if (p.y < 48 || p.y > h-48) p.vy *= -1;
+        }
+        draw();
+      }
+      animationId=requestAnimationFrame(animate);
+    }
+    function startAnimation() { stopAnimation(); animationId=requestAnimationFrame(animate); }
+    function stopAnimation() { if (animationId !== null) cancelAnimationFrame(animationId); animationId=null; }
+    window.addEventListener("resize",() => { if (state.page === "lab") resizeCanvas(); });
+
+    function renderCase() {
+      const example = CASES[state.caseIndex];
+      state.caseAnswered = false;
+      $("case-count").textContent = "例子 " + (state.caseIndex + 1) + " / " + CASES.length;
+      $("case-category").textContent = example.category;
+      $("case-name").textContent = example.name;
+      $("case-prompt").textContent = example.prompt;
+      [...$("case-options").children].forEach(button => { button.disabled = false; button.className = "option"; });
+      $("case-feedback").hidden = true;
+      $("case-next").disabled = true;
+      $("case-next").hidden = false;
+      $("case-rule").hidden = true;
+    }
+    $("case-options").addEventListener("click",event => {
+      const button = event.target.closest("button[data-case]");
+      if (!button || state.caseAnswered) return;
+      const example = CASES[state.caseIndex];
+      const correct = (button.dataset.case === "yes") === example.conducts;
+      state.caseAnswered = true;
+      if (correct) state.caseCorrect++;
+      [...$("case-options").children].forEach(b => { b.disabled = true; b.classList.toggle("selected",b === button); });
+      $("case-feedback").textContent = (correct ? "判断正确。" : "这次预测需要修正。") + example.why;
+      $("case-feedback").className = "feedback " + (correct ? "good" : "warn");
+      $("case-feedback").hidden = false;
+      if (state.caseIndex === CASES.length - 1) {
+        $("case-next").hidden = true;
+        $("case-rule").hidden = false;
+      } else $("case-next").disabled = false;
+    });
+    $("case-next").addEventListener("click",() => {
+      if (!state.caseAnswered || state.caseIndex >= CASES.length - 1) return;
+      state.caseIndex++;
+      renderCase();
+    });
+
+    function renderQuestion() {
+      const q=QUESTIONS[state.quizIndex];
+      $("quiz-count").textContent="第 " + (state.quizIndex+1) + " / " + QUESTIONS.length + " 题";
+      $("quiz-question").textContent=q.text;
+      $("quiz-options").replaceChildren(...q.options.map((label,index) => {
+        const b=document.createElement("button"); b.className="option"; b.textContent=String.fromCharCode(65+index)+". "+label; b.dataset.answer=String(index); return b;
+      }));
+      $("quiz-feedback").hidden=true; $("quiz-next").disabled=true;
+      $("quiz-next").textContent=state.quizIndex === QUESTIONS.length-1 ? "查看结果 →" : "下一题 →";
+    }
+    $("quiz-options").addEventListener("click",event => {
+      const b=event.target.closest("button[data-answer]"); if (!b || state.answers[state.quizIndex] !== undefined) return;
+      const q=QUESTIONS[state.quizIndex], chosen=Number(b.dataset.answer), correct=chosen === q.answer;
+      state.answers[state.quizIndex]=correct;
+      [...$("quiz-options").children].forEach((button,index) => { button.disabled=true; if (index === q.answer) button.classList.add("correct"); else if (index === chosen) button.classList.add("incorrect"); });
+      $("quiz-feedback").textContent=correct ? "答对了。你依据物质状态和载流粒子作出了判断。" : "再想一步：" + q.errors[chosen] + " 正确答案是 " + String.fromCharCode(65+q.answer) + "。";
+      $("quiz-feedback").className="feedback " + (correct ? "good" : "warn");
+      $("quiz-feedback").hidden=false; $("quiz-next").disabled=false;
+    });
+    $("quiz-next").addEventListener("click",() => {
+      if (state.answers[state.quizIndex] === undefined) return;
+      if (state.quizIndex < QUESTIONS.length-1) { state.quizIndex++; renderQuestion(); return; }
+      const correct=state.answers.filter(Boolean).length;
+      state.mastery=Math.round(correct / QUESTIONS.length * 100);
+      state.complete=true; save(); updateDashboard();
+      $("result-score").textContent=state.mastery+"%"; $("result-bar").style.width=state.mastery+"%";
+      const acidNeedsReview = [4,5].some(index => state.answers[index] === false);
+      const boundaryNeedsReview = state.answers[6] === false;
+      const advice = correct === QUESTIONS.length ? "你能把导电条件迁移到盐、酸和对照物质。" : acidNeedsReview ? "建议回看 HCl 气体、盐酸和稀硫酸的对比，先明确状态再判断。" : boundaryNeedsReview ? "建议再比较蔗糖水溶液与铜丝：溶解不等于电离，金属依靠电子导电。" : "建议回看晶体、水溶液和熔融态之间的离子运动差别。";
+      $("result-summary").textContent="对比例子首次预测 " + state.caseCorrect + " / " + CASES.length + " 个正确；迁移练习答对 " + correct + " / " + QUESTIONS.length + " 题。" + advice;
+      const review=new Date(); review.setDate(review.getDate()+1);
+      $("review-date").textContent="建议明天（" + new Intl.DateTimeFormat("zh-CN",{month:"numeric",day:"numeric"}).format(review) + "）不看答案，解释 KNO₃ 水溶液、盐酸和铜丝各由谁导电。";
+      show("result");
+    });
+    load();
+  </script>
+</body>
+</html>

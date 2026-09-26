@@ -1,0 +1,95 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#15294d">
+  <meta name="description" content="按教材学习化学，查看原图、操控粒子模型、练习并记录学习证据。">
+  <title>化学学习实验室 · 第一章课程</title>
+  <link rel="stylesheet" href="/product-v1/styles.css">
+  <link rel="stylesheet" href="/product-v1/short-course.css">
+  <script defer src="/product-v1/content.js"></script>
+  <script defer src="/product-v1/short-course-content.js"></script>
+  <script defer src="/product-v1/short-course-player.js"></script>
+  <script defer src="/product-v1/exam-files.js"></script>
+  <script defer src="/product-v1/app.js"></script>
+</head>
+<body>
+  <div class="app-shell">
+    <aside class="sidebar" aria-label="课程导航">
+      <a class="brand" href="/product-v1/" aria-label="化学学习实验室首页">
+        <span class="brand-mark" aria-hidden="true">化</span>
+        <span><strong>化学学习实验室</strong><small>必修第一册 · 第一章</small></span>
+      </a>
+      <div class="side-label">第一章短课</div>
+      <nav id="unit-nav" class="unit-nav" aria-label="学习单元"></nav>
+      <div class="side-label side-label-spaced">练习与学习记录</div>
+      <button class="side-link" type="button" data-go="records">学习记录</button>
+      <button class="side-link" type="button" data-go="exam">试卷复盘</button>
+      <button class="side-link" type="button" data-go="simulation-conductivity">导电粒子模拟</button>
+      <button class="side-link" type="button" data-go="simulation-precipitation">沉淀生成模拟</button>
+      <button class="side-link" type="button" data-go="review">到期复测</button>
+      <a class="side-link" href="/product-v1/storyboard.html">早期分类流程样例 ↗</a>
+      <a class="side-link" href="/product-v1/review/">内容自查 · 待教师复核</a>
+      <div class="side-note"><strong>档案彼此分开，本机保存</strong><p>用上方序号切换学习者；不要求姓名或学号。清除浏览器数据会删除这些记录。</p><button id="clear-profile" class="side-link" type="button">清空当前档案数据</button></div>
+      <a class="old-course" href="/">返回现有课程首页 ↗</a>
+    </aside>
+
+    <main id="main-content">
+      <header class="topbar">
+        <button id="mobile-menu" class="icon-button" type="button" aria-label="打开课程目录" aria-expanded="false">☰</button>
+        <div class="crumb" id="breadcrumb">新版学习原型 <span>·</span> 按教材顺序</div>
+        <div class="profile-controls"><label class="sr-only" for="profile-select">切换本机学习档案</label><select id="profile-select" aria-label="切换本机学习档案"></select><button id="new-profile" class="icon-button" type="button" title="新建本机学习档案" aria-label="新建本机学习档案">＋</button></div>
+        <button class="top-term" type="button" data-open-glossary>术语词典 <span aria-hidden="true">⌕</span></button>
+      </header>
+
+      <section id="home-view" class="view">
+        <div class="hero">
+          <div class="hero-copy">
+            <span class="eyebrow">按教材学习 · 用证据调整下一步</span>
+            <h1>每学懂一个概念，<br>就多一种解题办法。</h1>
+            <p>先回顾必要基础，看教材关系图，辨正例和反例，再练习并检查自己能否独立迁移。</p>
+            <button class="button button-light" id="continue-button" type="button">从推荐内容继续 →</button>
+          </div>
+          <div class="hero-mark" aria-hidden="true"><span>Na⁺</span><span>SO₄²⁻</span><span>e⁻</span></div>
+        </div>
+
+        <div class="section-heading"><div><span class="eyebrow">今天的建议</span><h2>用一小步推进学习</h2></div></div>
+        <article id="recommendation" class="recommendation-card"></article>
+
+        <div class="section-heading units-heading" id="course-directory"><div><span class="eyebrow">教材路径</span><h2>第一章 · 12 节短课</h2></div><span class="status-pill">自由阅读 · 可选练习</span></div>
+        <div id="short-course-list"></div>
+
+        <div class="section-heading units-heading"><div><span class="eyebrow">专题补充</span><h2>原有四个综合单元</h2></div><span class="status-pill">案例与模拟</span></div>
+        <div id="unit-cards" class="unit-grid"></div>
+
+        <div class="section-heading"><div><span class="eyebrow">把微观过程看清楚</span><h2>两种可操作的模型</h2></div></div>
+        <div class="simulation-grid">
+          <button class="simulation-card" type="button" data-go="simulation-conductivity"><span class="sim-icon" aria-hidden="true">＋ −</span><span class="eyebrow">模拟一</span><strong>导电从哪里来？</strong><small>切换物质状态，观察离子或电子怎样移动。</small><span class="arrow">打开模拟 →</span></button>
+          <button class="simulation-card" type="button" data-go="simulation-precipitation"><span class="sim-icon precip-icon" aria-hidden="true">Ba²⁺ + SO₄²⁻</span><span class="eyebrow">模拟二</span><strong>沉淀怎样形成？</strong><small>混合溶液，追踪反应离子、旁观离子与固体。</small><span class="arrow">打开模拟 →</span></button>
+        </div>
+
+        <section class="source-note"><strong>课程范围</strong><p>按人教版必修第一册第一章组织，优先对应北京化学等级考试卷。课程练习为自编题；标注年份与题号的真题线索可打开原卷核对。模型中的粒子、颜色与运动均为示意。</p><a href="https://news.bjd.com.cn/2025/06/10/11194117.shtml" target="_blank" rel="noopener noreferrer">北京考试报：2025 年北京卷评析</a><p><a href="/">打开现有课程中的高考迁移训练与本次试卷补漏课 ↗</a></p></section>
+      </section>
+
+      <section id="unit-view" class="view" hidden></section>
+      <section id="lesson-view" class="view" hidden></section>
+      <section id="simulation-view" class="view" hidden></section>
+      <section id="review-view" class="view" hidden></section>
+      <section id="records-view" class="view" hidden></section>
+      <section id="exam-view" class="view" hidden></section>
+    </main>
+  </div>
+
+  <dialog id="glossary-dialog" class="modal" aria-labelledby="glossary-title">
+    <div class="modal-header"><div><span class="eyebrow">看懂化学语言</span><h2 id="glossary-title">术语词典</h2></div><button class="icon-button" type="button" data-close-modal aria-label="关闭术语词典">×</button></div>
+    <label class="search-label" for="term-search">搜索名称、符号或别名</label>
+    <input id="term-search" class="search-input" type="search" autocomplete="off" placeholder="例如：电解质、aq、沉淀">
+    <div id="glossary-list" class="glossary-list"></div>
+  </dialog>
+
+  <dialog id="course-image-dialog" class="sc-image-dialog" aria-label="原课件完整图"><button id="course-image-dialog-close" type="button" aria-label="关闭原图">关闭 ×</button><img alt=""></dialog>
+
+  <div id="toast" class="toast" role="status" aria-live="polite" hidden></div>
+</body>
+</html>
