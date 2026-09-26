@@ -28,4 +28,4 @@
 - [第二章资源对应表](outputs/Chemistry_Resource_Map_CH2_v0.1.md)：用户资源包目录与当前课程内容的对应。
 - [第一章早期资源记录](outputs/Chemistry_Resource_Map_CH1_v0.2.md)：v0.2 原型时期的取材记录。
 
-`outputs/` 下其他 `Chemistry_Learning_Engine_CH1_*.html` 是第一章早期独立原型，保留供对照；后续课程以本机服务首页为入口。`work/` 保存实施计划和回归检查脚本。用户提供的课件与视频仍在 `[local download folder]/chemistry-resource-package/`，没有复制进此项目。资源包中的课件不能仅凭文件夹名称认定为出版社官方出版物。
+`outputs/` 下其他 `Chemistry_Learning_Engine_CH1_*.html` 是第一章早期独立原型，保留供对照；后续课程以本机服务首页为入口。`work/` 保存实施计划和回归检查脚本。用户提供的课件与视频保存在本机下载目录，没有复制进此项目。资源包中的课件不能仅凭文件夹名称认定为出版社官方出版物。

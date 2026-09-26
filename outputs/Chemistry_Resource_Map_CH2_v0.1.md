@@ -1,6 +1,6 @@
 # 第二章资源与交互课程对应表 · v0.1
 
-用户资源包位置：`[local download folder]/chemistry-resource-package/第二章  海水中的重要元素——钠和氯/`。下表按目录和文件名建立索引；当前课程内容另以[人民教育出版社教材资料](https://www.pep.com.cn/xw/zt/px/2019/huaxue/jiangyi/201906/P020190617390733465171.pdf)及[教学设计文档](chemistry-agentic-v0.1/TEACHING_DESIGN.md)核对。这里不把资源包课件直接当作出版社官方出版物或高考原题。
+用户提供的第二章资源包保存在本机下载目录。下表按目录和文件名建立索引；当前课程内容另以[人民教育出版社教材资料](https://www.pep.com.cn/xw/zt/px/2019/huaxue/jiangyi/201906/P020190617390733465171.pdf)及[教学设计文档](chemistry-agentic-v0.1/TEACHING_DESIGN.md)核对。这里不把资源包课件直接当作出版社官方出版物或高考原题。
 
 | 课程单元 | 资源包中可对应的文件 | 当前交互课程的落实 |
 | --- | --- | --- |
